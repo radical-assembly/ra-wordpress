@@ -1,2 +1,2 @@
 IMPORTANT!
-mysql file is included for the repo for testing purposes, if you install any plugins, add pages, posts or change any settings mysql dump your database and commit here, we'll use this until we get a server, 
+mysql file is included in the repo for testing purposes, if you install any plugins, add pages, posts or change any settings mysql dump your database and commit here, we'll use this until we get a server, 
