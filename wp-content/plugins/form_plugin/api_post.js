@@ -5,7 +5,7 @@
 
 (function($){
 
-    $( '#editor' ).on( 'submit', function(e) {
+    $( '#event-form' ).on( 'submit', function(e) {
         e.preventDefault();
 
         // Only use these fields; don't want to worry about time/date parsing
