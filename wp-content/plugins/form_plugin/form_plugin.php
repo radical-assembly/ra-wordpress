@@ -28,11 +28,11 @@ function rest_event_form() {
             return $form;
         }
         else {
-            return __( 'You do not have permissions to edit posts.', 'rest_event_form');
+            return __( 'You do not have permissions to edit posts.', 'form_plugin');
         }
     }
     else {
-        return sprintf( '<a href="%1s" title="Login">%2s</a>', wp_login_url( get_permalink( get_queried_object_id() ) ), __('You must be logged in to edit posts, click here', 'rest_event_form') );
+        return sprintf( '<a href="%1s" title="Login">%2s</a>', wp_login_url( get_permalink( get_queried_object_id() ) ), __('You must be logged in to edit posts, click here', 'form_plugin') );
     }
 
     return $form;
@@ -47,8 +47,8 @@ function rest_api_scripts() {
     wp_enqueue_script('api_posts', plugins_url('api_post.js', __FILE__), array('jquery'), false, true);
     wp_localize_script('api_posts', 'EVENT_FORM', array(
         'root' => esc_url_raw( get_json_url() ),
-        'successMessage' => __('Post created successfully', 'rest-event-form'),
-        'failureMessage' => __('An error occurred', 'rest-event-form'),
+        'successMessage' => __('Post created successfully', 'form_plugin'),
+        'failureMessage' => __('An error occurred', 'form_plugin'),
         'userID' => get_current_user_id(),
     ) );
 }
