@@ -106,6 +106,7 @@
         $.ajax({
             type: "POST",
             url: url,
+            crossDomain: true,
             dataType: 'json',
             data: json_data,
             beforeSend: function( xhr ) {
