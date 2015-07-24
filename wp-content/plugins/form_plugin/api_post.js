@@ -29,25 +29,30 @@
         var app = getAppTokens();
         var req_tok = "";
 
-        console.log($.jquery);
-        $.get({ // First get request to get the request token using an app token/secret
+        $.ajax({ // First get request to get the request token using an app token/secret
+            type: "GET",
             url: urls.requestToken,
             dataType: 'json',
-            callback_url: urls.origin,
-            app_token: app.token,
-            app_secret: app.secret,
-            scope: "permission_write_calendar",
-            state: "slOwi87WWYB"
+            beforeSend: function( xhr ) {
+                xhr.setRequestHeader('callback_url', urls.origin);
+                xhr.setRequestHeader('app_token', app.token);
+                xhr.setRequestHeader('app_secret', app.secret);
+                xhr.setRequestHeader('scope', 'permission_write_calendar');
+                xhr.setRequestHeader('state', 'slOwi87WWYB');
+            }
         })
         .then(function(result) { // Then send the user to authenticate the app
             if (result.request_token) {
                 req_tok = result.request_token;
 
-                return $.get({
+                return $.ajax({
+                    type: "GET",
                     url: urls.redirLogin,
-                    callback_url: urls.origin,
-                    app_token: app.token,
-                    request_token: result.request_token
+                    beforeSend: function( xhr ) {
+                        xhr.setRequestHeader('callback_url', urls.origin);
+                        xhr.setRequestHeader('app_token', app.token);
+                        xhr.setRequestHeader('request_token', req_tok);
+                    }
                 });
             } else {
                 console.log("Server response does not include request_token.");
@@ -55,13 +60,16 @@
         })
         .then(function(result) { // Then get the user token and secret
             if (result.authorisation_token) {
-                return $.get({
+                return $.ajax({
+                    type: "GET",
                     url: urls.userToken,
                     dataType: 'json',
-                    app_token: app.token,
-                    app_secret: app.secret,
-                    request_token: req_tok,
-                    authorisation_token: result.authorisation_token
+                    beforeSend: function( xhr ) {
+                        xhr.setRequestHeader('app_token', app.token);
+                        xhr.setRequestHeader('app_secret', app.secret);
+                        xhr.setRequestHeader('request_token', req_tok);
+                        xhr.setRequestHeader('authorisation_token', result.authorisation_token);
+                    }
                 });
             } else {
                 console.log("Server response does not include authorisation_token.");
@@ -69,12 +77,16 @@
         })
         .then(function(result) { // Now send a POST request to the JSON endpoint
             if (result.user_token && result.user_secret) {
-                return $.post({
+                return $.ajax({
+                    type: "POST",
                     url: urls.eventEndpoint,
                     dataType: 'json',
                     data: json_data,
-                    user_token: result.user_token,
-                    user_secret: result.user_secret
+                    beforeSend: function ( xhr ) {
+                        xhr.setRequestHeader('user_token', result.user_token);
+                        xhr.setRequestHeader('user_secret', result.user_secret);
+                        xhr.setRequestHeader('request_token', req_tok);
+                    }
                 });
             } else {
                 console.log("Server response does not include user token or secret.");
@@ -84,7 +96,7 @@
             alert("Event data successfully POST'd.");
         })
         .fail(function() {
-            alert("Event data POST'ing failed.");
+            alert("Event data POSTing failed.");
         });
     });
 })(jQuery);
@@ -92,8 +104,8 @@
 ///// Support functions
 
 function getAppTokens() {
-    var app_token = "mFmkdRI2s3Jl";
-    var app_secret = "aWqp92wI39uU";
+    var app_token = "nuv6z6ct4zniiu049d60ribvgchrmjd5l7na0i77x1q8m5f7ovz8cm28bcbpm0dsdym8b78n640yug4owpf7of5hyd42mb03ehhulr64w5w6rx";
+    var app_secret = "5s1uaq0ri301efm8hylupcyypxn2cxy8ndi2p1pbh9a5lsvrzhb7wxxuomslzep08y0m83letlfxrc32w5paipzvtwxc841cl9it1oy3lvcu6lu218c3";
     return {
         token: app_token,
         secret: app_secret
