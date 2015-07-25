@@ -14,83 +14,26 @@
         var venue = $('#event-venue').val();
         var desc = $('#event-desc').val();
 
+        // OAC API2 endpoint for existing event (hardcoded for now)
+        var url = "http://localhost/api2/event/1/info.json";
+
+        // Get authentication tokens
+        var tokens = getTokens();
+        var secrets = getSecrets();
+
+        // Concatenate event data with authentication data
         var json_data = getFullJsonObj(name, venue, desc);
+        $.extend(json_data, {
+            user_token: tokens.user,
+            user_secret: secrets.user,
+            app_token: tokens.app
+        });
 
-        // OAC API2 endpoints for authentication and existing event (hardcoded for now)
-        var urls = {
-            origin: "http://ra-wp.dev/submission-form",
-            requestToken: "http://localhost/api2/request_token.json",
-            redirLogin: "http://localhost/api2/login.html",
-            userToken: "http://localhost/api2/user_token.json",
-            eventEndpoint: "http://localhost/api2/event/1/info.json"
-        };
-
-        // Begin user authentication workflow
-        var app = getAppTokens();
-        var req_tok = "";
-
-        $.ajax({ // First get request to get the request token using an app token/secret
-            type: "GET",
-            url: urls.requestToken,
+        $.ajax({ // Send POST request with authentication tokens and event data
+            type: "POST",
+            url: urls.json_data,
             dataType: 'json',
-            beforeSend: function( xhr ) {
-                xhr.setRequestHeader('callback_url', urls.origin);
-                xhr.setRequestHeader('app_token', app.token);
-                xhr.setRequestHeader('app_secret', app.secret);
-                xhr.setRequestHeader('scope', 'permission_write_calendar');
-                xhr.setRequestHeader('state', 'slOwi87WWYB');
-            }
-        })
-        .then(function(result) { // Then send the user to authenticate the app
-            if (result.request_token) {
-                req_tok = result.request_token;
-
-                return $.ajax({
-                    type: "GET",
-                    url: urls.redirLogin,
-                    beforeSend: function( xhr ) {
-                        xhr.setRequestHeader('callback_url', urls.origin);
-                        xhr.setRequestHeader('app_token', app.token);
-                        xhr.setRequestHeader('request_token', req_tok);
-                    }
-                });
-            } else {
-                console.log("Server response does not include request_token.");
-            }
-        })
-        .then(function(result) { // Then get the user token and secret
-            if (result.authorisation_token) {
-                return $.ajax({
-                    type: "GET",
-                    url: urls.userToken,
-                    dataType: 'json',
-                    beforeSend: function( xhr ) {
-                        xhr.setRequestHeader('app_token', app.token);
-                        xhr.setRequestHeader('app_secret', app.secret);
-                        xhr.setRequestHeader('request_token', req_tok);
-                        xhr.setRequestHeader('authorisation_token', result.authorisation_token);
-                    }
-                });
-            } else {
-                console.log("Server response does not include authorisation_token.");
-            }
-        })
-        .then(function(result) { // Now send a POST request to the JSON endpoint
-            if (result.user_token && result.user_secret) {
-                return $.ajax({
-                    type: "POST",
-                    url: urls.eventEndpoint,
-                    dataType: 'json',
-                    data: json_data,
-                    beforeSend: function ( xhr ) {
-                        xhr.setRequestHeader('user_token', result.user_token);
-                        xhr.setRequestHeader('user_secret', result.user_secret);
-                        xhr.setRequestHeader('request_token', req_tok);
-                    }
-                });
-            } else {
-                console.log("Server response does not include user token or secret.");
-            }
+            data: json_data
         })
         .done(function() {
             alert("Event data successfully POST'd.");
@@ -210,5 +153,5 @@ function getFullJsonObj(name, venue, desc) {
         "localtimezone":"Europe\/London"
     };
 
-    return JSON.stringify(json_obj);
+    return json_obj;
 }
