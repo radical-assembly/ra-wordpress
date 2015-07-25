@@ -1,5 +1,5 @@
-
-
+// api_auth.js
+// Goes through the authentication workflow defined for OAC API2.
 
 (function($){
 
