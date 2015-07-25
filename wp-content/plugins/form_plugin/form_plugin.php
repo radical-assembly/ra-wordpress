@@ -53,3 +53,46 @@ function rest_api_scripts() {
     ) );
 }
 add_action( 'wp_enqueue_scripts', 'rest_api_scripts');
+
+
+/**
+* Define the form. Temporary: only a couple of fields are actually used in the
+* javascript api_post.js
+*/
+function auth_form() {
+    $form = '
+    <form id="auth-form">
+    <input type="submit" name="auth-submission" value="Begin Authentication">
+    </form>
+    ';
+
+    if ( is_user_logged_in() ) {
+        if ( user_can( get_current_user_id(), 'edit_posts' ) ) {
+            return $form;
+        }
+        else {
+            return __( 'You do not have permissions to authenticate.', 'form_plugin');
+        }
+    }
+    else {
+        return sprintf( '<a href="%1s" title="Login">%2s</a>', wp_login_url( get_permalink( get_queried_object_id() ) ), __('You must be logged in to edit posts, click here', 'form_plugin') );
+    }
+
+    return $form;
+}
+add_shortcode( 'AUTH-FORM', 'auth_form');
+
+
+/**
+* Enqueue the .js script taking care of the POST request to OAC on form submission.
+*/
+function auth_api_scripts() {
+    wp_enqueue_script('api_auth', plugins_url('api_auth.js', __FILE__), array('jquery'), false, true);
+    wp_localize_script('api_auth', 'AUTH_FORM', array(
+        'root' => esc_url_raw( get_json_url() ),
+        'successMessage' => __('App authenticated successfully', 'form_plugin'),
+        'failureMessage' => __('An error occurred', 'form_plugin'),
+        'userID' => get_current_user_id(),
+    ) );
+}
+add_action( 'wp_enqueue_scripts', 'auth_api_scripts');
