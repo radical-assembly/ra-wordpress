@@ -29,7 +29,7 @@
                 state: 'sl0wi87WWYB'
             }
         })
-        .then(function(result) {
+        .then(function(result) { // Now redirect to the user login page on OAC domain
             if (result.request_token) {
                 tokens.request = result.request_token;
 
