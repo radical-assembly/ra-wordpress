@@ -33,6 +33,8 @@
             if (result.request_token) {
                 tokens.request = result.request_token;
 
+                var dfd = new $.Deferred();
+
                 var form = $(
                     '<form\
                     action="' + urls.redirLogin + '"\
@@ -46,11 +48,46 @@
 
                 $('body').append(form);
                 form.submit();
+                return dfd.promise();
 
             } else {
                 console.log("Server response does not include request_token.");
             }
         })
+        .then(function(result) {
+            if (result.authorisation_token) {
+                tokens.authorisation = result.authorisation_token;
+
+                return $.ajax({
+                    type: 'GET',
+                    url: urls.userToken,
+                    dataType: 'json',
+                    data: {
+                        app_token: tokens.app,
+                        app_secret: secrets.app,
+                        request_token: tokens.request,
+                        authorisation_token: tokens.authorisation
+                    }
+                });
+            } else {
+                console.log("Server response does not include authorisation_token.");
+            }
+        })
+        .then(function(result) {
+            if (result.user_token && result.user_secret) {
+                tokens.user = result.user_token;
+                secrets.user = result.user_secret;
+                console.log("Authentication process finished.");
+            } else {
+                console.log("Server response does not include user token/secret.");
+            }
+        })
+        .done(function() {
+            alert('Done!');
+        })
+        .fail(function() {
+            alert('Failed!');
+        });
     })
 })(jQuery);
 
