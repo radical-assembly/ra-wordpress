@@ -8,7 +8,7 @@
 
         // OAC API2 endpoints for authentication and existing event (hardcoded for now)
         var urls = {
-            origin: "http://ra-wp.dev/submission-form",
+            origin: "http://ra-wp.dev/authentication-event-submission",
             requestToken: "http://localhost/api2/request_token.json",
             redirLogin: "http://localhost/api2/login.html",
             userToken: "http://localhost/api2/user_token.json"
