@@ -31,28 +31,36 @@ var urls = {
             if (result.request_token) {
                 tokens.request = result.request_token;
 
-                var form = $(
-                    '<form\
-                    action="' + urls.redirLogin + '"\
-                    name="hidden-form" method="POST" style="display:none;">\
-                    <input type="text" name="app_token" value="' + tokens.app + '"/>\
-                    <input type="text" name="request_token" value="' + tokens.request + '"/>\
-                    <input type="text" name="callback_url" value="' + urls.origin + '"/>\
-                    <input type="submit" name="auth-redir" value="Redirect"/>\
-                    </form>'
-                );
-
-                $('body').append(form);
-                form.submit();
+                return $.ajax({
+                    type: 'POST',
+                    url: urls.redirLogin,
+                    data: JSON.stringify({
+                        request_token: tokens.request,
+                        app_token: tokens.app,
+                        callback_url: urls.origin,
+                        username: 'admin',
+                        password: 'password'
+                    }),
+                    dataType: 'json',
+                    contentType: 'application/json'
+                });
 
             } else {
                 console.log("Server response does not include request_token.");
             }
         })
+        .then(function(result) {
+            if (result.authorisation_token) {
+                console.log('Have token, will travel');
+            } else {
+                console.log("Server response does not include authorisation_token");
+            }
+        })
         .fail(function() {
-            alert('Failed before the redirect!');
+            alert('Failed at some point!');
         });
     });
+})(jQuery);
 
 function getTokens() {
     return {
