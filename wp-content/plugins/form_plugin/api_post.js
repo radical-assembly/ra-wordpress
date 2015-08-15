@@ -18,22 +18,29 @@
         var url = "http://localhost/api2/event/1/info.json";
 
         // Get authentication tokens
-        var tokens = getTokens();
-        var secrets = getSecrets();
+        var tokens = getPostTokens();
+        var secrets = getPostSecrets();
 
         // Concatenate event data with authentication data
-        var json_data = getFullJsonObj(name, venue, desc);
+        //var json_data = getFullJsonObj(name, venue, desc);
+        var json_data = {
+            summary: 'TestPostSummary',
+            description: 'TestPostDescription',
+            url: 'http://testposturl.dev',
+            ticket_url: 'http://testpostticketurl.dev'
+        };
         $.extend(json_data, {
             user_token: tokens.user,
             user_secret: secrets.user,
             app_token: tokens.app
         });
 
-        $.ajax({ // Send POST request with authentication tokens and event data
-            type: "POST",
-            url: urls.json_data,
-            dataType: 'json',
-            data: json_data
+        $.post(
+            url,
+            json_data
+        )
+        .then(function(result) {
+            console.log(result);
         })
         .done(function() {
             alert("Event data successfully POST'd.");
@@ -46,12 +53,17 @@
 
 ///// Support functions
 
-function getAppTokens() {
-    var app_token = "nuv6z6ct4zniiu049d60ribvgchrmjd5l7na0i77x1q8m5f7ovz8cm28bcbpm0dsdym8b78n640yug4owpf7of5hyd42mb03ehhulr64w5w6rx";
-    var app_secret = "5s1uaq0ri301efm8hylupcyypxn2cxy8ndi2p1pbh9a5lsvrzhb7wxxuomslzep08y0m83letlfxrc32w5paipzvtwxc841cl9it1oy3lvcu6lu218c3";
+function getPostTokens() {
     return {
-        token: app_token,
-        secret: app_secret
+        app: "nuv6z6ct4zniiu049d60ribvgchrmjd5l7na0i77x1q8m5f7ovz8cm28bcbpm0dsdym8b78n640yug4owpf7of5hyd42mb03ehhulr64w5w6rx",
+        user: "zjejqoubld1jmud45l9f5vlr9jniglmhdos2jz46zlvy5fwq9w4ylcsjynmu9ohgskz7wyjqqci4gezlskgig37e7gafzis9g7ef27ee8kx3w330ihph0lafcfhsyn6dpuoyngkiovj3fp0dvw8inw6ri6ropticv1nt310nto6s54areynve5l3uvsrk0h3al476u4zo6lrq4pypf0v16bkd4mujuf6d6qrzbxxn"
+    };
+}
+
+function getPostSecrets() {
+    return {
+        app: "5s1uaq0ri301efm8hylupcyypxn2cxy8ndi2p1pbh9a5lsvrzhb7wxxuomslzep08y0m83letlfxrc32w5paipzvtwxc841cl9it1oy3lvcu6lu218c3",
+        user: "srht6c58zg19czee0w9wj2qhrz4s8max1hiyssfpqmaqgy17l0erlgkgd71pdjvkbkinpoa2q6l815lsfxgzwdz27xeuf6r396jmuh145odby4hmehnhfzgbov98hecmnoag7zdgit1druk6ph2q3sick8"
     };
 }
 
