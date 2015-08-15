@@ -1,6 +1,5 @@
 // api_auth.js
 // Goes through the authentication workflow defined for OAC API2.
-
 var tokens = getTokens();
 var secrets = getSecrets();
 var urls = {
@@ -15,36 +14,34 @@ var urls = {
     $('#auth-form').on('submit', function(e) {
         e.preventDefault();
 
-        $.ajax({ // First get request to get the request token using an app token/secret
-            type: 'GET',
-            url: urls.requestToken,
-            dataType: 'json',
-            data: {
-                callback_url: urls.origin,
-                app_token: tokens.app,
-                app_secret: secrets.app,
-                scope: 'permission_write_calendar',
-                state: 'sl0wi87WWYB'
-            }
-        })
-        .then(function(result) { // Now redirect to the user login page on OAC domain
+        $.get(urls.requestToken, {
+            app_token: tokens.app,
+            app_secret: secrets.app,
+            callback_url: urls.origin,
+            scope: 'permission_editor',
+            state: 'sl0wi87WWYB'
+        }, null, 'json')
+
+        .then(function(result) {
             if (result.request_token) {
                 tokens.request = result.request_token;
 
-                return $.ajax({
-                    type: 'POST',
-                    url: urls.redirLogin,
-                    data: JSON.stringify({
-                        request_token: tokens.request,
-                        app_token: tokens.app,
-                        callback_url: urls.origin,
-                        username: 'admin',
-                        password: 'password'
-                    }),
-                    dataType: 'json',
-                    contentType: 'application/json'
-                });
+                sessionStorage.setItem('saved_tokens', JSON.stringify(tokens));
+                sessionStorage.setItem('saved_secrets', JSON.stringify(secrets));
 
+                var form = $(
+                    '<form\
+                    action="' + urls.redirLogin + '"\
+                    name="hidden-form" method="POST" style="display:none;">\
+                    <input type="text" name="app_token" value="' + tokens.app + '"/>\
+                    <input type="text" name="request_token" value="' + tokens.request + '"/>\
+                    <input type="text" name="callback_url" value="' + urls.origin + '"/>\
+                    <input type="submit" name="auth-redir" value="Redirect"/>\
+                    </form>'
+                );
+
+                $('body').append(form);
+                form.submit();
             } else {
                 console.log("Server response does not include request_token.");
             }
