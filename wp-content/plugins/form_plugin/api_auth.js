@@ -46,18 +46,57 @@ var urls = {
                 console.log("Server response does not include request_token.");
             }
         })
-        .then(function(result) {
-            if (result.authorisation_token) {
-                console.log('Have token, will travel');
-            } else {
-                console.log("Server response does not include authorisation_token");
-            }
-        })
         .fail(function() {
-            alert('Failed at some point!');
+            alert('Failed before submission!');
         });
     });
+
+    $(document).ready(function() {
+        if (sessionStorage.getItem('saved_tokens') && sessionStorage.getItem('saved_secrets')) {
+            tokens = JSON.parse(sessionStorage.getItem('saved_tokens'));
+            secrets = JSON.parse(sessionStorage.getItem('saved_secrets'));
+
+            tokens.authorisation = getQueryParam('authorisation_token');
+
+            if (tokens.authorisation) {
+                $.get(urls.userToken, {
+                    app_token: tokens.app,
+                    app_secret: secrets.app,
+                    request_token: tokens.request,
+                    authorisation_token: tokens.authorisation
+                }, null, 'json')
+                .then(function(result) {
+                    if (result.user_token && result.user_secret) {
+                        tokens.user = result.user_token;
+                        secrets.user = result.user_secret;
+
+                        if (result.permissions.is_editor) {
+                            console.log('Editor permissions granted!');
+                        } else {
+                            console.log('Editor permissions NOT granted!');
+                        }
+                    } else {
+                        console.log('No user tokens or secrets!');
+                    }
+                })
+                .fail(function() {
+                    alert('Failed before user secrets were returned!');
+                });
+            }
+        }
+    });
+
 })(jQuery);
+
+function getQueryParam(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        if(pair[0] == variable){return pair[1];}
+    }
+    return(false);
+}
 
 function getTokens() {
     return {
