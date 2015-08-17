@@ -15,7 +15,8 @@
         var desc = $('#event-desc').val();
 
         // OAC API2 endpoint for existing event (hardcoded for now)
-        var url = "http://localhost/api2/event/1/info.json";
+        //var url = "http://localhost/api2/event/1/info.json";
+        var url = "http://localhost/api2/event/create.json";
 
         // Get authentication tokens
         var tokens = getPostTokens();
@@ -23,11 +24,23 @@
 
         // Concatenate event data with authentication data
         //var json_data = getFullJsonObj(name, venue, desc);
-        var json_data = {
+        /*var json_data = {
             summary: 'TestPostSummary',
             description: 'TestPostDescription',
             url: 'http://testposturl.dev',
             ticket_url: 'http://testpostticketurl.dev'
+        };*/
+        var json_data = {
+            event_data: JSON.stringify({
+                summary: 'NewEndPoint',
+                description: 'Blah1!',
+                start_at: '2015-12-12 12:39:00',
+                end_at: '2015-12-12 17:45:00',
+                url: 'www.example.com',
+                ticket_url: 'www.example.com/ticket',
+                is_virtual: false,
+                is_physical: true
+            })
         };
         $.extend(json_data, {
             user_token: tokens.user,
