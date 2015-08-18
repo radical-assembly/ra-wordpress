@@ -8,14 +8,22 @@
     $( '#event-form' ).on( 'submit', function(e) {
         e.preventDefault();
 
-        // Only use these fields; don't want to worry about time/date parsing
-        // and conversions yet; hardcode them.
-        var name = $('#event-name').val();
-        var venue = $('#event-venue').val();
-        var desc = $('#event-desc').val();
+        var eventInfo = {
+            summary: $('#ev-summary').val(),
+            venue: $('#ev-venue').val(),
+            desc: $('#ev-desc').val(),
+            datetime_start: $('#ev-start-datetime').val(),
+            datetime_end: $('#ev-end-datetime').val(),
+            url: $('#ev-url').val(),
+            ticket_url: $('#ev-ticket-url').val(),
+            email: $('#ev-email').val(),
+            is_virtual: $('#ev-is-virtual').checked,
+            is_physical: $('#ev-is-physical').checked
+        };
+
+        var eventTime = validateDateTime(eventInfo.datetime_start, eventInfo.datetime_end);
 
         // OAC API2 endpoint for existing event (hardcoded for now)
-        //var url = "http://localhost/api2/event/1/info.json";
         var url = "http://localhost/api2/event/create.json";
 
         // Get authentication tokens
@@ -23,21 +31,14 @@
         var secrets = getPostSecrets();
 
         // Concatenate event data with authentication data
-        //var json_data = getFullJsonObj(name, venue, desc);
-        /*var json_data = {
-            summary: 'TestPostSummary',
-            description: 'TestPostDescription',
-            url: 'http://testposturl.dev',
-            ticket_url: 'http://testpostticketurl.dev'
-        };*/
         var json_data = {
             event_data: JSON.stringify({
-                summary: 'NewEndPoint',
-                description: 'Blah1!',
-                start_at: '2015-12-12 12:39:00',
-                end_at: '2015-12-12 17:45:00',
-                url: 'www.example.com',
-                ticket_url: 'www.example.com/ticket',
+                summary: eventInfo.summary,
+                description: eventInfo.desc,
+                start_at: eventInfo.time_start,
+                end_at: eventInfo.time_end,
+                url: eventInfo.url,
+                ticket_url: eventInfo.ticket_url,
                 is_virtual: false,
                 is_physical: true
             })
@@ -80,103 +81,31 @@ function getPostSecrets() {
     };
 }
 
-// Functions to construct JSON event object to POST.
+function validateDateTime(datetime_start, datetime_end) {
+    msg_start = "Event must have a valid start time.";
+    msg_end = "Event must have a valid end time.";
 
-function getCountryJson() {
-    return {
-        "title":"United Kingdom"
-    };
-}
+    if (!datetime_start) return {start: null, end: null, isValid: false, msg: msg_start};
+    if (!datetime_end) return {start: null, end: null, isValid: false, msg: msg_end};
 
-function getVenueJson(venue) {
-    return {
-        "slug":1,
-        "title":venue,
-        "description":"None",
-        "address":"Southbank, London",
-        "addresscode":"",
-        "lat":null,
-        "lng":null
-    };
-}
+    var datestr_start = Date.parse(datetime_start),
+        datestr_end = Date.parse(datetime_end);
 
-function getStartTimeJson() {
-    return {
-        "timestamp": 1444932000, // Cut & pasted from existing event
-        "rfc2882utc": "Wed, 28 Oct 2015 18:00:00 +0000",
-        "rfc2882local": "Wed, 28 Oct 2015 19:00:00 +0100",
-        "displaylocal": "Wed 28 Oct 2015 07:00pm",
-        "yearlocal": "2015",
-        "monthlocal": "10",
-        "daylocal": "28",
-        "hourlocal": "19",
-        "minutelocal": "00",
-        "rfc2882timezone": "Wed, 28 Oct 2015 19:00:00 +0100",
-        "displaytimezone": "Wed 28 Oct 2015 07:00pm",
-        "yeartimezone": "2015",
-        "monthtimezone": "10",
-        "daytimezone": "28",
-        "hourtimezone": "19",
-        "minutetimezone": "00"
-    };
-}
+    if (!datestr_start || datestr_start == 'Invalid Date') {
+        return {start: null, end: null, isValid: false, msg: msg_start};
+    }
 
-function getEndTimeJson() {
-    return {
-        "datestamp": 1444939200, // Cut & pasted from existing event
-        "rfc2882utc": "Wed, 28 Oct 2015 20:00:00 +0000",
-        "rfc2882local": "Wed, 28 Oct 2015 21:00:00 +0100",
-        "displaylocal": "Wed 28 Oct 2015 09:00pm",
-        "yearlocal": "2015",
-        "monthlocal": "10",
-        "daylocal": "28",
-        "hourlocal": "21",
-        "minutelocal": "00",
-        "rfc2882timezone": "Wed, 28 Oct 2015 21:00:00 +0100",
-        "displaytimezone": "Wed 28 Oct 2015 09:00pm",
-        "yeartimezone": "2015",
-        "monthtimezone": "10",
-        "daytimezone": "15",
-        "hourtimezone": "21",
-        "minutetimezone": "00"
-    };
-}
+    if (!datestr_end || datestr_end == 'Invalid Date') {
+        return {start: null, end: null, isValid: false, msg: msg_end};
+    }
 
-function getEventDataJson(name, venue, desc) {
-    var country = getCountryJson();
-    var venue_info = getVenueJson(venue);
-    var start_time = getStartTimeJson();
-    var end_time = getEndTimeJson();
+    var start = new Date(datestr_start),
+        end = new Date(datestr_end);
 
     return {
-        "slug":1,
-        "slugforurl":"1-testpostevent",
-        "summary":"TestPostEvent",
-        "summaryDisplay":"TestPostEvent",
-        "description":desc,
-        "deleted":false,
-        "cancelled":false,
-        "is_physical":true,
-        "is_virtual":false,
-        "custom_fields":[],
-        "siteurl":"http:\/\/localhost\/event\/1-testpostevent",
-        "url":"http:\/\/localhost\/event\/1-testpostevent",
-        "ticket_url":null,
-        "timezone":"Europe\/London",
-        "start":start_time,
-        "end":end_time,
-        "venue":venue_info,
-        "country":country
+        start: start,
+        end: end,
+        isValid: start < end,
+        msg: ''
     };
-}
-
-function getFullJsonObj(name, venue, desc) {
-    var data = getEventDataJson(name, venue, desc);
-
-    var json_obj = {
-        "data": data,
-        "localtimezone":"Europe\/London"
-    };
-
-    return json_obj;
 }
