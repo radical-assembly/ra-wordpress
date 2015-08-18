@@ -11,15 +11,18 @@ Description: Test plugin to implement insertion of events to OAC via wordpress.
 function rest_event_form() {
     $form = '
     <form id="event-form">
-    <input id="event-name" type="text" placeholder="Event Name" name="event-name"><br>
-    Date: <input id="event-date" type="date" name="event-date"><br>
-    Time: <input id="event-time" type="time" name="event-time"><br>
-    <input type="text" id="event-venue" placeholder="Venue/Location" name="event-venue"><br>
-    <input type="text" id="event-group" placeholder="Group" name="event-group"><br>
-    <input type="url" id="event-url" placeholder="URL" name="event-url"><br>
-    <input type="email" id="event-email" placeholder="Organiser e-mail" name="event-email"><br>
-    <input type="text" id="event-desc" placeholder="Enter event description" name="event-description">
-    <input type="submit" name="event-submission" value="Submit Event">
+    <input id="ev-summary" type="text" placeholder="Event name or summary" name="ev-summary"><br>
+    Start date & time: <input id="ev-start-datetime" type="datetime" name="ev-start-datetime"><br>
+    End date & time: <input id="ev-end-datetime" type="datetime" name="ev-end-datetime"><br>
+    <input type="text" id="ev-venue" placeholder="Venue/Location" name="ev-venue"><br>
+    <input type="text" id="ev-group" placeholder="Group" name="ev-group"><br>
+    <input type="url" id="ev-url" placeholder="URL for event info" name="ev-url"><br>
+    <input type="url" id="ev-ticket-url" placeholder="URL for tickets" name="ev-ticket-url"><br>
+    <input type="email" id="ev-email" placeholder="Organiser e-mail" name="ev-email"><br>
+    <input type="text" id="ev-desc" placeholder="Enter event description" name="ev-description">
+    <input type="checkbox" id="ev-is-physical" name="ev-is-physical" value="physical">The event is physical<br>
+    <input type="checkbox" id="ev-is-virtual" name="ev-is-virtual" value="virtual">The event is virtual<br>
+    <input type="submit" name="ev-submission" value="Submit Event">
     </form>
     ';
 
