@@ -35,8 +35,8 @@
             event_data: JSON.stringify({
                 summary: eventInfo.summary,
                 description: eventInfo.desc,
-                start_at: eventInfo.time_start,
-                end_at: eventInfo.time_end,
+                start_at: eventTime.start.toUTCString(),
+                end_at: eventTime.end.toUTCString(),
                 url: eventInfo.url,
                 ticket_url: eventInfo.ticket_url,
                 is_virtual: false,
