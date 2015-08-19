@@ -100,7 +100,7 @@ function getQueryParam(variable) {
 
 function getTokens() {
     return {
-        app: "nuv6z6ct4zniiu049d60ribvgchrmjd5l7na0i77x1q8m5f7ovz8cm28bcbpm0dsdym8b78n640yug4owpf7of5hyd42mb03ehhulr64w5w6rx",
+        app: "87ojnmcpf5adzzwho96mir8gzpr8cv4a4yupo12j3ih5mkdizm5swgh1unkrs418zwv3urcmul7oc502p12uuajmkfy3mn3zk0994t0g73wuwxpb6o3xo8b8w4vfho160f7x58grfw7tvak",
         request: "",
         authorisation: "",
         user: ""
@@ -109,7 +109,7 @@ function getTokens() {
 
 function getSecrets() {
     return {
-        app: "5s1uaq0ri301efm8hylupcyypxn2cxy8ndi2p1pbh9a5lsvrzhb7wxxuomslzep08y0m83letlfxrc32w5paipzvtwxc841cl9it1oy3lvcu6lu218c3",
+        app: "u4bftndu9c7mmmv261ukipih3fvfhn8vjxov13cucblufs3x7urud6a53n3qix56que153w3ngb9tm2f",
         user: ""
     };
 }
