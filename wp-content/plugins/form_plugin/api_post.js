@@ -36,6 +36,9 @@
         var secrets = getPostSecrets();
 
         // Concatenate event data with authentication data
+        //  Note group_id and group_title are null: all groups authorised to submit events
+        //  to OAC will have their own editor account and interact with the admin interface
+        //  directly. Event submission through the form is intended for all others
         var json_data = {
             event_data: JSON.stringify({
                 summary: eventInfo.summary,
@@ -46,6 +49,10 @@
                 ticket_url: eventInfo.ticket_url,
                 is_virtual: false,
                 is_physical: true
+                group_id: null,
+                group_title: null,
+                is_deleted: false,
+                is_cancelled: false,
             })
         };
         $.extend(json_data, {
