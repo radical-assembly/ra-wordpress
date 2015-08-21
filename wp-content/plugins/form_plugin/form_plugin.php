@@ -57,6 +57,15 @@ function rest_api_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'rest_api_scripts');
 
+/**
+* Enqueue the .js script for the date-time picker in the submission form
+*/
+function form_datetime_picker() {
+    wp_enqueue_script('jquery-ui-datepicker', false, array('jquery-ui-core'), false, true);
+    wp_enqueue_script('jquery-ui-timepicker-addon', plugins_url('jquery-ui-timepicker-addon.js', __FILE__), array('jquery-ui-core'), false, true);
+    wp_enqueue_style('jquery-ui-timepicker-addon-styles', plugins_url('jquery-ui-timepicker-addon.css', __FILE__));
+}
+add_action('wp_enqueue_scripts', 'form_datetime_picker');
 
 /**
 * Define the form. Temporary: only a couple of fields are actually used in the
