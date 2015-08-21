@@ -47,12 +47,12 @@
                 end_at: eventTime.end.toUTCString(),
                 url: eventInfo.url,
                 ticket_url: eventInfo.ticket_url,
-                is_virtual: false,
-                is_physical: true
                 group_id: null,
                 group_title: null,
                 is_deleted: false,
                 is_cancelled: false,
+                is_virtual: eventInfo.is_virtual,
+                is_physical: eventInfo.is_physical
             })
         };
         $.extend(json_data, {
