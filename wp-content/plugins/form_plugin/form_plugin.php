@@ -12,8 +12,8 @@ function rest_event_form() {
     $form = '
     <form id="event-form">
     <input id="ev-summary" type="text" placeholder="Event name or summary" name="ev-summary"><br>
-    Start date & time: <input id="ev-start-datetime" type="datetime" name="ev-start-datetime"><br>
-    End date & time: <input id="ev-end-datetime" type="datetime" name="ev-end-datetime"><br>
+    Start date & time: <input id="ev-start-datetime" class="ev-datetime" type="datetime" name="ev-start-datetime"><br>
+    End date & time: <input id="ev-end-datetime" class="ev-datetime" type="datetime" name="ev-end-datetime"><br>
     <input type="text" id="ev-venue" placeholder="Venue/Location" name="ev-venue"><br>
     <input type="text" id="ev-group" placeholder="Group" name="ev-group"><br>
     <input type="url" id="ev-url" placeholder="URL for event info" name="ev-url"><br>

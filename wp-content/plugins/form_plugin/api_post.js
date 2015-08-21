@@ -5,6 +5,11 @@
 
 (function($){
 
+    $(document).ready(function() {
+        $( '.ev-datetime' ).datetimepicker();
+    });
+
+
     $( '#event-form' ).on( 'submit', function(e) {
         e.preventDefault();
 
