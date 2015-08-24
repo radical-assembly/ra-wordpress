@@ -100,7 +100,7 @@ function getQueryParam(variable) {
 
 function getTokens() {
     return {
-        app: "87ojnmcpf5adzzwho96mir8gzpr8cv4a4yupo12j3ih5mkdizm5swgh1unkrs418zwv3urcmul7oc502p12uuajmkfy3mn3zk0994t0g73wuwxpb6o3xo8b8w4vfho160f7x58grfw7tvak",
+        app: "svpe1a4eflyxkcmveripdr1s2vu2yl3fx3x2dx702z0u83hy7d6zil7qnr10l95a794tmztyq5qfvmplezzkmffa3c1cbh44t2p9vzsjpn1t4s5tqsy3voiy7imj982rvd7h6o18rf7701ems9je8mzcmcnts2khan7ilnajttqse0o3xialjpgtrxtrymvvzl0ki1fw1dzt5le7kwir6m1qi5znk6ug26",
         request: "",
         authorisation: "",
         user: ""
@@ -109,7 +109,7 @@ function getTokens() {
 
 function getSecrets() {
     return {
-        app: "u4bftndu9c7mmmv261ukipih3fvfhn8vjxov13cucblufs3x7urud6a53n3qix56que153w3ngb9tm2f",
+        app: "e887qt7yud24zsewbq5ngytt68w7uqx4re01eaoovpmyks5dlp5n61hyzu520772rp84acnguoxdnwai3v81eu399o0azmlglooikee9gvs94qzerl4ows",
         user: ""
     };
 }
