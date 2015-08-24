@@ -15,21 +15,21 @@
 
         var eventInfo = {
             summary: $('#ev-summary').val(),
-            venue: $('#ev-venue').val(),
+            venue: $('#ev-venue-name').val(),
             desc: $('#ev-desc').val(),
             datetime_start: $('#ev-start-datetime').val(),
             datetime_end: $('#ev-end-datetime').val(),
             url: $('#ev-url').val(),
             ticket_url: $('#ev-ticket-url').val(),
             email: $('#ev-email').val(),
-            is_virtual: $('#ev-is-virtual').checked,
-            is_physical: $('#ev-is-physical').checked
+            is_virtual: $('#ev-is-virtual').prop('checked'),
+            is_physical: $('#ev-is-physical').prop('checked')
         };
 
         var eventTime = validateDateTime(eventInfo.datetime_start, eventInfo.datetime_end);
 
         // OAC API2 endpoint for existing event (hardcoded for now)
-        var url = "http://localhost/api2/event/create.json";
+        var url = "http://oac.dev/api2/event/create.json";
 
         // Get authentication tokens
         var tokens = getPostTokens();
