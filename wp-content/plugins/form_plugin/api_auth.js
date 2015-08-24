@@ -1,13 +1,17 @@
 // api_auth.js
 // Goes through the authentication workflow defined for OAC API2.
-var tokens = getTokens();
-var secrets = getSecrets();
-var urls = {
-    origin: "http://ra-wp.dev/authentication-event-submission",
-    requestToken: "http://localhost/api2/request_token.json",
-    redirLogin: "http://localhost/api2/login.html",
-    userToken: "http://localhost/api2/user_token.json"
-};
+var tokens = getTokens(),
+    secrets = getSecrets(),
+    domains = {
+        oac: 'http://oac.dev',
+        wp: 'http://ra-wp.dev'
+    },
+    urls = {
+        origin: domains.wp + "/authentication-event-submission",
+        requestToken: domains.oac + "/api2/request_token.json",
+        redirLogin: domains.oac + "/api2/login.html",
+        userToken: domains.oac + "/api2/user_token.json"
+    };
 
 (function($){
 
