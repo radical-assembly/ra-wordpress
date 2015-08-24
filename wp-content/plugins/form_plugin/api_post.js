@@ -65,13 +65,19 @@
             url,
             json_data
         )
-        .then(function(result) {
-            console.log(result);
+        .done(function(result) {
+            if (result == 'ERROR') {
+                alert("Authentication error! Remember to create OAC app in sysadmin interface.")
+            } else if (result.success) {
+                alert("Event data successfully POST'd.");
+            } else {
+                alert("Unsuccessful attempt!");
+                console.log(result.msg)
+            }
+
         })
-        .done(function() {
-            alert("Event data successfully POST'd.");
-        })
-        .fail(function() {
+        .fail(function(result) {
+            console.log(result)
             alert("Event data POSTing failed.");
         });
     });
