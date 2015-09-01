@@ -38,20 +38,7 @@
     $( '#event-form' ).on( 'submit', function(e) {
         e.preventDefault();
 
-        var eventInfo = {
-            summary: $('#ev-summary').val(),
-            venue: $('#ev-venue-name').val(),
-            desc: $('#ev-desc').val(),
-            datetime_start: $('#ev-start-datetime').val(),
-            datetime_end: $('#ev-end-datetime').val(),
-            url: $('#ev-url').val(),
-            ticket_url: $('#ev-ticket-url').val(),
-            email: $('#ev-email').val(),
-            is_virtual: $('#ev-is-virtual').prop('checked'),
-            is_physical: $('#ev-is-physical').prop('checked')
-        };
-
-        var eventTime = validateDateTime(eventInfo.datetime_start, eventInfo.datetime_end);
+        var eventTime = validateDateTime($('#ev-start-datetime').val(), $('#ev-end-datetime').val());
 
         // OAC API2 endpoint for existing event (hardcoded for now)
         var url = "http://oac.dev/api2/event/create.json";
@@ -60,36 +47,44 @@
         var tokens = getPostTokens();
         var secrets = getPostSecrets();
 
-        // Concatenate event data with authentication data
-        //  Note group_id and group_title are null: all groups authorised to submit events
-        //  to OAC will have their own editor account and interact with the admin interface
-        //  directly. Event submission through the form is intended for all others
-        var json_data = {
-            event_data: JSON.stringify({
-                summary: eventInfo.summary,
-                description: eventInfo.desc,
-                start_at: eventTime.start.toUTCString(),
-                end_at: eventTime.end.toUTCString(),
-                url: eventInfo.url,
-                ticket_url: eventInfo.ticket_url,
-                group_id: null,
-                group_title: null,
-                is_deleted: false,
-                is_cancelled: false,
-                is_virtual: eventInfo.is_virtual,
-                is_physical: eventInfo.is_physical
-            })
-        };
-        $.extend(json_data, {
-            user_token: tokens.user,
-            user_secret: secrets.user,
-            app_token: tokens.app
-        });
+        $.get(
+            'http://mapit.mysociety.org/postcode/' + $('#ev-venue-code').val().replace(' ','')
+        ).then(function(result){
+            // Concatenate event data with authentication data
+            //  Note group_id and group_title are null: all groups authorised to submit events
+            //  to OAC will have their own editor account and interact with the admin interface
+            //  directly. Event submission through the form is intended for all others
+            var json_data = {
+                event_data: JSON.stringify({
+                    summary: $('#ev-summary').val(),
+                    description: $('#ev-desc').val(),
+                    start_at: eventTime.start.toUTCString(),
+                    end_at: eventTime.end.toUTCString(),
+                    url: $('#ev-url').val(),
+                    ticket_url: $('#ev-ticket-url').val(),
+                    group_id: null,
+                    group_title: null,
+                    is_deleted: false,
+                    is_cancelled: false,
+                    is_virtual: $('#ev-is-virtual').prop('checked'),
+                    is_physical: $('#ev-is-physical').prop('checked'),
+                    venue_name: $('#ev-venue-name').val(),
+                    venue_address: $('#ev-venue-address').val(),
+                    venue_city: $('#ev-venue-city').val(),
+                    venue_code: $('#ev-venue-code').val(),
+                    venue_country: $('#ev-venue-country').val(),
+                    venue_lat: result.wgs84_lat,
+                    venue_long: result.wgs84_long
+                })
+            };
+            $.extend(json_data, {
+                user_token: tokens.user,
+                user_secret: secrets.user,
+                app_token: tokens.app
+            });
 
-        $.post(
-            url,
-            json_data
-        )
+            return $.post(url, json_data);
+        })
         .done(function(result) {
             if (result == 'ERROR') {
                 alert("Authentication error! Remember to create OAC app in sysadmin interface.")
