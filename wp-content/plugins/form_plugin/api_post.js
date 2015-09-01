@@ -7,9 +7,34 @@
 
     $(document).ready(function() {
         $( '.ev-datetime' ).datetimepicker();
+
+        // Hide venue input fields if not physical event
+         if ($('#ev-is-physical').prop('checked')) {
+             $('.venue-info').show();
+         } else {
+             $('.venue-info').hide();
+         }
     });
 
+    // Show venue input fields when 'physical' box is checked: venue information becomes required
+    $( '#ev-is-physical' ).on( 'change', function() {
+        if ($(this).prop('checked')) {
+            $('.venue-info').show().attr('required', 'true');
+        } else {
+            $('.venue-info').hide().removeAttr('required');
+        }
+    });
 
+    // Web information becomes required if 'virtual' box is checked
+    $( '#ev-is-virtual' ).on( 'change', function() {
+        if ($(this).prop('checked')) {
+            $('.web-info').attr('required', 'true');
+        } else {
+            $('.web-info').removeAttr('required');
+        }
+    })
+
+    // Main submission handling code
     $( '#event-form' ).on( 'submit', function(e) {
         e.preventDefault();
 
