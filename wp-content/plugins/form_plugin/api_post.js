@@ -93,13 +93,16 @@
         .done(function(result) {
             if (result == 'ERROR') {
                 alert("Authentication error! Remember to create OAC app in sysadmin interface.")
-            } else if (result.success) {
-                alert("Event data successfully POST'd.");
             } else {
-                alert("Unsuccessful attempt!");
-                console.log(result.msg)
+                if (typeof result == "string") result = JSON.parse(result);
+                
+                if (result.success) {
+                    alert("Event data successfully POST'd.");
+                } else {
+                    alert("Unsuccessful attempt, check the console!");
+                    console.log(result.msg)
+                }
             }
-
         })
         .fail(function(result) {
             console.log(result)
