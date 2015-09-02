@@ -38,8 +38,6 @@
     $( '#event-form' ).on( 'submit', function(e) {
         e.preventDefault();
 
-        var eventTime = validateDateTime($('#ev-start-datetime').val(), $('#ev-end-datetime').val());
-
         // OAC API2 endpoint for existing event (hardcoded for now)
         var url = "http://oac.dev/api2/event/create.json";
 
@@ -54,13 +52,16 @@
             //  Note group_id and group_title are null: all groups authorised to submit events
             //  to OAC will have their own editor account and interact with the admin interface
             //  directly. Event submission through the form is intended for all others
+            var time_start = new Date(Date.parse($('#ev-start-datetime').val())),
+                time_end = new Date(Date.parse($('#ev-end-datetime').val()));
+
             var json_data = {
                 event_data: JSON.stringify({
                     username: 'admin',
                     summary: $('#ev-summary').val(),
                     description: $('#ev-desc').val(),
-                    start_at: eventTime.start.toUTCString(),
-                    end_at: eventTime.end.toUTCString(),
+                    start_at: time_start.toUTCString(),
+                    end_at: time_end.toUTCString(),
                     url: $('#ev-url').val(),
                     ticket_url: $('#ev-ticket-url').val(),
                     group_id: null,
@@ -120,34 +121,5 @@ function getPostSecrets() {
     return {
         app: "e887qt7yud24zsewbq5ngytt68w7uqx4re01eaoovpmyks5dlp5n61hyzu520772rp84acnguoxdnwai3v81eu399o0azmlglooikee9gvs94qzerl4ows",
         user: "7llfn8bciamsfu7otc1dq7c7kgbv2cp27uwcy34k8n129hoah0sc8cm2m2lyynmcf6"
-    };
-}
-
-function validateDateTime(datetime_start, datetime_end) {
-    msg_start = "Event must have a valid start time.";
-    msg_end = "Event must have a valid end time.";
-
-    if (!datetime_start) return {start: null, end: null, isValid: false, msg: msg_start};
-    if (!datetime_end) return {start: null, end: null, isValid: false, msg: msg_end};
-
-    var datestr_start = Date.parse(datetime_start),
-        datestr_end = Date.parse(datetime_end);
-
-    if (!datestr_start || datestr_start == 'Invalid Date') {
-        return {start: null, end: null, isValid: false, msg: msg_start};
-    }
-
-    if (!datestr_end || datestr_end == 'Invalid Date') {
-        return {start: null, end: null, isValid: false, msg: msg_end};
-    }
-
-    var start = new Date(datestr_start),
-        end = new Date(datestr_end);
-
-    return {
-        start: start,
-        end: end,
-        isValid: start < end,
-        msg: ''
     };
 }
