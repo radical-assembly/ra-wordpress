@@ -56,6 +56,7 @@
             //  directly. Event submission through the form is intended for all others
             var json_data = {
                 event_data: JSON.stringify({
+                    username: 'admin',
                     summary: $('#ev-summary').val(),
                     description: $('#ev-desc').val(),
                     start_at: eventTime.start.toUTCString(),
@@ -90,7 +91,7 @@
                 alert("Authentication error! Remember to create OAC app in sysadmin interface.")
             } else {
                 if (typeof result == "string") result = JSON.parse(result);
-                
+
                 if (result.success) {
                     alert("Event data successfully POST'd.");
                 } else {
