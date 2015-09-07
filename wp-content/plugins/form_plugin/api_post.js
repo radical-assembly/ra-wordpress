@@ -48,6 +48,10 @@
         $.get(
             'http://mapit.mysociety.org/postcode/' + $('#ev-venue-code').val().replace(' ','')
         ).then(function(result){
+            if (!result.wgs84_lat || !result.wgs84_lon) {
+                console.log("No lat/long information available.");
+            }
+
             // Concatenate event data with authentication data
             //  Note group_id and group_title are null: all groups authorised to submit events
             //  to OAC will have their own editor account and interact with the admin interface
@@ -76,7 +80,7 @@
                     venue_code: $('#ev-venue-code').val(),
                     venue_country: $('#ev-venue-country').val(),
                     venue_lat: result.wgs84_lat,
-                    venue_long: result.wgs84_long
+                    venue_long: result.wgs84_lon,
                 })
             };
             $.extend(json_data, {
