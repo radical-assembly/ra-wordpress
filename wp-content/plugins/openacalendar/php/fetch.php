@@ -33,8 +33,8 @@ class OpenACalendarGetEventsException extends \Exception {
 }
 
 function OpenACalendar_getAndStoreEventsForSource(OpenACalendarModelSource $sourcedata) {
-	
-	$ch = curl_init();      
+
+	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $sourcedata->getJSONAPIURL());
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_USERAGENT, 'OpenACalendar WordPress plugin from jmbtechnology.co.uk, site '.get_site_url());
@@ -43,10 +43,11 @@ function OpenACalendar_getAndStoreEventsForSource(OpenACalendarModelSource $sour
 	curl_close($ch);
 
 	$data = json_decode($dataString);
-	
+
 	if (is_object($data)) {
 
 		if (isset($data->data)) {
+			OpenACalendar_db_purgeEventFromSourceId($sourcedata->getId());
 
 			$count = 0;
 			foreach($data->data as $eventData) {
