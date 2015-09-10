@@ -58,12 +58,6 @@ add_shortcode( 'EVENT-FORM', 'rest_event_form');
 */
 function rest_api_scripts() {
     wp_enqueue_script('api_posts', plugins_url('api_post.js', __FILE__), array('jquery'), false, true);
-    wp_localize_script('api_posts', 'EVENT_FORM', array(
-        'root' => esc_url_raw( get_json_url() ),
-        'successMessage' => __('Post created successfully', 'form_plugin'),
-        'failureMessage' => __('An error occurred', 'form_plugin'),
-        'userID' => get_current_user_id(),
-    ) );
 }
 add_action( 'wp_enqueue_scripts', 'rest_api_scripts');
 
@@ -110,11 +104,5 @@ add_shortcode( 'AUTH-FORM', 'auth_form');
 */
 function auth_api_scripts() {
     wp_enqueue_script('api_auth', plugins_url('api_auth.js', __FILE__), array('jquery'), false, true);
-    wp_localize_script('api_auth', 'AUTH_FORM', array(
-        'root' => esc_url_raw( get_json_url() ),
-        'successMessage' => __('App authenticated successfully', 'form_plugin'),
-        'failureMessage' => __('An error occurred', 'form_plugin'),
-        'userID' => get_current_user_id(),
-    ) );
 }
 add_action( 'wp_enqueue_scripts', 'auth_api_scripts');
