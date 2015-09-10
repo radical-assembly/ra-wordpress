@@ -49,9 +49,9 @@ function OpenACalendar_admin_menu() {
 	}
 
 	require_once dirname(__FILE__).DIRECTORY_SEPARATOR."database.php";
-	
+
 	echo '<div class="wrap"><h2>Open A Calendar</h2>';
-	
+
 	if (isset($_POST['action']) && $_POST['action'] == 'getevents' && isset($_POST['poolid']) && intval($_POST['poolid'])) {
 		// ##################################################### Fetch events for Pool
 
@@ -74,7 +74,7 @@ function OpenACalendar_admin_menu() {
 			}
 		}
 		print OpenACalendar_admin_returnToMenuHTML();
-		
+
 	} else if (isset($_POST['action']) && $_POST['action'] == 'getevents' && isset($_POST['sourceid']) && intval($_POST['sourceid'])) {
 		// ##################################################### Fetch events for Source
 
@@ -93,10 +93,10 @@ function OpenACalendar_admin_menu() {
 				print "</p>";
 			}
 		}
-		
+
 		print OpenACalendar_admin_returnToMenuHTML();
-		
-		
+
+
 	} else if (isset($_POST['action']) && $_POST['action'] == 'deletesource' && isset($_POST['sourceid']) && intval($_POST['sourceid'])) {
 		// ##################################################### Delete Source
 
@@ -106,10 +106,10 @@ function OpenACalendar_admin_menu() {
 			print "<p>Removed Source: ".htmlspecialchars($source->getBaseurl());
 			print "</p>";
 		}
-		
+
 		print OpenACalendar_admin_returnToMenuHTML();
-		
-		
+
+
 	} else 	if (isset($_POST['action']) && $_POST['action'] == 'newsource' && isset($_POST['poolid']) && intval($_POST['poolid'])) {
 
 		try {
@@ -127,9 +127,9 @@ function OpenACalendar_admin_menu() {
 			print 'Sorry, that country is not recognised. Use a country code like GB or DE.';
 			print OpenACalendar_admin_returnToMenuHTML();
 		}
-		
+
 	} else if (isset($_POST['action']) && $_POST['action'] == 'newpool' && isset($_POST['title']) && trim($_POST['title'])) {
-		
+
 		$poolid = OpenACalendar_db_newPool($_POST['title']);
 
 		try {
@@ -150,6 +150,26 @@ function OpenACalendar_admin_menu() {
 			print OpenACalendar_admin_returnToMenuHTML();
 		}
 
+
+	} else if (isset($_POST['action']) && $_POST['action'] == 'deletepool' && isset($_POST['poolid']) && intval($_POST['poolid'])) {
+
+		$pool = OpenACalendar_db_getCurrentPool(intval($_POST['poolid']));
+		$success = OpenACalendar_db_deletePool(intval($_POST['poolid']));
+
+		if ($success) {
+			print '<p>Pool '.$pool.' has been successfully deleted</p>';
+		} else {
+			print '<p>There was a problem deleting the pool</p>';
+		}
+
+	} else if (isset($_POST['action']) && $_POST['action'] == 'cleandatabase') {
+
+		$isComplete = OpenACalendar_db_cleanUp();
+		if ($isComplete) {
+			print '<p>Database has been cleaned.</p>';
+		} else {
+			print '<p>There was a problem cleaning the database.</p>';
+		}
 
 	} else if (isset($_POST['action']) && $_POST['action'] == 'getlisteventsshortcode' && isset($_POST['poolid']) && intval($_POST['poolid'])) {
 
@@ -237,16 +257,16 @@ function OpenACalendar_admin_menu() {
 
 
 	} else {
-	
-	
+
+
 		// ##################################################### Normal Page
 		$pools = OpenACalendar_db_getCurrentPools();
-		
+
 		if ($pools) {
 			foreach($pools as $pool) {
 				print "<h3>Event Pool: ".htmlspecialchars($pool['title'])." (ID=".$pool['id'].")</h3>";
 				$sources = OpenACalendar_db_getCurrentSourcesForPool($pool['id']);
-				
+
 				if ($sources) {
 					print '<table class="wp-list-table fixed widefat">';
 					print '<thead>';
@@ -272,20 +292,20 @@ function OpenACalendar_admin_menu() {
 						print "<td>".htmlspecialchars($source->getCuratedListSlug()).'</td>';
 						print "<td>".htmlspecialchars($source->getUserAttendingEvents()).'</td>';
 						print "<td>";
-						
+
 						print '<form action="" method="post" onsubmit="return confirm(\'Are you sure you want to remove this?\');">';
 						print '<input type="hidden" name="sourceid" value="'.$source->getId().'">';
 						print '<input type="hidden" name="action" value="deletesource">';
 						print '<input type="submit" value="Remove Source">';
 						print '</form>';
-						
+
 						print "</td>";
 						print "</tr>";
 					}
 					print '</tbody>';
 					print '</table>';
-					
-					
+
+
 					print '<form action="" method="post">';
 					print '<input type="hidden" name="poolid" value="'.$pool['id'].'">';
 					print '<input type="hidden" name="action" value="getevents">';
@@ -300,28 +320,39 @@ function OpenACalendar_admin_menu() {
 
 
 				}
-				
+
 				print '';
 				print '<form action="" method="post">';
-				print '<input type="hidden" name="action" value="newsource">';	
+				print '<input type="hidden" name="action" value="newsource">';
 				print '<input type="hidden" name="poolid" value="'.$pool['id'].'">';
 				print '<td colspan="6">'.OpenACalendar_admin_newSourceHTML().'</td>';
 				print '<td><input type="submit" value="Create New Source"></td>';
 				print '</form>';
 
+				print '<form action="" method="post">';
+				print '<input type="hidden" name="poolid" value="'.$pool['id'].'">';
+				print '<input type="hidden" name="action" value="deletpool">';
+				print '<input type="submit" value="Delete event pool">';
+				print '</form>';
 			}
 		} else {
 			echo '<p>No pools</p>';
 		}
-		
+
 		print '<h3>New Event Pool and source of events</h3>';
 		print '<form action="" method="post"><input type="hidden" name="action" value="newpool">';
 		print '<div><label>Title: <input type="text" name="title"></label></div>';
 		print '<div>'.OpenACalendar_admin_newSourceHTML().'</div>';
 		print '<input type="submit" value="Create">';
 		print '</form>';
+
+		print '';
+		print '<form action="" method="post">';
+		print '<input type="hidden" name="action" value="cleandatabase">';
+		print '<input type="submit" value="Clean-up plugin database">';
+		print '</form>';
 	}
-	
-	
+
+
 	echo '</div>';
 }
