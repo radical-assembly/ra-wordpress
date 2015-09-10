@@ -192,10 +192,10 @@ function OpenACalendar_db_deleteSource(OpenACalendarModelSource $source) {
 
 function OpenACalendar_db_deletePool($poolid) {
 	global $wpdb;
-	$wpdb->update($wpdb->prefix."openacalendar_source",array(
+	$wpdb->update($wpdb->prefix."openacalendar_pool",array(
 		'deleted'=>1,
 	),array(
-		'id'=>$source->getId()
+		'id'=>$poolid,
 	));
 }
 
@@ -203,8 +203,10 @@ function OpenACalendar_db_deletePool($poolid) {
 function OpenACalendar_db_purgeEventFromId($eventid) {
 	global $wpdb;
 
-	$wpdb->delete($wpdb->prefix."openacalendar_event", array("id"=>$id), '%d');
-	$wpdb->delete($wpdb->prefix."openacalendar_event_in_pool", array("eventid"=>$id), '%d');
+	$nRows = $wpdb->delete($wpdb->prefix."openacalendar_event", array("id"=>$eventid), '%d');
+	$mRows = $wpdb->delete($wpdb->prefix."openacalendar_event_in_pool", array("eventid"=>$eventid), '%d');
+
+	return $nRows && $mRows;
 }
 
 
@@ -212,10 +214,10 @@ function OpenACalendar_db_purgeEventFromSourceId($sourceid) {
 	global $wpdb;
 
 	foreach($wpdb->get_results(
-			$wpdb->prepare("SELECT eventid FROM ".$wpdb->prefix."openacalendar_event_in_pool WHERE sourceid=%d", $sourceid)
-			) as $data) {
-		$wpdb->delete($wpdb->prefix."openacalendar_event_in_pool", array("eventid"=>$data), array("%d"));
-		$wpdb->delete($wpdb->prefix."openacalendar_event", array("eventid"=>$data), array("%d"));
+		$wpdb->prepare("SELECT eventid FROM ".$wpdb->prefix."openacalendar_event_in_pool WHERE sourceid=%d", $sourceid)
+	) as $data) {
+		$wpdb->delete($wpdb->prefix."openacalendar_event_in_pool", array("eventid"=>$data->eventid), array("%d"));
+		$wpdb->delete($wpdb->prefix."openacalendar_event", array("eventid"=>$data->eventid), array("%d"));
 	}
 }
 
@@ -231,26 +233,21 @@ function OpenACalendar_db_cleanUp() {
 
 	// Find events that are attached to sources that no longer exist and remove them
 	foreach($wpdb->get_results(
-		$wpdb->query(
-			$wpdb->prepare(
-				"SELECT eventid FROM ".$wpdb->prefix."openacalendar_event_in_pool ".
-				"WHERE poolid NOT IN (SELECT id FROM ".$wpdb->prefix."openacalendar_pool)"
-			)
-		)
+		"SELECT eventid FROM ".$wpdb->prefix."openacalendar_event_in_pool ".
+		"WHERE poolid NOT IN (SELECT id FROM ".$wpdb->prefix."openacalendar_pool)"
 	) as $id) {
-		OpenACalendar_db_purgeEventFromId($id);
+		if (!$id) return false;
+		$success = OpenACalendar_db_purgeEventFromId($id->eventid);
 	}
 
 	// Find events that are attached to pools that no longer exist and remove them
-	foreach($$wpdb->get_results(
-		$wpdb->query(
-			$wpdb->prepare(
-				"SELECT eventid FROM ".$wpdb->prefix."openacalendar_event_in_pool ".
-				"WHERE sourceid NOT IN (SELECT id FROM ".$wpdb->prefix."openacalendar_source)"
-			)
-		)
+	foreach($wpdb->get_results(
+		"SELECT eventid FROM ".$wpdb->prefix."openacalendar_event_in_pool ".
+		"WHERE sourceid NOT IN (SELECT id FROM ".$wpdb->prefix."openacalendar_source)"
 	) as $id) {
-		OpenACalendar_db_purgeEventFromId($id);
+		if (!$id) return false;
+		$success = OpenACalendar_db_purgeEventFromId($id->eventid);
 	}
 
+	return true;
 }
