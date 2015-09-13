@@ -57,7 +57,7 @@ add_shortcode( 'EVENT-FORM', 'rest_event_form');
 * Enqueue the .js script taking care of the POST request to OAC on form submission.
 */
 function rest_api_scripts() {
-    wp_enqueue_script('api_posts', plugins_url('api_post.js', __FILE__), array('jquery'), false, true);
+    wp_enqueue_script('api_posts', plugins_url('js/api_post.js', __FILE__), array('jquery'), false, true);
 }
 add_action( 'wp_enqueue_scripts', 'rest_api_scripts');
 
@@ -66,8 +66,8 @@ add_action( 'wp_enqueue_scripts', 'rest_api_scripts');
 */
 function form_datetime_picker() {
     wp_enqueue_script('jquery-ui-datepicker', false, array('jquery-ui-core'), false, true);
-    wp_enqueue_script('jquery-ui-timepicker-addon', plugins_url('jquery-ui-timepicker-addon.js', __FILE__), array('jquery-ui-core'), false, true);
-    wp_enqueue_style('jquery-ui-timepicker-addon-styles', plugins_url('jquery-ui-timepicker-addon.css', __FILE__));
+    wp_enqueue_script('jquery-ui-timepicker-addon', plugins_url('js/jquery-ui-timepicker-addon.js', __FILE__), array('jquery-ui-core'), false, true);
+    wp_enqueue_style('jquery-ui-timepicker-addon-styles', plugins_url('js/jquery-ui-timepicker-addon.css', __FILE__));
 }
 add_action('wp_enqueue_scripts', 'form_datetime_picker');
 
@@ -103,6 +103,6 @@ add_shortcode( 'AUTH-FORM', 'auth_form');
 * Enqueue the .js script taking care of the POST request to OAC on form submission.
 */
 function auth_api_scripts() {
-    wp_enqueue_script('api_auth', plugins_url('api_auth.js', __FILE__), array('jquery'), false, true);
+    wp_enqueue_script('api_auth', plugins_url('js/api_auth.js', __FILE__), array('jquery'), false, true);
 }
 add_action( 'wp_enqueue_scripts', 'auth_api_scripts');
