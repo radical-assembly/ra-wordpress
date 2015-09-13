@@ -38,9 +38,6 @@
     $( '#event-form' ).on( 'submit', function(e) {
         e.preventDefault();
 
-        // OAC API2 endpoint for existing event (hardcoded for now)
-        var url = "http://oac.dev/api2/event/create.json";
-
         // Get authentication tokens
         var tokens = getPostTokens();
         var secrets = getPostSecrets();
@@ -89,7 +86,7 @@
                 app_token: tokens.app
             });
 
-            return $.post(url, json_data);
+            return $.post("http://oac.dev/api2/event/create.json", json_data);
         })
         .done(function(result) {
             if (result == 'ERROR') {
@@ -116,14 +113,14 @@
 
 function getPostTokens() {
     return {
-        app: "svpe1a4eflyxkcmveripdr1s2vu2yl3fx3x2dx702z0u83hy7d6zil7qnr10l95a794tmztyq5qfvmplezzkmffa3c1cbh44t2p9vzsjpn1t4s5tqsy3voiy7imj982rvd7h6o18rf7701ems9je8mzcmcnts2khan7ilnajttqse0o3xialjpgtrxtrymvvzl0ki1fw1dzt5le7kwir6m1qi5znk6ug26",
-        user: "v5h708m8t63gg38e"
+        app: "4jqmiiccta4wbgvm",
+        user: "ofd360xv2a3ry314e06g410iubjhl9zjtetrtn4et1fu2ffeaosadeohbsgxn2n0t7ukv87v84s9fxkm6te4pau8ngizbjffx88ssuv5a896ovazk9td5aei5wrhcdx7dnilj69lynktltc6"
     };
 }
 
 function getPostSecrets() {
     return {
-        app: "e887qt7yud24zsewbq5ngytt68w7uqx4re01eaoovpmyks5dlp5n61hyzu520772rp84acnguoxdnwai3v81eu399o0azmlglooikee9gvs94qzerl4ows",
-        user: "7llfn8bciamsfu7otc1dq7c7kgbv2cp27uwcy34k8n129hoah0sc8cm2m2lyynmcf6"
+        app: "3molat7x1mrr0q9nikedbtgpejtdrsy2wuhyozqdhtdxopy6harfaht9i458d6qyhr4tvftm8z4dr6b99ianxz6u8tz1vrmrtzrwbjmwaxlxbqy09dn9gqnqjiw7jdr834e2fztokwz",
+        user: "mu8ew67qssy27xhzjoolnxpqefyym4a4jg6yixeomjnrri963xlzliyk0kgptwtkgcam26higxfoc1xwtii24208m9xoypixppej3xf810wfl0uzz1dnxm1gjhrlhzc3w00zk0hlob1u8bpkdjftekicpm47qjaxy6wz1v1ysh58k98d7qh2bp22c7bp422cfoyehdr93nv013eejq"
     };
 }

@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Elias' Form Plugin
+Plugin Name: Radical Assembly Plugin
 Description: Test plugin to implement insertion of events to OAC via wordpress.
 */
 
