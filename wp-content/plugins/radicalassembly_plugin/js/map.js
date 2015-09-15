@@ -15,7 +15,9 @@ var mapData = [];
 
 jQuery(document).ready(function() {
 
-	jQuery.getJSON( // Get user tokens
+	jQuery.getJSON(
+		// Get the app and user tokens to enable authenticated access to API2 venues list
+
 		'/wp-admin/admin-ajax.php',
 		{
 			action: 'radicalassembly_token_storage',
@@ -25,7 +27,9 @@ jQuery(document).ready(function() {
 		},
 		null
 	).then(function(result) {
-		return jQuery.getJSON( // Get venues
+		// Get the list of venues to be added to the map
+
+		return jQuery.getJSON(
 			'http://oac.dev/api2/venue/list.json',
 			{
 				app_token: result.app_token,
@@ -35,6 +39,8 @@ jQuery(document).ready(function() {
 			null
 		);
 	}).then(function(result) {
+		// Populate the mapData array with venue data
+
 		if (result.venues.length > 0) {
 			jQuery('#NoEventsNotice').hide();
 		}
@@ -47,53 +53,56 @@ jQuery(document).ready(function() {
 				cached_events: venue.cachedFutureEvents
 			});
 		});
-	});
+	}).then(function(result) {
+		// Setup the map proper
 
-	map = L.map('Map');
-	configureBasicMap(map);
+		map = L.map('Map');
+		configureBasicMap(map);
 
-	iconWithNoEvents = L.icon({
-		iconUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerNoeventsIcon.png',
-		shadowUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerShadow.png',
+		iconWithNoEvents = L.icon({
+			iconUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerNoeventsIcon.png',
+			shadowUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerShadow.png',
 
-		iconSize:     [25, 41], // size of the icon
-		shadowSize:   [41, 41], // size of the shadow
-		iconAnchor:   [12, 41], // point of the icon which will correspond to marker's location
-		shadowAnchor: [12, 41],  // the same for the shadow
-		popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-	});
+			iconSize:     [13, 21], // size of the icon
+			shadowSize:   [21, 21], // size of the shadow
+			iconAnchor:   [6, 21], // point of the icon which will correspond to marker's location
+			shadowAnchor: [6, 21],  // the same for the shadow
+			popupAnchor:  [-2, -38] // point from which the popup should open relative to the iconAnchor
+		});
 
-	iconWithEvents = L.icon({
-		iconUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerEventsIcon.png',
-		shadowUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerShadow.png',
+		iconWithEvents = L.icon({
+			iconUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerEventsIcon.png',
+			shadowUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerShadow.png',
 
-		iconSize:     [25, 41], // size of the icon
-		shadowSize:   [41, 41], // size of the shadow
-		iconAnchor:   [12, 41], // point of the icon which will correspond to marker's location
-		shadowAnchor: [12, 41],  // the same for the shadow
-		popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-	});
+			iconSize:     [13, 21], // size of the icon
+			shadowSize:   [21, 21], // size of the shadow
+			iconAnchor:   [6, 21], // point of the icon which will correspond to marker's location
+			shadowAnchor: [6, 21],  // the same for the shadow
+			popupAnchor:  [-2, -38] // point from which the popup should open relative to the iconAnchor
+		});
 
-	var hasMarkers = false;
-	markerGroup = new L.MarkerClusterGroup();
-	map.addLayer(markerGroup);
-	for(i in mapData) {
-		if (mapData[i].lat && mapData[i].lng) {
-			var marker;
-			if (mapData[i].cached_events == 0) {
-				marker = L.marker([mapData[i].lat,mapData[i].lng], { icon: iconWithNoEvents});
-			} else {
-				marker = L.marker([mapData[i].lat,mapData[i].lng], { icon: iconWithEvents});
+		var hasMarkers = false;
+		markerGroup = new L.MarkerClusterGroup();
+		map.addLayer(markerGroup);
+		for(i in mapData) {
+			if (mapData[i].lat && mapData[i].lng) {
+				var marker;
+				if (mapData[i].cached_events == 0) {
+					marker = L.marker([mapData[i].lat,mapData[i].lng], { icon: iconWithNoEvents});
+				} else {
+					marker = L.marker([mapData[i].lat,mapData[i].lng], { icon: iconWithEvents});
+				}
+				marker.slug = mapData[i].slug;
+				marker.on('click', onClickMarker);
+				markerGroup.addLayer(marker);
+				hasMarkers = true;
 			}
-			marker.slug = mapData[i].slug;
-			marker.on('click', onClickMarker);
-			markerGroup.addLayer(marker);
-			hasMarkers = true;
 		}
-	}
 
-	map.setView([55.948792,-3.200115],5);
-
+		map.setView([55.948792,-3.200115],5);
+	}).done(function() {
+		console.log('Map setup complete');
+	});
 });
 
 function onClickMarker() {
