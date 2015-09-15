@@ -59,7 +59,7 @@ var tokens = getTokens(),
                         $.post(
                             '/wp-admin/admin-ajax.php',
                             {
-                                action: 'token_storage',
+                                action: 'radicalassembly_token_storage',
                                 user_token: result.user_token,
                                 user_secret: result.user_secret
                             },
@@ -87,7 +87,7 @@ var tokens = getTokens(),
 
             $.getJSON(
                 '/wp-admin/admin-ajax.php',
-                {action: 'token_storage', app_token: true, app_secret: true},
+                {action: 'radicalassembly_token_storage', app_token: true, app_secret: true},
                 function(result) {
                     tokens.app = result.app_token;
                     secrets.app = result.app_secret;
