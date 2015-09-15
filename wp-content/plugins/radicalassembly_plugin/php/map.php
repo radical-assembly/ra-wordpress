@@ -19,5 +19,7 @@ function radicalassembly_map_enqueue() {
     wp_enqueue_script('radicalassembly_map_leaflet', plugins_url('../js/leaflet-0-7-1/leaflet.js', __FILE__));
     wp_enqueue_script('radicalassembly_map_leafletmarker', plugins_url('../js/leaflet-0-7-1/markercluster1/leaflet.markercluster.js', __FILE__));
     wp_enqueue_script('radicalassembly_map_main', plugins_url('../js/map.js', __FILE__));
+    wp_enqueue_style('radicalassembly_leaflet_style', plugins_url('../css/leaflet.css', __FILE__));
+    wp_enqueue_style('radicalassembly_map_style', plugins_url('../css/map.css', __FILE__));
 }
 add_action( 'wp_enqueue_scripts', 'radicalassembly_map_enqueue' );
