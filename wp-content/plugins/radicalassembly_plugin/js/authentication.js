@@ -80,38 +80,24 @@ var tokens = getTokens(),
                 });
             }
 
-        } else {
-            // If no tokens exist in session storage, then the authentication workflow has not yet
-            // started, and we need to load in the app tokens from the WP DB using the token_storage.php
-            // script
-
-            $.getJSON(
-                '/wp-admin/admin-ajax.php',
-                {action: 'radicalassembly_token_storage', app_token: true, app_secret: true},
-                function(result) {
-                    tokens.app = result.app_token;
-                    secrets.app = result.app_secret;
-                }
-            );
-
         }
-    })
+    });
 
     $('#auth-form').on('submit', function(e) {
         e.preventDefault();
 
-        if (! (tokens.app && secrets.app)) {
-            // Before the authentication workflow has started, check that the app tokens have been
-            // successfully loaded from the database.
-
-            alert("App tokens not successfully loaded.");
-
-        } else {
-
+        $.getJSON( // Get the app tokens from the database
+            '/wp-admin/admin-ajax.php',
+            {action: 'radicalassembly_token_storage', app_token: true, app_secret: true},
+            function(result) {
+                tokens.app = result.app_token;
+                secrets.app = result.app_secret;
+            }
+        ).then(function(result) {
             // First GET request exchanging app tokens for a request token. See documentation at
             // docs.openacalendar.org/en/master/developers/core/webapi2.userauthentication.html
             // section marked "Get Request Token"
-            $.get(
+            return $.get(
                 urls.requestToken,
                 {
                     app_token: tokens.app,
@@ -122,41 +108,41 @@ var tokens = getTokens(),
                 },
                 null,
                 'json'
-            ).then(function(result) {
-                // Redirect the user to OAC login page to grant user authorisation. See documentation
-                // at docs.openacalendar.org/en/master/developers/core/webapi2.userauthentication.html
-                // section marked "Redirect User to get permission".
+            );
+        }).then(function(result) {
+            // Redirect the user to OAC login page to grant user authorisation. See documentation
+            // at docs.openacalendar.org/en/master/developers/core/webapi2.userauthentication.html
+            // section marked "Redirect User to get permission".
 
-                if (result.request_token) {
-                    tokens.request = result.request_token;
+            if (result.request_token) {
+                tokens.request = result.request_token;
 
-                    // Use session storage to keep request token in memory until after the redirect
-                    // from OAC login page.
-                    sessionStorage.setItem('saved_tokens', JSON.stringify(tokens));
-                    sessionStorage.setItem('saved_secrets', JSON.stringify(secrets));
+                // Use session storage to keep request token in memory until after the redirect
+                // from OAC login page.
+                sessionStorage.setItem('saved_tokens', JSON.stringify(tokens));
+                sessionStorage.setItem('saved_secrets', JSON.stringify(secrets));
 
-                    // Hidden form used to send user to another URL along with POST parameters.
-                    var form = $(
-                        '<form\
-                        action="' + urls.redirLogin + '"\
-                        name="hidden-form" method="POST" style="display:none;">\
-                        <input type="text" name="app_token" value="' + tokens.app + '"/>\
-                        <input type="text" name="request_token" value="' + tokens.request + '"/>\
-                        <input type="text" name="callback_url" value="' + urls.origin + '"/>\
-                        <input type="submit" name="auth-redir" value="Redirect"/>\
-                        </form>'
-                    );
-                    $('body').append(form);
-                    form.submit();
+                // Hidden form used to send user to another URL along with POST parameters.
+                var form = $(
+                    '<form\
+                    action="' + urls.redirLogin + '"\
+                    name="hidden-form" method="POST" style="display:none;">\
+                    <input type="text" name="app_token" value="' + tokens.app + '"/>\
+                    <input type="text" name="request_token" value="' + tokens.request + '"/>\
+                    <input type="text" name="callback_url" value="' + urls.origin + '"/>\
+                    <input type="submit" name="auth-redir" value="Redirect"/>\
+                    </form>'
+                );
+                $('body').append(form);
+                form.submit();
 
-                } else {
-                    alert("Server response does not include request_token!");
-                }
-            })
-            .fail(function() {
-                alert('Failed before submission!');
-            });
-        }
+            } else {
+                alert("Server response does not include request_token!");
+            }
+        })
+        .fail(function() {
+            alert('Failed before submission!');
+        });
 
     });
 

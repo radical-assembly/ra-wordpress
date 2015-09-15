@@ -16,7 +16,7 @@ var mapData = [];
 jQuery(document).ready(function() {
 
 	jQuery.getJSON( // Get user tokens
-		'/wp-admin/ajax-admin.php',
+		'/wp-admin/admin-ajax.php',
 		{
 			action: 'radicalassembly_token_storage',
 			app_token: true,
@@ -35,7 +35,7 @@ jQuery(document).ready(function() {
 			null
 		);
 	}).then(function(result) {
-		if (venues.length > 0) {
+		if (result.venues.length > 0) {
 			jQuery('#NoEventsNotice').hide();
 		}
 
