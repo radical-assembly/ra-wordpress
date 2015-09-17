@@ -95,6 +95,7 @@ jQuery(document).ready(function() {
 				marker.slug = mapData[i].slug;
 				marker.on('click', onClickMarker);
 				markerGroup.addLayer(marker);
+				marker.addTo(map);
 				hasMarkers = true;
 			}
 		}
@@ -122,7 +123,7 @@ function onClickMarker() {
 			'<div id="VenuePopupEvents"></div>'+
 			'<div class="popupLink"><a href="/venue/' + this.slug + '">View More Details</a></div>');
 	jQuery.ajax({
-		url: "/api1/venue/"+this.slug+"/events.json"
+		url: "http://oac.dev/api1/venue/"+this.slug+"/events.json"
 	}).success(function ( venuedata ) {
 		var html = '<ul class="popupListEvents">';
 		if (venuedata.data.length == 0) {
@@ -145,4 +146,21 @@ function configureBasicMap(mapObject) {
 			mapquestAttrib = 'Data, imagery and map information provided by <a href="http://open.mapquest.co.uk" target="_blank">MapQuest</a>, '+
 					'<a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors';
 	L.tileLayer(mapquestUrl, {maxZoom: 18, attribution: mapquestAttrib, subdomains: subDomains}).addTo(mapObject);
+}
+
+function showPopup() {
+	if (jQuery('#PopupMask').size() == 0) {
+		jQuery('body').append('<div id="PopupMask"  onclick="closePopup();" style="display:none;"></div>');
+	}
+	jQuery('#PopupMask').fadeIn(500);
+	jQuery(document).on('keyup.close_popup', function(e) {
+		if (e.keyCode == 27) { closePopup() }
+	});
+	jQuery('.popupBox').css({top: (jQuery(document).scrollTop()+25)+'px' });
+}
+
+function closePopup() {
+	jQuery('.popupBox').fadeOut(500);
+	jQuery('#PopupMask').fadeOut(500);
+	jQuery(document).unbind('keyup.close_popup');
 }
