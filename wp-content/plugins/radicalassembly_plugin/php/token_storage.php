@@ -38,6 +38,7 @@ if (get_option('radicalassembly_db_init') != $version) {
 * Populate database or populate response array
 */
 add_action('wp_ajax_radicalassembly_token_storage', 'token_storage_callback');
+add_action('wp_ajax_nopriv_radicalassembly_token_storage', 'token_storage_callback');
 
 function token_storage_callback() {
 
