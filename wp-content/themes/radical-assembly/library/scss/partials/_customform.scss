@@ -1,0 +1,102 @@
+$formlbl: $orange;
+$formtxt: $grey;
+#signup {
+    .row {
+        position: relative;
+        background: #fff
+    }
+    .contact_label {
+        font-weight: 300;
+        margin-top: 5px;
+        pointer-events: none;
+    }
+    input.input_label,
+    input.input_label:focus {
+        width: 100%;
+        border: none;
+    }
+    input[type="submit"] {
+        width: 100%;
+        background: $formlbl;
+        color: #fff;
+        border: none;
+        border-radius: none;
+        padding: 8px;
+        text-transform: uppercase;
+    }
+    textarea.floatLabel {
+        resize: none;
+        padding-right: 100px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+        background: none;
+        display: block;
+        padding: 8px;
+        font-size: 14px;
+        width: 100%;
+        margin-bottom: 18px;
+        color: $formtxt;
+        font-size: 16px;
+        font-weight: 300;
+        -moz-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        z-index: 2;
+        border: none;
+        &:focus,
+        &:hover {
+            outline: none;
+            label {
+                cursor: text;
+            }
+        }
+    } // inputs
+    select {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+    }
+    label {
+        position: absolute;
+        left: 0;
+        top: -4px;
+        color: #999;
+        font-size: 16px;
+        display: inline-block;
+        padding: 6px;
+        font-weight: 400;
+        background-color: rgba(255, 255, 255, 0);
+        -moz-transition: color 0.3s, top 0.3s, background-color 0.8s;
+        -o-transition: color 0.3s, top 0.3s, background-color 0.8s;
+        -webkit-transition: color 0.3s, top 0.3s, background-color 0.8s;
+        transition: color 0.3s, top 0.3s, background-color 0.8s;
+        z-index: 0;
+        width: 100%;
+        box-sizing: border-box;
+        height: 40px;
+        text-align: left;
+    }
+    label.active {
+        right: 0;
+        left: auto;
+        color: #fff;
+        background: $formlbl;
+        padding: 6px;
+        top: -5px;
+        width: auto;
+        height: 40px;
+    }
+    label.has-content {
+        right: 0;
+        left: auto;
+        color: #f8971d;
+        background: transparent;
+        padding: 6px;
+        top: -6px;
+        width: auto;
+    }
+}
