@@ -1,0 +1,405 @@
+
+$orange: #ff5800;
+$grey: #9a9b9c;
+@import "partials/_forms";
+/* apply a natural box layout model to all elements, but allowing components to change */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    /* Location of the image */
+    
+    background-image: url(../images/background-photo.jpg);
+    /* Image is centered vertically and horizontally at all times */
+    
+    background-position: center center;
+    /* Image doesn't repeat */
+    
+    background-repeat: no-repeat;
+    /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+    
+    background-attachment: fixed;
+    /* This is what makes the background image rescale based on its container's size */
+    
+    background-size: cover;
+    /* Pick a solid background color that will be displayed while the background image is loading */
+    
+    background-color: #464646;
+    /* SHORTHAND CSS NOTATION
+   * background: url(background-photo.jpg) center center cover no-repeat fixed;
+   */
+}
+/* Presentational style rules only
+ * Not required
+ */
+
+html,
+body,
+.container {
+    height: 100%;
+}
+
+
+/* Reset */
+
+html,
+body,
+h1,
+p,
+a,
+div,
+section {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font: inherit;
+}
+/* Basic */
+
+body {
+    font: 18px/23px "Muli", sans-serif;
+    color: #ffffff;
+}
+
+h1 {
+    color: #efecec;
+    color: #ffffff;
+    font-size: 4.6rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.4rem;
+    font-weight: 300;
+    text-align: center;
+    transform: scaleY(1.0005);
+    line-height: 2.8rem;
+}
+    
+a {
+    color: #ffffff;
+     transition: color 0.2s ease;
+    &:hover {
+        color: lighten( $orange, 5% )
+
+    }
+}
+
+p {
+    margin: 0 0 15px 0;
+}
+
+strong {
+    font-weight: 700;
+}
+
+blockquote {
+    display: block;
+    max-width: 480px;
+    margin: 15px auto;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #e1e1e1;
+    font-family: "Muli", serif;
+    font-size: 22px;
+    line-height: 28px;
+}
+
+blockquote cite {
+    display: block;
+    font: 18px/23px "Muli", sans-serif;
+    font-size: 16px;
+    margin-top: 16px;
+    color: #cccccc;
+    text-transform: uppercase;
+}
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+/* Layout */
+
+.navbar {
+    width: 100%;
+    height: 40px;
+    z-index: 9999;
+    position: fixed;
+    top: 1rem;
+}
+
+.fb {
+    background: url(../images/fb.svg) no-repeat left center;
+}
+
+.twit {
+    background: url(../images/twitter.svg) no-repeat left center;
+}
+
+.fb,
+.twit {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-size: 26px 26px;
+    margin: 0 0.15rem;
+}
+
+.logo {
+    display: block;
+    padding-left: 35px;
+    height: 24px;
+    background: url(../images/logo.svg) no-repeat left center;
+    background-size: 24px 24px;
+    text-decoration: none;
+}
+
+.inner {
+    .left-brand {
+        position: absolute;
+        left: 1%;
+        top: 1%;
+        text-transform: uppercase;
+        font-weight: 700;
+        transform: scaleX(1.0042);
+    }
+    .right-brand {
+        position: absolute;
+        right: 1%;
+        top: 1%;
+    }
+}
+
+.container {
+    display: table;
+    padding-top: 1rem;
+    width: 100%;
+}
+.content .intro  {
+    margin: 4% 23% 0;
+
+    h2 {
+    margin-bottom: 0;
+    }
+    h3 {
+        text-align: center;
+        margin-top: 0;
+    }
+    h4 {
+        text-align: center;
+        margin: 0.5rem;
+    }
+
+}
+.content {
+    display: table-cell;
+    vertical-align: middle;
+    .wrapper {
+        width: 50%;
+        margin: 0 auto;
+        .left-col, .right-col {
+            width: 45%;
+            display: inline-block;
+        }
+        .left-col {
+            float: left;
+            margin-right: 10%;
+        }
+        .right-col {
+            float: right;
+        }
+    }
+}
+/* Special */
+
+.sub-title {
+    margin: 50px auto;
+    font-size: 18px;
+    line-height: 23px;
+    text-transform: uppercase;
+}
+
+.button {
+    display: inline-block;
+    padding: 6px 10px;
+    color: #cafaea;
+    border: 1px solid #cafaea;
+    border-radius: 3px;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+}
+.cta-wrap {
+    display: block;
+    margin: 20px 0;
+    text-align: center;
+}
+#load-more-content {
+    position: relative;
+    top: 25px;
+}
+
+#more-content {
+    display: none;
+   p {
+     background: rgba(0, 0, 0, 0.6);
+    padding: 18px;
+    color: #e1e1e1;
+    font-size: 22px;
+    line-height: 28px;
+   }
+}
+
+
+footer {
+    position: fixed;
+    bottom: 3%;
+    width: 100%;
+    z-index: 999;
+    p {
+        font-size: 0.5rem;
+    }
+    .left-foot {
+        position: absolute;
+        left: 1%;
+    }
+    .right-foot {
+        position: absolute;
+        right: 1%;
+    }
+}
+/* Media Queries */
+@media only screen and (max-width: 500px) {
+    .container {
+        position: relative;
+        display: block;
+        float: left;
+        vertical-align: baseline;
+        margin: 0 auto;
+        padding: 35px 0 0 0;
+    }
+    .navbar {
+        position: static;
+        margin-top: 1rem;
+        display: block;
+        .left-brand {
+            position: relative;
+            text-align: center;
+            margin-bottom: 1rem;
+            .logo {
+                display: inline;
+            }
+        }
+        .right-brand {
+            position: relative;
+            text-align: center;
+        }
+    }
+    footer {
+        position: static;
+      
+        display: inline-block;
+        margin: 5%;
+        width: auto;
+        p {
+            font-size: 0.5rem;
+            text-align: left;
+        }
+        .left-foot {
+            position: relative;
+           
+            
+        }
+        .right-foot {
+            position: relative;
+           
+            
+        }
+    }
+    .content {
+        margin: 0 5%;
+        display: block;
+        clear: both;
+        .wrapper {
+            width: 100%;
+            .left-col, .right-col {
+                width: 100%;
+                display: inline-block;
+            }
+            .left-col {
+                float: none;
+                margin-right: 0;
+            }
+            .right-col {
+                float: none;
+            }
+        }
+    }
+    #more-content {
+        float: left;
+        margin-right: 10px;
+    }
+    h1 {
+        font-size: 2.9rem;
+        line-height: 3.4rem;
+    }
+    h2 {
+        font-size: 1.3rem;
+        line-height: 1rem;
+        margin: 0.75rem 0;
+    }
+    blockquote {
+        display: inline;
+        margin: 0 auto;
+        padding-top: 80px;
+        vertical-align: baseline;
+    }
+    blockquote {
+        width: 150px;
+        margin: 15px auto;
+        font-size: 16px;
+        line-height: 21px;
+        background-color: transparent;
+    }
+    blockquote cite {
+        font-size: 14px;
+        line-height: 19px;
+    }
+    .sub-title {
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .button,
+    p {
+        margin: 0 auto;
+        font-size: 1rem;
+        line-height: 20px;
+    }
+
+}
+/* For mobile devices */
+
+@media only screen and (max-width: 767px) {
+    body {
+        /* The file size of this background image is 93% smaller
+     * to improve page load speed on mobile internet connections */
+        
+        background-image: url(../images/background-photo-mobile-devices.jpg);
+    }
+}
