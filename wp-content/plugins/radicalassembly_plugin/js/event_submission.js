@@ -32,19 +32,28 @@
         } else {
             $('.web-info').removeAttr('required');
         }
-    })
+    });
 
     // Main submission handling code
     $( '#event-form' ).on( 'submit', function(e) {
         e.preventDefault();
 
-        // Get authentication tokens
-        var tokens = getPostTokens();
-        var secrets = getPostSecrets();
+        var tokens = {app: null, user: null};
+        var secrets = {app: null, user: null};
 
-        $.get(
-            'http://mapit.mysociety.org/postcode/' + $('#ev-venue-code').val().replace(' ','')
+        $.getJSON(
+            '/wp-admin/admin-ajax.php',
+            {
+                action: 'radicalassembly_token_storage',
+                app_token: true,
+                user_token: true,
+                user_secret: true,
+            }, null
         ).then(function(result){
+            return $.get(
+                'http://mapit.mysociety.org/postcode' + $('#ev-venue-code').val().replace(' ','')
+            );
+        }).then(function(result){
             if (!result.wgs84_lat || !result.wgs84_lon) {
                 console.log("No lat/long information available.");
             }
@@ -58,7 +67,7 @@
 
             var json_data = {
                 event_data: JSON.stringify({
-                    username: 'admin',
+                    username: 'anonjRVGApZPAf',
                     summary: $('#ev-summary').val(),
                     description: $('#ev-desc').val(),
                     start_at: time_start.toUTCString(),
@@ -90,7 +99,7 @@
         })
         .done(function(result) {
             if (result == 'ERROR') {
-                alert("Authentication error! Remember to create OAC app in sysadmin interface.")
+                alert("Authentication error! Remember to create OAC app in sysadmin interface.");
             } else {
                 if (typeof result == "string") result = JSON.parse(result);
 
@@ -98,29 +107,13 @@
                     alert("Event data successfully POST'd.");
                 } else {
                     alert("Unsuccessful attempt, check the console!");
-                    console.log(result.msg)
+                    console.log(result.msg);
                 }
             }
         })
         .fail(function(result) {
-            console.log(result)
+            console.log(result);
             alert("Event data POSTing failed.");
         });
     });
 })(jQuery);
-
-///// Support functions
-
-function getPostTokens() {
-    return {
-        app: "4jqmiiccta4wbgvm",
-        user: "ofd360xv2a3ry314e06g410iubjhl9zjtetrtn4et1fu2ffeaosadeohbsgxn2n0t7ukv87v84s9fxkm6te4pau8ngizbjffx88ssuv5a896ovazk9td5aei5wrhcdx7dnilj69lynktltc6"
-    };
-}
-
-function getPostSecrets() {
-    return {
-        app: "3molat7x1mrr0q9nikedbtgpejtdrsy2wuhyozqdhtdxopy6harfaht9i458d6qyhr4tvftm8z4dr6b99ianxz6u8tz1vrmrtzrwbjmwaxlxbqy09dn9gqnqjiw7jdr834e2fztokwz",
-        user: "mu8ew67qssy27xhzjoolnxpqefyym4a4jg6yixeomjnrri963xlzliyk0kgptwtkgcam26higxfoc1xwtii24208m9xoypixppej3xf810wfl0uzz1dnxm1gjhrlhzc3w00zk0hlob1u8bpkdjftekicpm47qjaxy6wz1v1ysh58k98d7qh2bp22c7bp422cfoyehdr93nv013eejq"
-    };
-}
