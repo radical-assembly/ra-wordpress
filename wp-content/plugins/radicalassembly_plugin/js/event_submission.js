@@ -95,7 +95,7 @@
                 app_token: tokens.app
             });
 
-            return $.post("http://oac.dev/api2/event/create.json", json_data);
+            return $.post("http://oac.radicalassembly.com/api2/event/create.json", json_data);
         })
         .done(function(result) {
             if (result == 'ERROR') {

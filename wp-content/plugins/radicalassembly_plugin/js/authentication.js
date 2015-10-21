@@ -1,10 +1,10 @@
 // api_auth.js
 // Goes through the authentication workflow defined for OAC API2.
-var tokens = getTokens(),
-    secrets = getSecrets(),
+var tokens = {app: "", request: "", authorisation: "", user: ""},
+    secrets = {app: "", user: ""},
     domains = {
-        oac: 'http://oac.dev',
-        wp: 'http://ra-wp.dev'
+        oac: 'http://oac.radicalassembly.com',
+        wp: 'http://dev.radicalassembly.com'
     },
     urls = {
         origin: domains.wp + "/authentication-event-submission",
@@ -156,20 +156,4 @@ function getQueryParam(variable) {
         if(pair[0] == variable){return pair[1];}
     }
     return(false);
-}
-
-function getTokens() {
-    return {
-        app: "",
-        request: "",
-        authorisation: "",
-        user: ""
-    };
-}
-
-function getSecrets() {
-    return {
-        app: "",
-        user: ""
-    };
 }
