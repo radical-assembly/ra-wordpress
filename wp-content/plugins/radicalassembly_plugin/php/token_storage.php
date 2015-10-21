@@ -6,8 +6,8 @@
 
 global $wpdb;
 
-$app_token = "4jqmiiccta4wbgvm";
-$app_secret = "3molat7x1mrr0q9nikedbtgpejtdrsy2wuhyozqdhtdxopy6harfaht9i458d6qyhr4tvftm8z4dr6b99ianxz6u8tz1vrmrtzrwbjmwaxlxbqy09dn9gqnqjiw7jdr834e2fztokwz";
+$app_token = "qr5z37coumizala92o5na3nvse3onllwbh9uya3pl3bpjcnejv2pi";
+$app_secret = "uvyis87s3iq7q6eojarykp34eynjk9ulni1xouzoofib8c4e5aih502mtgdxdfbmzmeyqc2xsltzywpxf8kvx93vbuhishwyhsmo2pqoxt3jg9a421snvcp8fbbyfgnuaiuf26c6hlxjss56vhmderrrptv2j1c1uhlhg0";
 
 $tablename = $wpdb->prefix."openacalendar_tokens";
 
@@ -15,7 +15,7 @@ $tablename = $wpdb->prefix."openacalendar_tokens";
 * Initialise DB tables
 * Create table to hold tokens and add row if one doesn't exist
 */
-$version = 3;
+$version = 1;
 if (get_option('radicalassembly_db_init') != $version) {
     $wpdb->query(
         "CREATE TABLE ".$tablename." ".
