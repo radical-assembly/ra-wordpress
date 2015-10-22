@@ -97,18 +97,21 @@ var tokens = {app: "", request: "", authorisation: "", user: ""},
             // First GET request exchanging app tokens for a request token. See documentation at
             // docs.openacalendar.org/en/master/developers/core/webapi2.userauthentication.html
             // section marked "Get Request Token"
-            return $.get(
-                urls.requestToken,
-                {
+            return $.ajax({
+                type: 'GET',
+                url: urls.requestToken,
+                data: {
                     app_token: tokens.app,
                     app_secret: secrets.app,
                     callback_url: urls.origin,
                     scope: 'permission_editor',
                     state: 'sl0wi87WWYB',
                 },
-                null,
-                'json'
-            );
+                contentType: 'application/json',
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + encodeBase64('ra' + ':' + '**b@by**'));
+                },
+            });
         }).then(function(result) {
             // Redirect the user to OAC login page to grant user authorisation. See documentation
             // at docs.openacalendar.org/en/master/developers/core/webapi2.userauthentication.html

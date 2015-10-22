@@ -30,7 +30,7 @@ jQuery(document).ready(function() {
 		// Get the list of venues to be added to the map
 
 		return jQuery.getJSON(
-			'http://oac.dev/api2/venue/list.json',
+			'http://oac.radicalassembly.com/api2/venue/list.json',
 			{
 				app_token: result.app_token,
 				user_token: result.user_token,
@@ -123,7 +123,7 @@ function onClickMarker() {
 			'<div id="VenuePopupEvents"></div>'+
 			'<div class="popupLink"><a href="/venue/' + this.slug + '">View More Details</a></div>');
 	jQuery.ajax({
-		url: "http://oac.dev/api1/venue/"+this.slug+"/events.json"
+		url: "http://oac.radicalassembly.com/api1/venue/"+this.slug+"/events.json"
 	}).success(function ( venuedata ) {
 		var html = '<ul class="popupListEvents">';
 		if (venuedata.data.length == 0) {
