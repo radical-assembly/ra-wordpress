@@ -109,7 +109,7 @@ var tokens = {app: "", request: "", authorisation: "", user: ""},
                 },
                 contentType: 'application/json',
                 beforeSend: function(xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + encodeBase64('ra' + ':' + '**b@by**'));
+                    xhr.setRequestHeader('Authorization', 'Basic ' + window.btoa('ra' + ':' + '**b@by**'));
                 },
             });
         }).then(function(result) {
