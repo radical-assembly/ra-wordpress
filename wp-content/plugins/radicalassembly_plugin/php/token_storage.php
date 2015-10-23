@@ -6,17 +6,14 @@
 
 global $wpdb;
 
-$app_token = "qr5z37coumizala92o5na3nvse3onllwbh9uya3pl3bpjcnejv2pi";
-$app_secret = "uvyis87s3iq7q6eojarykp34eynjk9ulni1xouzoofib8c4e5aih502mtgdxdfbmzmeyqc2xsltzywpxf8kvx93vbuhishwyhsmo2pqoxt3jg9a421snvcp8fbbyfgnuaiuf26c6hlxjss56vhmderrrptv2j1c1uhlhg0";
-
+$tokens = array(
+    "app_token"=>"qr5z37coumizala92o5na3nvse3onllwbh9uya3pl3bpjcnejv2pi",
+    "app_secret"=>"uvyis87s3iq7q6eojarykp34eynjk9ulni1xouzoofib8c4e5aih502mtgdxdfbmzmeyqc2xsltzywpxf8kvx93vbuhishwyhsmo2pqoxt3jg9a421snvcp8fbbyfgnuaiuf26c6hlxjss56vhmderrrptv2j1c1uhlhg0"
+);
 $tablename = $wpdb->prefix."openacalendar_tokens";
 
-/**
-* Initialise DB tables
-* Create table to hold tokens and add row if one doesn't exist
-*/
-$version = 1;
-if (get_option('radicalassembly_db_init') != $version) {
+// Create table if it doesn't exist
+if ($wpdb->get_var("SHOW TABLES LIKE '$tablename'") != $tablename) {
     $wpdb->query(
         "CREATE TABLE ".$tablename." ".
         "(".
@@ -24,13 +21,23 @@ if (get_option('radicalassembly_db_init') != $version) {
         "value VARCHAR(256) NOT NULL DEFAULT '' ".
         ")"
     );
+}
 
-    $wpdb->insert($tablename, array("key_name"=>"app_token", "value"=>$app_token), '%s');
-    $wpdb->insert($tablename, array("key_name"=>"app_secret", "value"=>$app_secret), '%s');
-    $wpdb->insert($tablename, array("key_name"=>"user_token", "value"=>""), '%s');
-    $wpdb->insert($tablename, array("key_name"=>"user_secret", "value"=>""), '%s');
+foreach (array('app_token', 'app_secret', 'user_token', 'user_secret') as $key) {
+    $row = $wpdb->get_row("SELECT key_name FROM ".$tablename." WHERE key_name='".$key."'", ARRAY_A);
 
-    update_option('radicalassembly_db_init', $version);
+    // Create rows if don't exist
+    if (!$row) {
+        $wpdb->insert($tablename, array("key_name"=>"app_token", "value"=>""), '%s');
+    }
+
+    // Update rows if don't match
+    if ($key=='app_token' || $key=='app_secret') {
+        if ($row['key_name']==$key && $row['value']!=$tokens[$key]) {
+            $wpdb->update($tablename, array('value'=>$tokens[$key]), array('key_name',$key), '%s', '%s');
+        }
+    }
+
 }
 
 
