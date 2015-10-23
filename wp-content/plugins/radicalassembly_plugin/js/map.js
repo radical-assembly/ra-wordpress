@@ -33,7 +33,7 @@ jQuery(document).ready(function() {
 		
 		return jQuery.ajax({
 		    dataType: "json",
-		    url: 'http://oac.radicalassembly.com/api2/venue/list.json',
+		    url: 'https://oac.radicalassembly.com/api2/venue/list.json',
 		    data: {
 				app_token: result.app_token,
 				user_token: result.user_token,
