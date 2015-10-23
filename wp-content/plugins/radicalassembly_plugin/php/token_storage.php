@@ -59,7 +59,7 @@ function token_storage_callback() {
         if ( isset($_POST[$param]) && is_string($_POST[$param]) ) {
 
             $success = $wpdb->update($tablename, array('value'=>$_POST[$param]), array('key_name'=>$param), '%s', '%s');
-            if (!$success) {
+            if ($success === false) {
                 echo json_encode(array("success"=>false,"msg"=>"unable to update row"));
                 exit();
             }
