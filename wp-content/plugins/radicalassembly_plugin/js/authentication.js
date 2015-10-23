@@ -3,7 +3,7 @@
 var tokens = {app: "", request: "", authorisation: "", user: ""},
     secrets = {app: "", user: ""},
     domains = {
-        oac: 'http://oac.radicalassembly.com',
+        oac: 'https://oac.radicalassembly.com',
         wp: 'http://dev.radicalassembly.com'
     },
     urls = {
