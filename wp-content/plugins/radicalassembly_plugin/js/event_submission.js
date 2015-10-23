@@ -50,9 +50,17 @@
                 user_secret: true,
             }, null
         ).then(function(result){
-            return $.get(
-                'http://mapit.mysociety.org/postcode' + $('#ev-venue-code').val().replace(' ','')
-            );
+            tokens.app = results.app_token;
+            tokens.user = results.user_token;
+            secrets.user = results.user_secret;
+
+            if ($('#ev-venue-code').val()) {
+                return $.get(
+                    'http://mapit.mysociety.org/postcode/' + $('#ev-venue-code').val().replace(' ','')
+                );
+            } else {
+                return $.Deferred().resolve(false);
+            }
         }).then(function(result){
             if (!result.wgs84_lat || !result.wgs84_lon) {
                 console.log("No lat/long information available.");
@@ -94,8 +102,7 @@
                 user_secret: secrets.user,
                 app_token: tokens.app
             });
-
-            return $.post("http://oac.radicalassembly.com/api2/event/create.json", json_data);
+            return sendAjaxPostJSON($, true, 'https://oac.radicalassembly.com/api2/event/create.json', json_data);
         })
         .done(function(result) {
             if (result == 'ERROR') {
