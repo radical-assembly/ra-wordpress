@@ -24,17 +24,17 @@ if ($wpdb->get_var("SHOW TABLES LIKE '$tablename'") != $tablename) {
 }
 
 foreach (array('app_token', 'app_secret', 'user_token', 'user_secret') as $key) {
-    $row = $wpdb->get_row("SELECT key_name FROM ".$tablename." WHERE key_name='".$key."'", ARRAY_A);
+    $row = $wpdb->get_row("SELECT key_name FROM ".$tablename." WHERE key_name='".$key."'", 'ARRAY_A');
 
     // Create rows if don't exist
     if (!$row) {
-        $wpdb->insert($tablename, array("key_name"=>"app_token", "value"=>""), '%s');
+        $wpdb->insert($tablename, array("key_name"=>$key, "value"=>""), '%s');
     }
 
     // Update rows if don't match
     if ($key=='app_token' || $key=='app_secret') {
         if ($row['key_name']==$key && $row['value']!=$tokens[$key]) {
-            $wpdb->update($tablename, array('value'=>$tokens[$key]), array('key_name',$key), '%s', '%s');
+            $wpdb->update($tablename, array('value'=>$tokens[$key]), array('key_name'=>$key), '%s', '%s');
         }
     }
 
