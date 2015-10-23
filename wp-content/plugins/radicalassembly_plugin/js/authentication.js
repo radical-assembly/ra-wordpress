@@ -11,7 +11,8 @@ var tokens = {app: "", request: "", authorisation: "", user: ""},
         requestToken: domains.oac + "/api2/request_token.json",
         redirLogin: domains.oac + "/api2/login.html",
         userToken: domains.oac + "/api2/user_token.json"
-    };
+    },
+    setAuthHead = true;
 
 (function($){
 
@@ -36,16 +37,13 @@ var tokens = {app: "", request: "", authorisation: "", user: ""},
                 // Perform final GET request to exchange the authorisation token for the user tokens
                 // See http://docs.openacalendar.org/en/master/developers/core/webapi2.userauthentication.html
                 // section marked "Exchange Authorisation Token for User Token".
-                $.get(
-                    urls.userToken,
-                    {
+                sendAjaxGetJSON(
+                    $, setAuthHead, urls.userToken, {
                         app_token: tokens.app,
                         app_secret: secrets.app,
                         request_token: tokens.request,
                         authorisation_token: tokens.authorisation,
-                    },
-                    null,
-                    'json'
+                    }
                 ).then(function(result) {
 
                     if (!result.user_token || !result.user_secret) {
@@ -97,20 +95,12 @@ var tokens = {app: "", request: "", authorisation: "", user: ""},
             // First GET request exchanging app tokens for a request token. See documentation at
             // docs.openacalendar.org/en/master/developers/core/webapi2.userauthentication.html
             // section marked "Get Request Token"
-            return $.ajax({
-                type: 'GET',
-                url: urls.requestToken,
-                data: {
-                    app_token: tokens.app,
-                    app_secret: secrets.app,
-                    callback_url: urls.origin,
-                    scope: 'permission_editor',
-                    state: 'sl0wi87WWYB',
-                },
-                contentType: 'application/json',
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + window.btoa('ra' + ':' + '**b@by**'));
-                },
+            return sendAjaxGetJSON($, setAuthHead, urls.requestToken, {
+                app_token: tokens.app,
+                app_secret: secrets.app,
+                callback_url: urls.origin,
+                scope: 'permission_editor',
+                state: 'sl0wi87WWYB',
             });
         }).then(function(result) {
             // Redirect the user to OAC login page to grant user authorisation. See documentation
@@ -159,4 +149,25 @@ function getQueryParam(variable) {
         if(pair[0] == variable){return pair[1];}
     }
     return(false);
+}
+
+function sendAjax($, isWithAuth, rType, rURL, rData, rContentType) {
+    var authhead = (isWithAuth) ?
+        {headers: {'Authorization': 'Basic ' + btoa('ra' + ':' + '**b@by**')}} :
+        {};
+
+    return $.ajax($.extend({
+        type: rType,
+        url: rURL,
+        data: rData,
+        contentType: rContentType,
+    }, authhead));
+}
+
+function sendAjaxGetJSON($, isWithAuth, url, data) {
+    return sendAjax($, isWithAuth, 'GET', url, data, 'JSON');
+}
+
+function sendAjaxPostJSON($, isWithAuth, url, data) {
+    return sendAjaxPostJSON($, isWithAuth, 'POST', url, data, 'JSON');
 }
