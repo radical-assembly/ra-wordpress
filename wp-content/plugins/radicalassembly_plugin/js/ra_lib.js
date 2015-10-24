@@ -1,4 +1,4 @@
-function sendAjax($, isWithAuth, rType, rURL, rData, rContentType) {
+function sendAjax($, isWithAuth, rType, rURL, rData, rDataType) {
     var authhead = (isWithAuth) ?
         {headers: {'Authorization': 'Basic ' + btoa('ra' + ':' + '**b@by**')}} :
         {};
@@ -7,7 +7,7 @@ function sendAjax($, isWithAuth, rType, rURL, rData, rContentType) {
         type: rType,
         url: rURL,
         data: rData,
-        contentType: rContentType,
+        dataType: rDataType,
     }, authhead));
 }
 
@@ -16,5 +16,5 @@ function sendAjaxGetJSON($, isWithAuth, url, data) {
 }
 
 function sendAjaxPostJSON($, isWithAuth, url, data) {
-    return sendAjaxPostJSON($, isWithAuth, 'POST', url, data, 'json');
+    return sendAjax($, isWithAuth, 'POST', url, data, 'json');
 }
