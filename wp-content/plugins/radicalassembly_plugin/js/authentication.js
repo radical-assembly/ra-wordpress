@@ -45,7 +45,6 @@ var tokens = {app: "", request: "", authorisation: "", user: ""},
                         authorisation_token: tokens.authorisation,
                     }
                 ).then(function(result) {
-                    if (typeof result == 'string') result = JSON.parse(result);
                     if (!result.user_token || !result.user_secret) {
                         alert('No user tokens returned! Unknown error!');
                     } else if (!result.permissions.is_editor) {
@@ -71,7 +70,6 @@ var tokens = {app: "", request: "", authorisation: "", user: ""},
                             }
                         });
                     }
-
                 })
                 .fail(function() {
                     alert('Failed before user secrets were returned!');
@@ -106,7 +104,6 @@ var tokens = {app: "", request: "", authorisation: "", user: ""},
             // Redirect the user to OAC login page to grant user authorisation. See documentation
             // at docs.openacalendar.org/en/master/developers/core/webapi2.userauthentication.html
             // section marked "Redirect User to get permission".
-            if (typeof result == 'string') result = JSON.parse(result);
             if (result.request_token) {
                 tokens.request = result.request_token;
 
@@ -149,25 +146,4 @@ function getQueryParam(variable) {
         if(pair[0] == variable){return pair[1];}
     }
     return(false);
-}
-
-function sendAjax($, isWithAuth, rType, rURL, rData, rContentType) {
-    var authhead = (isWithAuth) ?
-        {headers: {'Authorization': 'Basic ' + btoa('ra' + ':' + '**b@by**')}} :
-        {};
-
-    return $.ajax($.extend({
-        type: rType,
-        url: rURL,
-        data: rData,
-        contentType: rContentType,
-    }, authhead));
-}
-
-function sendAjaxGetJSON($, isWithAuth, url, data) {
-    return sendAjax($, isWithAuth, 'GET', url, data, 'json');
-}
-
-function sendAjaxPostJSON($, isWithAuth, url, data) {
-    return sendAjaxPostJSON($, isWithAuth, 'POST', url, data, 'json');
 }
