@@ -102,14 +102,14 @@
                 user_secret: secrets.user,
                 app_token: tokens.app
             });
-            return sendAjaxPostJSON($, true, 'https://oac.radicalassembly.com/api2/event/create.json', json_data);
+            return sendAjaxPostJSON(
+                $, true, 'https://oac.radicalassembly.com/api2/event/create.json', json_data
+            );
         })
         .done(function(result) {
             if (result == 'ERROR') {
                 alert("Authentication error! Remember to create OAC app in sysadmin interface.");
             } else {
-                if (typeof result == "string") result = JSON.parse(result);
-
                 if (result.success) {
                     alert("Event data successfully POST'd.");
                 } else {
