@@ -57,17 +57,6 @@ jQuery(document).ready(function() {
 		map = L.map('Map');
 		configureBasicMap(map);
 
-		iconWithNoEvents = L.icon({
-			iconUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerNoeventsIcon.png',
-			shadowUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerShadow.png',
-
-			iconSize:     [25, 41], // size of the icon
-			shadowSize:   [41, 41], // size of the shadow
-			iconAnchor:   [12, 41], // point of the icon which will correspond to marker's location
-			shadowAnchor: [12, 41],  // the same for the shadow
-			popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-		});
-
 		iconWithEvents = L.icon({
 			iconUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerEventsIcon.png',
 			shadowUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerShadow.png',
@@ -79,22 +68,16 @@ jQuery(document).ready(function() {
 			popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 		});
 
-		var hasMarkers = false;
 		markerGroup = new L.MarkerClusterGroup();
 		map.addLayer(markerGroup);
-		for(i in mapData) {
-			if (mapData[i].lat && mapData[i].lng) {
+		for (var i in mapData) {
+			if (mapData[i].lat && mapData[i].lng && mapData[i].cached_events !== 0) {
 				var marker;
-				if (mapData[i].cached_events == 0) {
-					marker = L.marker([mapData[i].lat,mapData[i].lng], {icon: iconWithNoEvents});
-				} else {
 				marker = L.marker([mapData[i].lat,mapData[i].lng], {icon: iconWithEvents});
-				}
 				marker.slug = mapData[i].slug;
 				marker.on('click', onClickMarker);
 				markerGroup.addLayer(marker);
 				marker.addTo(map);
-				hasMarkers = true;
 			}
 		}
 		map.setView([51.5057666596, -0.11682549681],10);
