@@ -50,9 +50,9 @@
                 user_secret: true,
             }, null
         ).then(function(result){
-            tokens.app = results.app_token;
-            tokens.user = results.user_token;
-            secrets.user = results.user_secret;
+            tokens.app = result.app_token;
+            tokens.user = result.user_token;
+            secrets.user = result.user_secret;
 
             if ($('#ev-venue-code').val()) {
                 return $.get(
