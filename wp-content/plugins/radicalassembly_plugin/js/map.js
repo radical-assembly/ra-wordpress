@@ -12,8 +12,6 @@ var iconWithEvents;
 var iconWithNoEvents;
 
 var mapData = [];
-var USERNAME = 'ra';
-var PASSWORD = '**b@by**';
 
 jQuery(document).ready(function() {
 
@@ -30,19 +28,13 @@ jQuery(document).ready(function() {
 		null
 	).then(function(result) {
 		// Get the list of venues to be added to the map
-		
-		return jQuery.ajax({
-		    dataType: "json",
-		    url: 'https://oac.radicalassembly.com/api2/venue/list.json',
-		    data: {
+
+		return sendAjaxGetJSON(
+			jQuery, true, 'https://oac.radicalassembly.com/api2/venue/list.json', {
 				app_token: result.app_token,
 				user_token: result.user_token,
 				user_secret: result.user_secret,
-			},
-			headers: {
-			    "Authorization": "Basic " + btoa(USERNAME + ":" + PASSWORD)
-			}
-		});
+			});
 	}).then(function(result) {
 		// Populate the mapData array with venue data
 
@@ -96,7 +88,7 @@ jQuery(document).ready(function() {
 				if (mapData[i].cached_events == 0) {
 					marker = L.marker([mapData[i].lat,mapData[i].lng], {icon: iconWithNoEvents});
 				} else {
-					marker = L.marker([mapData[i].lat,mapData[i].lng], {icon: iconWithEvents});
+				marker = L.marker([mapData[i].lat,mapData[i].lng], {icon: iconWithEvents});
 				}
 				marker.slug = mapData[i].slug;
 				marker.on('click', onClickMarker);
