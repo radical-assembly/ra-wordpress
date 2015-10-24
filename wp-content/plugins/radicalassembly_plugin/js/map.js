@@ -88,7 +88,7 @@ jQuery(document).ready(function() {
 
 function onClickMarker() {
 	var div = jQuery('#VenuePopup');
-	if (div.size() == 0) {
+	if (div.size() === 0) {
 		var html = '<div id="VenuePopup" class="popupBox" style="display: none;">';
 		html +=	'<div id="VenuePopupClose" class="popupBoxClose"><a href="#" onclick="closePopup(); return false;" title="Close"><img src="/wp-content/plugins/radicalassembly_plugin/img/actionClosePopup.png" alt="Close"></a></div>';
 		html += '<div id="VenuePopupContent"  class="popupBoxContent">';
@@ -106,10 +106,10 @@ function onClickMarker() {
 		url: "http://oac.radicalassembly.com/api1/venue/"+this.slug+"/events.json"
 	}).success(function ( venuedata ) {
 		var html = '<ul class="popupListEvents">';
-		if (venuedata.data.length == 0) {
+		if (venuedata.data.length === 0) {
 			html += '<li class="nodata">No future events.</li>';
 		} else {
-			for(i in venuedata.data) {
+			for(var i in venuedata.data) {
 				var event = venuedata.data[i];
 				html += '<li class="event"><span class="time">'+event.start.displaylocal+'</span> <span class="summary">'+event.summaryDisplay+'</span></li>';
 			}
@@ -129,12 +129,12 @@ function configureBasicMap(mapObject) {
 }
 
 function showPopup() {
-	if (jQuery('#PopupMask').size() == 0) {
+	if (jQuery('#PopupMask').size() === 0) {
 		jQuery('body').append('<div id="PopupMask"  onclick="closePopup();" style="display:none;"></div>');
 	}
 	jQuery('#PopupMask').fadeIn(500);
 	jQuery(document).on('keyup.close_popup', function(e) {
-		if (e.keyCode == 27) { closePopup() }
+		if (e.keyCode == 27) { closePopup(); }
 	});
 	jQuery('.popupBox').css({top: (jQuery(document).scrollTop()+25)+'px' });
 }
