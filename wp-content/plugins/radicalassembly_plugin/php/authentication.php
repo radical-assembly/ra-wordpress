@@ -36,6 +36,7 @@ add_shortcode( 'AUTH-FORM', 'auth_form');
 * Enqueue the .js script taking care of the POST request to OAC on form submission.
 */
 function authentication_scripts() {
+    wp_enqueue_script('libfuncs', plugins_url('../js/ra_lib.js', __FILE__), array(), false, true);
     wp_enqueue_script('authentication', plugins_url('../js/authentication.js', __FILE__), array('jquery'), false, true);
 }
 add_action( 'wp_enqueue_scripts', 'authentication_scripts');
