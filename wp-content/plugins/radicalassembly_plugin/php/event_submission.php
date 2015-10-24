@@ -45,7 +45,7 @@ add_shortcode( 'EVENT-FORM', 'event_form');
 * Enqueue the .js script taking care of the POST request to OAC on form submission.
 */
 function event_submission_scripts() {
-    wp_enqueue_script('libfuncs', plugins_url('../js/ra_lib.js', __FILE__), array(), false, true);
-    wp_enqueue_script('event_submission', plugins_url('../js/event_submission.js', __FILE__), array('jquery'), false, true);
+    wp_enqueue_script('radicalassembly_lib', plugins_url('../js/ra_lib.js', __FILE__), array(), false, true);
+    wp_enqueue_script('radicalassembly_event_submission', plugins_url('../js/event_submission.js', __FILE__), array('jquery'), false, true);
 }
 add_action( 'wp_enqueue_scripts', 'event_submission_scripts');
