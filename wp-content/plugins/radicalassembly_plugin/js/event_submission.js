@@ -62,8 +62,9 @@
                 return $.Deferred().resolve(false);
             }
         }).then(function(result){
-            if (!result.wgs84_lat || !result.wgs84_lon) {
-                console.log("No lat/long information available.");
+            if (result === false || !result.wgs84_lat || !result.wgs84_lon) {
+                result.wgs84_lat = null;
+                result.wgs84_lon = null;
             }
 
             // Concatenate event data with authentication data
@@ -74,8 +75,7 @@
                 time_end = new Date(Date.parse($('#ev-end-datetime').val()));
 
             var json_data = {
-                event_data: JSON.stringify({
-                    username: 'anonjRVGApZPAf',
+                event_data: {
                     summary: $('#ev-summary').val(),
                     description: $('#ev-desc').val(),
                     start_at: time_start.toUTCString(),
@@ -94,8 +94,8 @@
                     venue_code: $('#ev-venue-code').val(),
                     venue_country: $('#ev-venue-country').val(),
                     venue_lat: result.wgs84_lat,
-                    venue_long: result.wgs84_lon,
-                })
+                    venue_lng: result.wgs84_lon,
+                },
             };
             $.extend(json_data, {
                 user_token: tokens.user,
