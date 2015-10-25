@@ -72,7 +72,8 @@
 							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
 								<header class="article-header">
-
+                                <img src="http://placekitten.com/300/1010" class="banner home-banner" alt="">
+    
 									<h1 class="page-title"><?php the_title(); ?></h1>
 
 								
