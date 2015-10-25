@@ -81,6 +81,7 @@
 
 								</header>
 
+
 								<section class="entry-content cf" itemprop="articleBody">
 									<?php
 										// the content (pretty self explanatory huh)
@@ -88,6 +89,17 @@
 
 										?>
 								</section>
+                                <section class="trail-modules">
+                                    <div class="four columns">
+                                        <div class="trail"><img src="http://placekitten.com/200/300" alt=""></div>
+                                    </div>
+                                    <div class="four columns">
+                                        <div class="trail"><img src="http://placekitten.com/200/300" alt=""></div>
+                                    </div>
+                                    <div class="four columns">
+                                        <div class="trail"><img src="http://placekitten.com/200/300" alt=""></div>
+                                    </div>
+                                </section>
 
 
 								<footer class="article-footer">
