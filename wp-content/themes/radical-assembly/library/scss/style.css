@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! Made with Bones: http://themble.com/bones :) */
 /******************************************************************
 Site Name:
@@ -614,230 +615,150 @@ Author:
 
 Stylesheet: Grid Stylesheet
 
-I've seperated the grid so you can swap it out easily. It's
-called at the top the style.scss stylesheet.
+Importing Dave Gamache's Excellent Skeleton grid
 
-There are a ton of grid solutions out there. You should definitely
-experiment with your own. Here are some recommendations:
-
-http://gridsetapp.com - Love this site. Responsive Grids made easy.
-http://susy.oddbird.net/ - Grids using Compass. Very elegant.
-http://gridpak.com/ - Create your own responsive grid.
-https://github.com/dope/lemonade - Neat lightweight grid.
-
-
-The grid below is a custom built thingy I modeled a bit after
-Gridset. It's VERY basic and probably shouldn't be used on
-your client projects. The idea is you learn how to roll your
-own grids. It's better in the long run and allows you full control
-over your project's layout.
+* Skeleton V2.0.4
+* Copyright 2014, Dave Gamache
+* www.getskeleton.com
 
 ******************************************************************/
-.last-col {
-  float: right;
-  padding-right: 0 !important; }
+/* Grid
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1170spx;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box; }
 
-/*
-Mobile Grid Styles
-These are the widths for the mobile grid.
-There are four types, but you can add or customize
-them however you see fit.
-*/
-@media (max-width: 767px) {
-  .m-all {
-    float: left;
-    padding-right: 0.75em;
-    width: 100%;
-    padding-right: 0; }
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box; }
 
-  .m-1of2 {
-    float: left;
-    padding-right: 0.75em;
-    width: 50%; }
-
-  .m-1of3 {
-    float: left;
-    padding-right: 0.75em;
-    width: 33.33%; }
-
-  .m-2of3 {
-    float: left;
-    padding-right: 0.75em;
-    width: 66.66%; }
-
-  .m-1of4 {
-    float: left;
-    padding-right: 0.75em;
-    width: 25%; }
-
-  .m-3of4 {
-    float: left;
-    padding-right: 0.75em;
-    width: 75%; } }
-/* Portrait tablet to landscape */
-@media (min-width: 768px) and (max-width: 1029px) {
-  .t-all {
-    float: left;
-    padding-right: 0.75em;
-    width: 100%;
-    padding-right: 0; }
-
-  .t-1of2 {
-    float: left;
-    padding-right: 0.75em;
-    width: 50%; }
-
-  .t-1of3 {
-    float: left;
-    padding-right: 0.75em;
-    width: 33.33%; }
-
-  .t-2of3 {
-    float: left;
-    padding-right: 0.75em;
-    width: 66.66%; }
-
-  .t-1of4 {
-    float: left;
-    padding-right: 0.75em;
-    width: 25%; }
-
-  .t-3of4 {
-    float: left;
-    padding-right: 0.75em;
-    width: 75%; }
-
-  .t-1of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 20%; }
-
-  .t-2of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 40%; }
-
-  .t-3of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 60%; }
-
-  .t-4of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 80%; } }
-/* Landscape to small desktop */
-@media (min-width: 1030px) {
-  .d-all {
-    float: left;
-    padding-right: 0.75em;
-    width: 100%;
-    padding-right: 0; }
-
-  .d-1of2 {
-    float: left;
-    padding-right: 0.75em;
-    width: 50%; }
-
-  .d-1of3 {
-    float: left;
-    padding-right: 0.75em;
-    width: 33.33%; }
-
-  .d-2of3 {
-    float: left;
-    padding-right: 0.75em;
-    width: 66.66%; }
-
-  .d-1of4 {
-    float: left;
-    padding-right: 0.75em;
-    width: 25%; }
-
-  .d-3of4 {
-    float: left;
-    padding-right: 0.75em;
-    width: 75%; }
-
-  .d-1of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 20%; }
-
-  .d-2of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 40%; }
-
-  .d-3of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 60%; }
-
-  .d-4of5 {
-    float: left;
-    padding-right: 0.75em;
+/* For devices larger than 400px */
+@media (min-width: 400px) {
+  .container {
+    width: 85%;
+    padding: 0; } }
+/* For devices larger than 550px */
+@media (min-width: 550px) {
+  .container {
     width: 80%; }
 
-  .d-1of6 {
-    float: left;
-    padding-right: 0.75em;
-    width: 16.6666666667%; }
+  .column,
+  .columns {
+    margin-left: 4%; }
 
-  .d-1of7 {
-    float: left;
-    padding-right: 0.75em;
-    width: 14.2857142857%; }
+  .column:first-child,
+  .columns:first-child {
+    margin-left: 0; }
 
-  .d-2of7 {
-    float: left;
-    padding-right: 0.75em;
-    width: 28.5714286%; }
+  .one.column,
+  .one.columns {
+    width: 4.66666666667%; }
 
-  .d-3of7 {
-    float: left;
-    padding-right: 0.75em;
-    width: 42.8571429%; }
+  .two.columns {
+    width: 13.3333333333%; }
 
-  .d-4of7 {
-    float: left;
-    padding-right: 0.75em;
-    width: 57.1428572%; }
+  .three.columns {
+    width: 22%; }
 
-  .d-5of7 {
-    float: left;
-    padding-right: 0.75em;
-    width: 71.4285715%; }
+  .four.columns {
+    width: 30.6666666667%; }
 
-  .d-6of7 {
-    float: left;
-    padding-right: 0.75em;
-    width: 85.7142857%; }
+  .five.columns {
+    width: 39.3333333333%; }
 
-  .d-1of8 {
-    float: left;
-    padding-right: 0.75em;
-    width: 12.5%; }
+  .six.columns {
+    width: 48%; }
 
-  .d-1of9 {
-    float: left;
-    padding-right: 0.75em;
-    width: 11.1111111111%; }
+  .seven.columns {
+    width: 56.6666666667%; }
 
-  .d-1of10 {
-    float: left;
-    padding-right: 0.75em;
-    width: 10%; }
+  .eight.columns {
+    width: 65.3333333333%; }
 
-  .d-1of11 {
-    float: left;
-    padding-right: 0.75em;
-    width: 9.09090909091%; }
+  .nine.columns {
+    width: 74.0%; }
 
-  .d-1of12 {
-    float: left;
-    padding-right: 0.75em;
-    width: 8.33%; } }
+  .ten.columns {
+    width: 82.6666666667%; }
+
+  .eleven.columns {
+    width: 91.3333333333%; }
+
+  .twelve.columns {
+    width: 100%;
+    margin-left: 0; }
+
+  .one-third.column {
+    width: 30.6666666667%; }
+
+  .two-thirds.column {
+    width: 65.3333333333%; }
+
+  .one-half.column {
+    width: 48%; }
+
+  /* Offsets */
+  .offset-by-one.column,
+  .offset-by-one.columns {
+    margin-left: 8.66666666667%; }
+
+  .offset-by-two.column,
+  .offset-by-two.columns {
+    margin-left: 17.3333333333%; }
+
+  .offset-by-three.column,
+  .offset-by-three.columns {
+    margin-left: 26%; }
+
+  .offset-by-four.column,
+  .offset-by-four.columns {
+    margin-left: 34.6666666667%; }
+
+  .offset-by-five.column,
+  .offset-by-five.columns {
+    margin-left: 43.3333333333%; }
+
+  .offset-by-six.column,
+  .offset-by-six.columns {
+    margin-left: 52%; }
+
+  .offset-by-seven.column,
+  .offset-by-seven.columns {
+    margin-left: 60.6666666667%; }
+
+  .offset-by-eight.column,
+  .offset-by-eight.columns {
+    margin-left: 69.3333333333%; }
+
+  .offset-by-nine.column,
+  .offset-by-nine.columns {
+    margin-left: 78.0%; }
+
+  .offset-by-ten.column,
+  .offset-by-ten.columns {
+    margin-left: 86.6666666667%; }
+
+  .offset-by-eleven.column,
+  .offset-by-eleven.columns {
+    margin-left: 95.3333333333%; }
+
+  .offset-by-one-third.column,
+  .offset-by-one-third.columns {
+    margin-left: 34.6666666667%; }
+
+  .offset-by-two-thirds.column,
+  .offset-by-two-thirds.columns {
+    margin-left: 69.3333333333%; }
+
+  .offset-by-one-half.column,
+  .offset-by-one-half.columns {
+    margin-left: 52%; } }
 /*********************
 IMPORTING MODULES
 Modules are reusable blocks or elements we use throughout the project.
@@ -985,7 +906,7 @@ textarea,
   border: 0;
   width: 100%;
   max-width: 400px;
-  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #eaedf2;
   -webkit-transition: background-color 0.24s ease-in-out;
   transition: background-color 0.24s ease-in-out; }
@@ -1224,6 +1145,100 @@ select {
   background-repeat: no-repeat;
   background-position: 97.5% center; }
 
+#signup .row {
+  position: relative;
+  background: #fff; }
+#signup .contact_label {
+  font-weight: 300;
+  margin-top: 5px;
+  pointer-events: none; }
+#signup input.input_label,
+#signup input.input_label:focus {
+  width: 100%;
+  border: none; }
+#signup input[type="submit"] {
+  width: 100%;
+  background: #ff5800;
+  color: #fff;
+  border: none;
+  border-radius: none;
+  padding: 8px;
+  text-transform: uppercase; }
+#signup textarea.floatLabel {
+  resize: none;
+  padding-right: 100px; }
+#signup input[type="text"],
+#signup input[type="email"],
+#signup input[type="tel"],
+#signup textarea {
+  background: none;
+  display: block;
+  padding: 8px;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 18px;
+  color: #9a9b9c;
+  font-size: 16px;
+  font-weight: 300;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  z-index: 2;
+  border: none; }
+  #signup input[type="text"]:focus, #signup input[type="text"]:hover,
+  #signup input[type="email"]:focus,
+  #signup input[type="email"]:hover,
+  #signup input[type="tel"]:focus,
+  #signup input[type="tel"]:hover,
+  #signup textarea:focus,
+  #signup textarea:hover {
+    outline: none; }
+    #signup input[type="text"]:focus label, #signup input[type="text"]:hover label,
+    #signup input[type="email"]:focus label,
+    #signup input[type="email"]:hover label,
+    #signup input[type="tel"]:focus label,
+    #signup input[type="tel"]:hover label,
+    #signup textarea:focus label,
+    #signup textarea:hover label {
+      cursor: text; }
+#signup select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer; }
+#signup label {
+  position: absolute;
+  left: 0;
+  top: -4px;
+  color: #999;
+  font-size: 16px;
+  display: inline-block;
+  padding: 6px;
+  font-weight: 400;
+  background-color: rgba(255, 255, 255, 0);
+  -webkit-transition: color 0.3s, top 0.3s, background-color 0.8s;
+  transition: color 0.3s, top 0.3s, background-color 0.8s;
+  z-index: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+  text-align: left; }
+#signup label.active {
+  right: 0;
+  left: auto;
+  color: #fff;
+  background: #ff5800;
+  padding: 6px;
+  top: -5px;
+  width: auto;
+  height: 40px; }
+#signup label.has-content {
+  right: 0;
+  left: auto;
+  color: #f8971d;
+  background: transparent;
+  padding: 6px;
+  top: -6px;
+  width: auto; }
+
 /*********************
 BASE (MOBILE) SIZE
 This are the mobile styles. It's what people see on their phones. If
@@ -1246,7 +1261,7 @@ and will be used across all viewports.
 GENERAL STYLES
 *********************/
 body {
-  font-family: 18px/23px "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 100%;
   line-height: 1.5;
   color: #5c6b80;
@@ -1302,6 +1317,11 @@ style a page via class
 /* parent page template */
 /* child page template */
 /* replace the number to the corresponding page number */
+.logged-in #container {
+  position: relative; }
+.logged-in header.header.fixed {
+  top: 31px; }
+
 /* if user is logged in */
 /* paged items like search results or archives */
 /* individual paged (i.e. body.paged-3) */
@@ -1315,14 +1335,18 @@ LAYOUT & GRID STYLES
 /*********************
 LINK STYLES
 *********************/
-a, a:visited {
-  color: #f01d4f
+a,
+a:visited {
+  color: #ff5800
   /* on hover */
   /* on click */
   /* mobile tap color */ }
-  a:hover, a:focus, a:visited:hover, a:visited:focus {
-    color: #d10e3c; }
-  a:link, a:visited:link {
+  a:hover, a:focus,
+  a:visited:hover,
+  a:visited:focus {
+    color: #d14800; }
+  a:link,
+  a:visited:link {
     /*
     this highlights links on iPhones/iPads.
     so it basically works like the :hover selector
@@ -1333,33 +1357,58 @@ a, a:visited {
 /******************************************************************
 H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5 {
   text-rendering: optimizelegibility;
-  font-weight: 500;
-  /* if you're going to use webfonts, be sure to check your weights
+  font-weight: 500
+  /*
+  if you're going to use webfonts, be sure to check your weights
   http://css-tricks.com/watch-your-font-weight/
   */
   /* removing text decoration from all headline links */ }
-  h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
+  h1 a,
+  .h1 a,
+  h2 a,
+  .h2 a,
+  h3 a,
+  .h3 a,
+  h4 a,
+  .h4 a,
+  h5 a,
+  .h5 a {
     text-decoration: none; }
 
-h1, .h1 {
-  font-size: 2.5em;
-  line-height: 1.333em; }
+h1,
+.h1 {
+  font-size: 2.9rem;
+  line-height: 3.4rem;
+  color: #fff; }
 
-h2, .h2 {
+h2,
+.h2 {
   font-size: 1.75em;
   line-height: 1.4em;
   margin-bottom: 0.375em; }
 
-h3, .h3 {
+h3,
+.h3 {
   font-size: 1.125em; }
 
-h4, .h4 {
+h4,
+.h4 {
   font-size: 1.1em;
   font-weight: 700; }
 
-h5, .h5 {
+h5,
+.h5 {
   font-size: 0.846em;
   line-height: 2.09em;
   text-transform: uppercase;
@@ -1369,18 +1418,58 @@ h5, .h5 {
 HEADER STYLES
 *********************/
 .header {
-}
+  -webkit-transition: all 0.3 ease;
+          transition: all 0.3 ease;
+  background: transparent; }
 
+.header.fixed {
+  background: #323944;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10; }
+  .header.fixed .left-brand {
+    padding: 0; }
+  .header.fixed .right-brand {
+    right: 1%;
+    top: 23%; }
+  .header.fixed .nav {
+    margin: 1px 0; }
 
- .logo {
+#logo {
+  margin: 0.75em 0; }
+  #logo .logo {
     display: block;
     padding-left: 35px;
     height: 24px;
     background: url(../images/logo.svg) no-repeat left center;
     background-size: 24px 24px;
     text-decoration: none;
-}
+    text-transform: uppercase;
+    color: #fff; }
 
+.left-brand {
+  display: block;
+  width: 205px;
+  margin: 0 auto;
+  padding: 1em 0 0.7em; }
+
+.right-brand {
+  position: absolute;
+  top: 5px;
+  right: 5px; }
+  .right-brand .fb,
+  .right-brand .twit {
+    background-size: 26px 26px !important;
+    display: inline-block;
+    height: 26px;
+    margin: 0 0.15rem;
+    width: 26px; }
+  .right-brand .fb {
+    background: transparent url("../images/fb.svg") no-repeat scroll left center; }
+  .right-brand .twit {
+    background: transparent url("../images/twitter.svg") no-repeat scroll left center; }
 
 /*********************
 NAVIGATION STYLES
@@ -1394,11 +1483,15 @@ and more scalable.
 */
 .nav {
   border-bottom: 0;
-  margin: 0
+  display: table;
+  background: #fff
   /* end .menu li */
   /* highlight current page */
   /* end current highlighters */ }
   .nav li {
+    display: table-cell;
+    text-align: center;
+    border-right: 1px solid #323944
     /*
     so you really have to rethink your dropdowns for mobile.
     you don't want to have it expand too much because the
@@ -1408,15 +1501,17 @@ and more scalable.
     */ }
     .nav li a {
       display: block;
-      color: #fff;
+      color: #323944;
       text-decoration: none;
-      padding: 0.75em;
+      padding: 0.75em
       /*
       remember this is for mobile ONLY, so there's no need
       to even declare hover styles here, you can do it in
       the style.scss file where it's relevant. We want to
       keep this file as small as possible!
       */ }
+    .nav li:last-child {
+      border-right: 0; }
     .nav li ul.sub-menu li a,
     .nav li ul.children li a {
       padding-left: 30px; }
@@ -1430,7 +1525,6 @@ POSTS & CONTENT STYLES
 
 .hentry {
   background-color: #fff;
-  border-radius: 3px;
   margin-bottom: 1.5em;
   border: 1px solid #ccc; }
   .hentry header {
@@ -1467,11 +1561,11 @@ POSTS & CONTENT STYLES
 .entry-content {
   padding: 1.5em 1.5em 0
   /*
-  image alignment on a screen this size may be
-  a bit difficult. It's set to start aligning
-  and floating images at the next breakpoint,
-  but it's up to you. Feel free to change it up.
-  */ }
+          image alignment on a screen this size may be
+          a bit difficult. It's set to start aligning
+          and floating images at the next breakpoint,
+          but it's up to you. Feel free to change it up.
+          */ }
   .entry-content p {
     margin: 0 0 1.5em; }
   .entry-content table {
@@ -1574,7 +1668,8 @@ PAGE NAVI STYLES
     display: inline;
     overflow: hidden;
     border-right: 1px solid #eaedf2; }
-  .pagination a, .pagination span {
+  .pagination a,
+  .pagination span {
     margin: 0;
     text-decoration: none;
     padding: 0;
@@ -1585,7 +1680,9 @@ PAGE NAVI STYLES
     min-width: 1em;
     display: block;
     color: #2980b9; }
-    .pagination a:hover, .pagination a:focus, .pagination span:hover, .pagination span:focus {
+    .pagination a:hover, .pagination a:focus,
+    .pagination span:hover,
+    .pagination span:focus {
       background-color: #2980b9;
       color: #fff; }
   .pagination .current {
@@ -1736,6 +1833,9 @@ COMMENT FORM STYLES
 /*********************
 SIDEBARS & ASIDES
 *********************/
+.sidebar {
+  background: #fff; }
+
 .widget ul li {
   /* deep nesting */ }
 
@@ -1747,6 +1847,9 @@ SIDEBARS & ASIDES
   border-radius: 2px;
   margin-bottom: 1.5em; }
 
+.searchform input#s {
+  width: 75%; }
+
 /*********************
 FOOTER STYLES
 *********************/
@@ -1756,15 +1859,30 @@ FOOTER STYLES
   color: #f8f9fa; }
 
 /*
-if you checked out the link above:
-http://www.alistapart.com/articles/organizing-mobile/
-you'll want to style the footer nav
-a bit more in-depth. Remember to keep
-it simple because you'll have to
-override these styles for the desktop
-view.
-*/
+    if you checked out the link above:
+    http://www.alistapart.com/articles/organizing-mobile/
+    you'll want to style the footer nav
+    a bit more in-depth. Remember to keep
+    it simple because you'll have to
+    override these styles for the desktop
+    view.
+    */
 /* end .footer-links */
+/*********************
+MASTHEAD STYLES
+*********************/
+#masthead-form {
+  color: #fff;
+  text-align: center; }
+  #masthead-form .wrapper {
+    margin: 0 5%; }
+
+/*********************
+GENERAL STYLES
+*********************/
+#inner-content.container {
+  background: #fff; }
+
 /*********************
 LARGER MOBILE DEVICES
 This is for devices like the Galaxy Note or something that's
@@ -1797,6 +1915,13 @@ tweeners.
   /*********************
   NAVIGATION STYLES
   *********************/
+  .nav {
+    background: none; }
+    .nav li {
+      border-color: #fff; }
+      .nav li a {
+        color: #fff; }
+
   /* .menu is clearfixed inside mixins.scss */
   .menu {
     /* end .menu ul */ }
@@ -1805,14 +1930,14 @@ tweeners.
       /* highlight current page */
       /* end current highlighters */ }
       .menu ul li {
-        /*
-        plan your menus and drop-downs wisely.
-        */ }
+            /*
+				plan your menus and drop-downs wisely.
+				*/ }
         .menu ul li a {
-          /*
-          you can use hover styles here even though this size
-          has the possibility of being a mobile device.
-          */ }
+                /*
+					you can use hover styles here even though this size
+					has the possibility of being a mobile device.
+					*/ }
 
   /* end .menu */
   /*********************
@@ -1821,15 +1946,18 @@ tweeners.
   /* entry content */
   .entry-content {
     /* at this larger size, we can start to align images */ }
-    .entry-content .alignleft, .entry-content img.alignleft {
+    .entry-content .alignleft,
+    .entry-content img.alignleft {
       margin-right: 1.5em;
       display: inline;
       float: left; }
-    .entry-content .alignright, .entry-content img.alignright {
+    .entry-content .alignright,
+    .entry-content img.alignright {
       margin-left: 1.5em;
       display: inline;
       float: right; }
-    .entry-content .aligncenter, .entry-content img.aligncenter {
+    .entry-content .aligncenter,
+    .entry-content img.aligncenter {
       margin-right: auto;
       margin-left: auto;
       display: block;
@@ -1843,7 +1971,14 @@ tweeners.
   check your menus here. do they look good?
   do they need tweaking?
   */
-  /* end .footer-links */ }
+  /* end .footer-links */
+  /*********************
+  MASTHEAD STYLES
+  *********************/
+  #masthead-form h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0.67em 0 0.3em; } }
 /*********************
 TABLET & SMALLER LAPTOPS
 This is the average viewing window. So Desktops, Laptops, and
@@ -1876,11 +2011,25 @@ you can add resource intensive styles.
   /*********************
   HEADER STYLES
   *********************/
+  .left-brand {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    -webkit-transform: scaleX(1.0042);
+        -ms-transform: scaleX(1.0042);
+            transform: scaleX(1.0042); }
+
+  .right-brand {
+    right: 1%;
+    top: 1%; }
+
   /*********************
   NAVIGATION STYLES
   *********************/
   .nav {
-    border: 0
+    border: 0;
+    margin: 5em 0 0;
+    float: right
     /* end .menu ul li */
     /* highlight current page */
     /* end current highlighters */ }
@@ -1890,16 +2039,16 @@ you can add resource intensive styles.
     .nav li {
       float: left;
       position: relative
-      /*
-      plan your menus and drop-downs wisely.
-      */
+        /*
+		plan your menus and drop-downs wisely.
+		*/
       /* showing sub-menus */ }
       .nav li a {
         border-bottom: 0
-        /*
-        you can use hover styles here even though this size
-        has the possibility of being a mobile device.
-        */ }
+            /*
+			you can use hover styles here even though this size
+			has the possibility of being a mobile device.
+			*/ }
         .nav li a:hover, .nav li a:focus {
           color: #fff;
           text-decoration: underline; }
@@ -1914,11 +2063,11 @@ you can add resource intensive styles.
         /* highlight sub-menu current page */ }
         .nav li ul.sub-menu li,
         .nav li ul.children li {
-          /*
-          if you need to go deeper, go nuts
-          just remember deeper menus suck
-          for usability. k, bai.
-          */ }
+                /*
+				if you need to go deeper, go nuts
+				just remember deeper menus suck
+				for usability. k, bai.
+				*/ }
           .nav li ul.sub-menu li a,
           .nav li ul.children li a {
             padding-left: 10px;
@@ -1941,8 +2090,6 @@ you can add resource intensive styles.
   /*********************
   SIDEBARS & ASIDES
   *********************/
-  .sidebar { }
-
   .widgettitle {
     border-bottom: 2px solid #444;
     margin-bottom: 0.75em; }
@@ -1977,11 +2124,11 @@ you can add resource intensive styles.
   mobile. Make sure to double check these!
   */
   .footer-links ul li {
-    /*
-    be careful with the depth of your menus.
-    it's very rare to have multi-depth menus in
-    the footer.
-    */ }
+            /*
+			be careful with the depth of your menus.
+			it's very rare to have multi-depth menus in
+			the footer.
+			*/ }
 
   /* end .footer-links */ }
 /*********************
