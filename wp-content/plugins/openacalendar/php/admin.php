@@ -157,7 +157,7 @@ function OpenACalendar_admin_menu() {
 		$success = OpenACalendar_db_deletePool(intval($_POST['poolid']));
 
 		if ($success) {
-			print '<p>Pool '.$pool.' has been successfully deleted</p>';
+			print '<p>Pool '.$pool['title'].' has been successfully deleted</p>';
 		} else {
 			print '<p>There was a problem deleting the pool</p>';
 		}
@@ -331,7 +331,7 @@ function OpenACalendar_admin_menu() {
 
 				print '<form action="" method="post">';
 				print '<input type="hidden" name="poolid" value="'.$pool['id'].'">';
-				print '<input type="hidden" name="action" value="deletpool">';
+				print '<input type="hidden" name="action" value="deletepool">';
 				print '<input type="submit" value="Delete event pool">';
 				print '</form>';
 			}

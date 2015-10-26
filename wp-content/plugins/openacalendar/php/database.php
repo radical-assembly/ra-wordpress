@@ -192,7 +192,7 @@ function OpenACalendar_db_deleteSource(OpenACalendarModelSource $source) {
 
 function OpenACalendar_db_deletePool($poolid) {
 	global $wpdb;
-	$wpdb->update($wpdb->prefix."openacalendar_pool",array(
+	return $wpdb->update($wpdb->prefix."openacalendar_pool",array(
 		'deleted'=>1,
 	),array(
 		'id'=>$poolid,
