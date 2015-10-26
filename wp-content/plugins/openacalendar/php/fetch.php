@@ -38,8 +38,8 @@ function OpenACalendar_getAndStoreEventsForSource(OpenACalendarModelSource $sour
 	curl_setopt($ch, CURLOPT_URL, $sourcedata->getJSONAPIURL());
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_USERAGENT, 'OpenACalendar WordPress plugin from jmbtechnology.co.uk, site '.get_site_url());
-	if ($sourcedata->getAuthParam()) {
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array( 'Authorization: '.$sourcedata->getAuthParam()));
+	if ($sourcedata->getAuthscheme()) {
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array( 'Authorization: '.$sourcedata->getAuthparam()));
 	}
 	$dataString = curl_exec($ch);
 	$response = curl_getinfo( $ch );

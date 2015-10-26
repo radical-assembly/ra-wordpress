@@ -12,14 +12,14 @@
 
 function OpenACalendar_database_setup() {
 	global $wpdb;
-	
-	$currentVersion = 4;
-	$installedVersion = get_option( "openacalendar_db_version" );	
-	
+
+	$currentVersion = 2;
+	$installedVersion = get_option( "openacalendar_db_version" );
+
 	if ($installedVersion != $currentVersion) {
-		
+
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-		
+
 		dbDelta(  "CREATE TABLE ".$wpdb->prefix."openacalendar_pool  (
 			id MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
 			title VARCHAR(255) DEFAULT '' NOT NULL,
@@ -38,6 +38,8 @@ function OpenACalendar_database_setup() {
 			country_code VARCHAR(10) NULL,
 			user_attending_events VARCHAR(255) NULL,
 			deleted MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,
+			protocol VARCHAR(10) DEFAULT '' NOT NULL,
+			auth_scheme VARCHAR(255) DEFAULT '' NOT NULL,
 			UNIQUE KEY id (id)
 		 ) CHARSET=".DB_CHARSET.";" );
 
@@ -57,19 +59,18 @@ function OpenACalendar_database_setup() {
 			image_url_full VARCHAR(255) NULL,
 			image_title VARCHAR(255) NULL,
 			image_source_text VARCHAR(255) NULL,
-			deleted MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,			
+			deleted MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,
 			UNIQUE KEY id (id)
 		 ) CHARSET=".DB_CHARSET.";" );
-	
+
 		dbDelta(  "CREATE TABLE ".$wpdb->prefix."openacalendar_event_in_pool (
 			eventid INT UNSIGNED NOT NULL,
 			poolid MEDIUMINT UNSIGNED NOT NULL,
 			sourceid MEDIUMINT UNSIGNED NOT NULL,
 			UNIQUE KEY id (eventid,poolid,sourceid)
 		 ) CHARSET=".DB_CHARSET.";" );
-		
+
 		update_option( "openacalendar_db_version", $currentVersion );
 	}
-		
-}
 
+}

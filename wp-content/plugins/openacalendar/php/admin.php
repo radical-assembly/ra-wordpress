@@ -21,9 +21,7 @@ function OpenACalendar_admin_newSourceHTML() {
 		'<option value="userattending">user attending</option>'.
 		'</select>: <input type="text" name="filterValue"><br>'.
 		'Authorisation credentials (optional):<br>'.
-		'<select name="authScheme"><option value="">Authorisation Scheme</option><option value="Basic">Basic</option>'.
-		'<input type="text" name="username" placeholder="username">'.
-		'<input type="password" name="password" placeholder="password">';
+		'<select name="authscheme"><option value="None">Authorisation Scheme</option><option value="Basic">Basic</option>';
 }
 
 
@@ -45,12 +43,8 @@ function OpenACalendar_admin_process_new_source($poolid) {
 	}
 	$source->setBaseurl($_POST['baseurl']);
 	$source->setProtocol($_POST['baseurl']);
-	if (isset($_POST['authScheme']) && $_POST['authScheme'] == 'Basic') {
-		if (isset($_POST['username']) && isset($_POST['password'])) {
-			$source->setAuthParam($_POST['authScheme'], $_POST['username'], $_POST['password']);
-		} else {
-			throw new Exception('Username and/or Password not entered.');
-		}
+	if (isset($_POST['authscheme'])) {
+		$source->setAuthscheme($_POST['authscheme']);
 	}
 
 	return OpenACalendar_db_newSource($source);
@@ -74,15 +68,21 @@ function OpenACalendar_admin_menu() {
 		if ($pool) {
 			$sources = OpenACalendar_db_getCurrentSourcesForPool($pool['id']);
 			foreach ($sources as $source) {
-				try {
-					$count = OpenACalendar_getAndStoreEventsForSource($source);
-					print "<p>Source: ".htmlspecialchars($source->getBaseurl());
-					print " got ".$count." events.";
-					print "</p>";
-				} catch (OpenACalendarGetEventsException $error) {
-					print "<p>Source: ".htmlspecialchars($source->getBaseurl());
-					print " had an error! Message: ".$error->getMessage();
-					print "</p>";
+				if ($source->getAuthscheme()) {
+					print '<p>Source: '.htmlspecialchars($source->getBaseurl());
+					print ' requires authorisation credentials.';
+					print 'Please get events for this event individually.</p>';
+				} else {
+					try {
+						$count = OpenACalendar_getAndStoreEventsForSource($source);
+						print "<p>Source: ".htmlspecialchars($source->getBaseurl());
+						print " got ".$count." events.";
+						print "</p>";
+					} catch (OpenACalendarGetEventsException $error) {
+						print "<p>Source: ".htmlspecialchars($source->getBaseurl());
+						print " had an error! Message: ".$error->getMessage();
+						print "</p>";
+					}
 				}
 			}
 		}
@@ -95,15 +95,28 @@ function OpenACalendar_admin_menu() {
 
 		$source = OpenACalendar_db_getCurrentSource(intval($_POST['sourceid']));
 		if ($source) {
-			try {
-				$count = OpenACalendar_getAndStoreEventsForSource($source);
-				print "<p>Source: ".htmlspecialchars($source->getBaseurl());
-				print " got ".$count." events.";
-				print "</p>";
-			} catch (OpenACalendarGetEventsException $error) {
-				print "<p>Source: ".htmlspecialchars($source->getBaseurl());
-				print " had an error! Message: ".$error->getMessage();
-				print "</p>";
+			if ($source->getAuthscheme() && (!isset($_POST['username']) || !isset($_POST['password']))) {
+				print '<p>This source requires authorisation credentials.</p>'.
+				'<p>Please enter the username and password</p>'.
+				'<form action="" method="post">'.
+				'<input type="hidden" name="action" value="getevents">'.
+				'<input type="hidden" name="sourceid" value="'.$source->getId().'">'.
+				'<input type="text" name="username" placeholder="username">'.
+				'<input type="password" name="password" placeholder="password">'.
+				'<input type="submit" value="Submit">'.
+				'</form>';
+			} else {
+				try {
+					$source->setAuthparam($_POST['username'], $_POST['password']);
+					$count = OpenACalendar_getAndStoreEventsForSource($source);
+					print "<p>Source: ".htmlspecialchars($source->getBaseurl());
+					print " got ".$count." events.";
+					print "</p>";
+				} catch (OpenACalendarGetEventsException $error) {
+					print "<p>Source: ".htmlspecialchars($source->getBaseurl());
+					print " had an error! Message: ".$error->getMessage();
+					print "</p>";
+				}
 			}
 		}
 
@@ -310,6 +323,12 @@ function OpenACalendar_admin_menu() {
 						print '<input type="hidden" name="sourceid" value="'.$source->getId().'">';
 						print '<input type="hidden" name="action" value="deletesource">';
 						print '<input type="submit" value="Remove Source">';
+						print '</form>';
+
+						print '<form action="" method="post">';
+						print '<input type="hidden" name="sourceid" value="'.$source->getId().'">';
+						print '<input type="hidden" name="action" value="getevents">';
+						print '<input type="submit" value="Get events for source">';
 						print '</form>';
 
 						print "</td>";

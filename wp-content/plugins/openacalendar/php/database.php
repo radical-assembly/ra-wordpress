@@ -146,7 +146,9 @@ function OpenACalendar_db_newSource(OpenACalendarModelSource $source) {
 				"curated_list_slug=%d AND ".
 				"country_code=%s AND ".
 				"user_attending_events=%d AND ".
-				"baseurl=%s  ",
+				"baseurl=%s AND ".
+				"protocol=%s AND ".
+				"auth_scheme=%s  ",
 				$source->getPoolID(),
 				$source->getGroupSlug(),
 				$source->getVenueSlug(),
@@ -154,7 +156,9 @@ function OpenACalendar_db_newSource(OpenACalendarModelSource $source) {
 				$source->getCuratedListSlug(),
 				$source->getCountryCode(),
 				$source->getUserAttendingEvents(),
-				$source->getBaseurl()
+				$source->getBaseurl(),
+				$source->getProtocol(),
+				$source->getAuthscheme()
 				)
 			,ARRAY_A);
 	if ($existing) {
@@ -174,6 +178,8 @@ function OpenACalendar_db_newSource(OpenACalendarModelSource $source) {
 				'country_code'=>$source->getCountryCode(),
 				'user_attending_events'=>$source->getUserAttendingEvents(),
 				'baseurl'=>$source->getBaseurl(),
+				'protocol'=>$source->getProtocol(),
+				'auth_scheme'=>$source->getAuthscheme()
 			));
 		$source->setId($wpdb->insert_id);
 	}

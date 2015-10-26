@@ -17,6 +17,7 @@ class OpenACalendarModelSource {
 	protected $poolid;
 	protected $baseurl;
 	protected $protocol;
+	protected $auth_scheme;
 	protected $auth_param;
 
 	protected $group_slug;
@@ -37,6 +38,8 @@ class OpenACalendarModelSource {
 		$this->curated_list_slug = $data['curated_list_slug'] ? $data['curated_list_slug'] : null;
 		$this->country_code = $data['country_code'] ? $data['country_code'] : null;
 		$this->user_attending_events = $data['user_attending_events'] ? $data['user_attending_events'] : null;
+		$this->protocol = $data['protocol'] ? $data['protocol'] : null;
+		$this->auth_scheme = $data['auth_scheme'] ? $data['auth_scheme'] : null;
 	}
 
 	public function getId() { return $this->id; }
@@ -68,14 +71,23 @@ class OpenACalendarModelSource {
 		return ($this->protocol) ? $this->protocol : 'http';
 	}
 
-	public function setAuthParam($scheme, $username, $password) {
+	public function setAuthscheme($scheme) {
 		if ($scheme === 'Basic') {
-			$this->auth_param = 'Basic '.base64_encode($username.':'.$password);
+			$this->auth_scheme = 'Basic';
 		} else {
-			throw new Exception('Authorisation schemes other than "Basic" are not supported.');
+			throw new Exception('Authorisation scheme '.$scheme.' not supported.');
 		}
 	}
-	public function getAuthParam() {
+	public function getAuthscheme() {
+		return $this->auth_scheme;
+	}
+
+	public function setAuthparam($username, $password) {
+		if ($this->auth_scheme === 'Basic') {
+			$this->auth_param = 'Basic '.base64_encode($username.':'.$password);
+		}
+	}
+	public function getAuthparam() {
 		return $this->auth_param;
 	}
 
@@ -139,7 +151,7 @@ class OpenACalendarModelSource {
 	}
 
 	public function getJSONAPIURL() {
-		$url = $this->protocol."://".$this->baseurl."/api1";
+		$url = $this->getProtocol()."://".$this->baseurl."/api1";
 
 		if ($this->group_slug) {
 			$url .= '/group/'.$this->group_slug;
