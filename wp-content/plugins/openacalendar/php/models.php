@@ -16,7 +16,9 @@ class OpenACalendarModelSource {
 	protected $id;
 	protected $poolid;
 	protected $baseurl;
-	
+	protected $protocol;
+	protected $auth_param;
+
 	protected $group_slug;
 	protected $area_slug;
 	protected $venue_slug;
@@ -36,7 +38,7 @@ class OpenACalendarModelSource {
 		$this->country_code = $data['country_code'] ? $data['country_code'] : null;
 		$this->user_attending_events = $data['user_attending_events'] ? $data['user_attending_events'] : null;
 	}
-	
+
 	public function getId() { return $this->id; }
 	public function setId($id) {
 		$this->id = $id;
@@ -45,16 +47,38 @@ class OpenACalendarModelSource {
  	public function getPoolID() { return $this->poolid; }
 	public function setPoolID($poolid) { $this->poolid = $poolid; }
 	public function getBaseurl() { return $this->baseurl; }
-	public function setBaseurl($baseurl) { 
+	public function setBaseurl($baseurl) {
 		if (substr(strtolower($baseurl),0,7) == 'http://') {
 			$baseurl = substr(strtolower($baseurl),7);
 		} else if (substr(strtolower($baseurl),0,8) == 'https://') {
 			$baseurl = substr(strtolower($baseurl),8);
 		}
 		$bits = explode('/', $baseurl, 2);
-		$this->baseurl = $bits[0]; 
+		$this->baseurl = $bits[0];
 	}
-	
+
+	public function setProtocol($baseurl) {
+		if (preg_match('~(\w+)\:\/\/~', $baseurl, $matches)) {
+			$this->protocol = $matches[1];
+		} else {
+			$this->protocol = 'http';
+		}
+	}
+	public function getProtocol() {
+		return ($this->protocol) ? $this->protocol : 'http';
+	}
+
+	public function setAuthParam($scheme, $username, $password) {
+		if ($scheme === 'Basic') {
+			$this->auth_param = 'Basic '.base64_encode($username.':'.$password);
+		} else {
+			throw new Exception('Authorisation schemes other than "Basic" are not supported.');
+		}
+	}
+	public function getAuthParam() {
+		return $this->auth_param;
+	}
+
 	public function getGroupSlug() {
 		return $this->group_slug;
 	}
@@ -115,8 +139,8 @@ class OpenACalendarModelSource {
 	}
 
 	public function getJSONAPIURL() {
-		$url = "http://".$this->baseurl."/api1";
-		
+		$url = $this->protocol."://".$this->baseurl."/api1";
+
 		if ($this->group_slug) {
 			$url .= '/group/'.$this->group_slug;
 		} else if ($this->venue_slug) {
@@ -130,9 +154,9 @@ class OpenACalendarModelSource {
 		} else if ($this->user_attending_events) {
 			$url .= '/person/'.$this->user_attending_events;
 		}
-		
+
 		$url .= '/events.json?includeMedias=true';
-		
+
 		return $url;
 	}
 
@@ -155,7 +179,7 @@ class OpenACalendarModelSource {
 
 		return $url;
 	}
-	
+
 	public function getUserAttendingEvents() {
 		return $this->user_attending_events;
 	}
@@ -187,7 +211,7 @@ class OpenACalendarModelEvent {
 	protected $image_url_full;
 	protected $image_title;
 	protected $image_source_text;
-	
+
 	public function buildFromDatabase($data) {
 		$this->baseurl = $data['baseurl'];
 		$this->slug = $data['slug'];
@@ -206,7 +230,7 @@ class OpenACalendarModelEvent {
 		$this->image_title = $data['image_title'];
 		$this->image_source_text = $data['image_source_text'];
 	}
-	
+
 	public function buildFromAPI1JSON($baseurl, $data) {
 		$this->baseurl = $baseurl;
 		$this->slug = $data->slug;
@@ -229,7 +253,7 @@ class OpenACalendarModelEvent {
 			$this->image_url_full = $data->medias[0]->picture->fullURL;
 		}
 	}
-	
+
 	public function getId() {
 		return $this->id;
 	}
@@ -249,11 +273,11 @@ class OpenACalendarModelEvent {
 	public function getSummaryDisplay() {
 		return $this->summary_display;
 	}
-	
+
 	public function getDescription() {
 		return $this->description;
 	}
-	
+
 	public function getDescriptionTruncated($length) {
 		if ($length  == 0) {
 			return '';
@@ -369,4 +393,3 @@ class OpenACalendarModelEvent {
 	}
 
 }
-

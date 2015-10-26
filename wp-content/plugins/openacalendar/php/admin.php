@@ -19,7 +19,11 @@ function OpenACalendar_admin_newSourceHTML() {
 		'<option value="">filter by?</option><option value="group">group</option><option value="area">area</option>'.
 		'<option value="curatedlist">curatedlist</option><option value="country">country</option><option value="venue">venue</option>'.
 		'<option value="userattending">user attending</option>'.
-		'</select>: <input type="text" name="filterValue">';
+		'</select>: <input type="text" name="filterValue"><br>'.
+		'Authorisation credentials (optional):<br>'.
+		'<select name="authScheme"><option value="">Authorisation Scheme</option><option value="Basic">Basic</option>'.
+		'<input type="text" name="username" placeholder="username">'.
+		'<input type="password" name="password" placeholder="password">';
 }
 
 
@@ -40,6 +44,15 @@ function OpenACalendar_admin_process_new_source($poolid) {
 		$source->setUserAttendingEvents($_POST['filterValue']);
 	}
 	$source->setBaseurl($_POST['baseurl']);
+	$source->setProtocol($_POST['baseurl']);
+	if (isset($_POST['authScheme']) && $_POST['authScheme'] == 'Basic') {
+		if (isset($_POST['username']) && isset($_POST['password'])) {
+			$source->setAuthParam($_POST['authScheme'], $_POST['username'], $_POST['password']);
+		} else {
+			throw new Exception('Username and/or Password not entered.');
+		}
+	}
+
 	return OpenACalendar_db_newSource($source);
 }
 

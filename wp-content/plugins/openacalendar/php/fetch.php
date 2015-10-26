@@ -38,6 +38,9 @@ function OpenACalendar_getAndStoreEventsForSource(OpenACalendarModelSource $sour
 	curl_setopt($ch, CURLOPT_URL, $sourcedata->getJSONAPIURL());
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_USERAGENT, 'OpenACalendar WordPress plugin from jmbtechnology.co.uk, site '.get_site_url());
+	if ($sourcedata->getAuthParam()) {
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array( 'Authorization: '.$sourcedata->getAuthParam()));
+	}
 	$dataString = curl_exec($ch);
 	$response = curl_getinfo( $ch );
 	curl_close($ch);
@@ -62,8 +65,7 @@ function OpenACalendar_getAndStoreEventsForSource(OpenACalendarModelSource $sour
 			throw new OpenACalendarGetEventsException("Could parse JSON, but expected data is missing? ",$dataString);
 		}
 	} else {
-		throw new OpenACalendarGetEventsException("Could not parse JSON!",$dataString);
+		throw new OpenACalendarGetEventsException("Could not parse JSON!".$dataString,$dataString);
 	}
 
 }
-
