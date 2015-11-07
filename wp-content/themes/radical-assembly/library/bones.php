@@ -130,6 +130,10 @@ function bones_scripts_and_styles() {
 		// waypoints 
 		wp_register_script( 'waypoints', get_stylesheet_directory_uri() . '/library/js/libs/jquery.waypoints.min.js', array(), '2.5.3', false );
 
+		// Leaflet.js handles the map
+		wp_register_script( 'leaflet', get_stylesheet_directory_uri() . '/library/js/libs/leaflet.js', array(), '2.5.3', false );
+		
+
 		// register main stylesheet
 		wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
 
@@ -147,6 +151,7 @@ function bones_scripts_and_styles() {
 		// enqueue styles and scripts
 		wp_enqueue_script( 'bones-modernizr' );
 		wp_enqueue_script( 'waypoints' );
+		wp_enqueue_script( 'leaflet' );
 		wp_enqueue_style( 'bones-stylesheet' );
 		wp_enqueue_style( 'bones-ie-only' );
 

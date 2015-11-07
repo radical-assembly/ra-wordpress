@@ -76,6 +76,11 @@ FONT FACE (IN YOUR FACE)
       font-style: normal;
   }
 */
+@import url(http://weloveiconfonts.com/api/?family=iconicstroke);
+[class*="iconicstroke-"]:before {
+  font-family: 'IconicStroke', sans-serif;
+  font-style: normal; }
+
 /*
 The following is based of Typebase:
 https://github.com/devinhunt/typebase.css
