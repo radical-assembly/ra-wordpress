@@ -50,10 +50,29 @@ style a page via class
 
 /* for sites that are read right to left (i.e. hebrew) */
 
+/* home page */
 .home {}
 
+// events page
+.page-template-events {
+    #inner-content {
+         margin-top: 1.5em;
+    }
+   #map-wrap {
+        padding: 0;
+        position: relative;
 
-/* home page */
+        .page-title {
+            position: absolute;
+            background: $dark-bg;
+            padding: 0.25rem 1.25rem 0.25rem 5rem;
+
+            bottom: 15%;
+        }
+    }
+} // page-template-events
+
+
 
 .blog {}
 
@@ -209,6 +228,9 @@ style a page via class
     #container {
         position: relative;
     }
+    header.header.fixed {
+        top: 31px;
+    }
 }
 
 
@@ -326,18 +348,21 @@ HEADER STYLES
 *********************/
 
 .header {
-    // background-color: $black;
-    transition: all 0.3 ease;
+ 
+    
     background: transparent;
+   
 }
 
 .header.fixed {
-    background: $black;
+    transition: background 0.3 ease;
+    background: $dark-bg;
     height: 50px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 10;
+    margin-bottom: 0;
     .left-brand {
         padding: 0;
     }
@@ -346,7 +371,7 @@ HEADER STYLES
         top: 23%;
     }
     .nav {
-        margin: 1px 0;
+        margin: 1px 0 1.5em;
     }
 }
 
@@ -471,7 +496,7 @@ POSTS & CONTENT STYLES
 *********************/
 
 #content {
-    margin-top: 1.5em;
+     margin-bottom: 1.5em;
 }
 
 .hentry {
@@ -525,6 +550,12 @@ POSTS & CONTENT STYLES
 
 
 /* general article on a page style */
+
+
+.banner {
+    max-width: 100%;
+    height: auto;
+}
 
 .attachment {}
 

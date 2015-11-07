@@ -122,12 +122,46 @@ jQuery(document).ready(function($) {
   */
   //loadGravatars();
 
+
+  // This add the waypoint to toggle the fix nav when the user scrolls past the top of the container
+
   var waypoint = new Waypoint({
       element: document.getElementById('inner-content'),
       handler: function() {
-          $('header').toggleClass('fixed');
+          $('header.header').toggleClass('fixed');
       }
   })
+// This is the leaflet.js map code
+
+var map;
+var ajaxRequest;
+var plotlist;
+var plotlayers=[];
+
+function initmap() {
+  // set up the map
+  map = new L.Map('map');
+
+  // create the tile layer with correct attribution
+  var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+  var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib});   
+
+  // start the map in South-East England
+  map.setView(new L.LatLng(51.5072, 0.1275),9);
+  map.addLayer(osm);
+}
+
+initmap();
+
+// this prevents scroll zooming on the map to allow user to scroll
+var div = L.DomUtil.get('map-wrap');
+if (!L.Browser.touch) {
+    L.DomEvent.disableClickPropagation(div);
+    L.DomEvent.on(div, 'mousewheel', L.DomEvent.stopPropagation);
+} else {
+    L.DomEvent.on(div, 'click', L.DomEvent.stopPropagation);
+}
 
 
 /* 
