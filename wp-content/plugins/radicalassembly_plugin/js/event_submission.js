@@ -103,7 +103,7 @@
                 app_token: tokens.app
             });
             return sendAjaxPostJSON(
-                $, true, 'https://oac.radicalassembly.com/api2/event/create.json', json_data
+                $, true, 'https://oac.radicalassembly.com/api2/radicalassembly/event/create.json', json_data
             );
         })
         .done(function(result) {
