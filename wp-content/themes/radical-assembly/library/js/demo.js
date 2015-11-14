@@ -1,5 +1,7 @@
 var calEvents = [];
 var C = new Calendar();
+var markerGroup;
+var map;
 
 jQuery(document).ready(function($) {
     // Default event loading
@@ -24,8 +26,12 @@ jQuery(document).ready(function($) {
 		var currentMonth = new MonthCriteria((today.getMonth()+1).toString());
 
         // Populate Calendar object with filtered events, and insert into DOM
-		C.add(currentYear.and(currentMonth).filter(calEvents));
+        var filtEvents = currentYear.and(currentMonth).filter(calEvents);
+		C.add(filtEvents);
 		C.insertAll();
+
+        mapObj = initialiseMap(L);
+        markerGroup = addEventVenuesToMap(mapObj, L, filtEvents);
 	});
 });
 
@@ -34,6 +40,11 @@ jQuery('#apply-event-filter').click(function($) {
     var month = new MonthCriteria($('#filter-month').val());
     var tag = new TagCriteria($('#filter-tag').val());
     var group = new GroupCriteria($('#filter-group').val());
+    // ... and other criteria objects
 
-    C.replace(C.events, year.and(month).and(tag).and(group).filter(calEvents));
+    var filtered = year.and(month).and(tag).and(group).filter(calEvents);
+    C.replace(C.events, filtered);
+
+    mapObj.removeLayer(markerGroup);
+    markerGroup = addEventVenuesToMap(mapObj, L, filtered);
 });
