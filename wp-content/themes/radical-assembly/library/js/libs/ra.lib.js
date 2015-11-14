@@ -306,3 +306,92 @@ function YearCriteria(crit) {
 YearCriteria.prototype.match = function(calEventObj) {
     return calEventObj.get('startyear') === this.crit || calEventObj.get('endyear') === this.crit;
 };
+
+var iconParams = {
+    iconUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerEventsIcon.png',
+    shadowUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerShadow.png',
+    iconSize:     [25, 41], // size of the icon
+    shadowSize:   [41, 41], // size of the shadow
+    iconAnchor:   [12, 41], // point of the icon which will correspond to marker's location
+    shadowAnchor: [12, 41],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+};
+
+function initialiseMap(L) {
+    mapObj = new L.Map('map');
+
+    var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+    var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib});
+
+    mapObj.addLayer(osm);
+    mapObj.setView(new L.LatLng(51.5057666596, -0.11682549681),10);
+
+    return mapObj;
+}
+
+function addEventVenuesToMap(map, L, calEvents) {
+    var markerGroup = new L.MarkerClusterGroup();
+    map.addLayer(markerGroup);
+    for (var ii in calEvents) {
+        var marker = L.marker(
+            [calEvents[ii].get('venuelat'), calEvents[ii].get('venuelng')],
+            {icon: L.icon(iconParams)}
+        );
+        marker.slug = calEvents[ii].get('venueid');
+        marker.on('click', onClickMarker);
+        markerGroup.addLayer(marker);
+        marker.addTo(map);
+    }
+    return markerGroup;
+}
+
+function showPopup() {
+    if (jQuery('#PopupMask').size() === 0) {
+		jQuery('body').append('<div id="PopupMask"  onclick="closePopup();" style="display:none;"></div>');
+	}
+	jQuery('#PopupMask').fadeIn(500);
+	jQuery(document).on('keyup.close_popup', function(e) {
+		if (e.keyCode == 27) { closePopup(); }
+	});
+	jQuery('.popupBox').css({top: (jQuery(document).scrollTop()+25)+'px' });
+}
+
+function closePopup() {
+    jQuery('.popupBox').fadeOut(500);
+	jQuery('#PopupMask').fadeOut(500);
+	jQuery(document).unbind('keyup.close_popup');
+}
+
+function onClickMarker() {
+    var div = jQuery('#VenuePopup');
+    if (div.size() === 0) {
+        var html = '<div id="VenuePopup" class="popupBox" style="display: none;">';
+        html +=	'<div id="VenuePopupClose" class="popupBoxClose"><a href="#" onclick="closePopup(); return false;" title="Close"><img src="/wp-content/plugins/radicalassembly_plugin/img/actionClosePopup.png" alt="Close"></a></div>';
+        html += '<div id="VenuePopupContent"  class="popupBoxContent">';
+        html += '</div>';
+        html += '</div>';
+        jQuery('body').append(html);
+    }
+    showPopup();
+    jQuery('#VenuePopup').fadeIn(500);
+
+    jQuery('#VenuePopupContent').html('<div class="popupShowVenue"><div id="VenuePopupTitle" class="title">Loading ...</div></div>'+
+            '<div id="VenuePopupEvents"></div>'+
+            '<div class="popupLink"><a href="/venue/' + this.slug + '">View More Details</a></div>');
+    sendAjaxGetJSON(
+        jQuery, true, "https://oac.radicalassembly.com/api1/venue/"+this.slug+"/events.json"
+    ).success(function ( venuedata ) {
+        var html = '<ul class="popupListEvents">';
+        if (venuedata.data.length === 0) {
+            html += '<li class="nodata">No future events.</li>';
+        } else {
+            for(var i in venuedata.data) {
+                var event = venuedata.data[i];
+                html += '<li class="event"><span class="time">'+event.start.displaylocal+'</span> <span class="summary">'+event.summaryDisplay+'</span></li>';
+            }
+        }
+        jQuery('#VenuePopupEvents').html(html+'</ul>');
+        jQuery('#VenuePopupTitle').html(venuedata.venue.title);
+    });
+}
