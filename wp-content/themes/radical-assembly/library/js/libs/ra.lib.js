@@ -331,19 +331,21 @@ function initialiseMap(L) {
 }
 
 function addEventVenuesToMap(map, L, calEvents) {
-    var markerGroup = new L.MarkerClusterGroup();
-    map.addLayer(markerGroup);
+    var seen = {}, markers = [];
     for (var ii in calEvents) {
-        var marker = L.marker(
-            [calEvents[ii].get('venuelat'), calEvents[ii].get('venuelng')],
-            {icon: L.icon(iconParams)}
-        );
-        marker.slug = calEvents[ii].get('venueid');
-        marker.on('click', onClickMarker);
-        markerGroup.addLayer(marker);
-        marker.addTo(map);
+        if (!seen.hasOwnProperty(calEvents[ii].get('venueid'))) {
+            seen[calEvents[ii].get('venueid')] = null;
+            var marker = L.marker(
+                [calEvents[ii].get('venuelat'), calEvents[ii].get('venuelng')],
+                {icon: L.icon(iconParams)}
+            );
+            marker.slug = calEvents[ii].get('venueid');
+            marker.on('click', onClickMarker);
+            marker.addTo(map);
+            markers.push(marker);
+        }
     }
-    return markerGroup;
+    return markers;
 }
 
 function showPopup() {
