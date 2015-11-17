@@ -19,6 +19,3 @@ function radicalassembly_form_datetime_picker() {
     wp_enqueue_style('jquery-ui-timepicker-addon-styles', plugins_url('js/jquery-ui-timepicker-addon.css', __FILE__));
 }
 add_action('wp_enqueue_scripts', 'radicalassembly_form_datetime_picker');
-
-//########################### OAC map integration
-require(dirname(__FILE__).DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'map.php');
