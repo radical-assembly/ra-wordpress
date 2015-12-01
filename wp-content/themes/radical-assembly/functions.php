@@ -245,10 +245,4 @@ function bones_fonts() {
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
 
-
-function radicalassembly_scripts() {
-    wp_enqueue_script('radicalassembly_library', get_template_directory_uri().'/library/js/libs/ra.lib.js', array('jquery'));
-    wp_enqueue_script('radicalassembly_demo', get_template_directory_uri().'/library/js/demo.js', array('jquery'));
-}
-add_action('wp_enqueue_scripts', 'radicalassembly_scripts');
 /* DON'T DELETE THIS CLOSING TAG */ ?>
