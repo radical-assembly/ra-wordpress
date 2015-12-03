@@ -44,11 +44,20 @@ jQuery(document).ready(function($) {
 
 jQuery('#filter-form').on('submit', function(e) {
     e.preventDefault();
+    tagList = '';
+    groupList = '';
 
     var checkThenPush = function(element, container) {
-        var tmp = [];
-        if (element.prop('checked')) tmp.push(element.attr('value'));
-        return container += tmp.join(',');
+        if (element.prop('checked')) {
+            if (container.length > 0) {
+                container = container.split(',');
+                container.push(element.attr('value'));
+                container = container.join(',');
+            } else {
+                container = element.attr('value');
+            }
+        }
+        return container;
     };
 
     tagList = checkThenPush(jQuery('input[name="March"]'), tagList);
@@ -57,7 +66,7 @@ jQuery('#filter-form').on('submit', function(e) {
     tagList = checkThenPush(jQuery('input[name="Debate"]'), tagList);
     groupList = checkThenPush(jQuery('input[name="GroupOne"]'), groupList);
     groupList = checkThenPush(jQuery('input[name="GroupTwo"]'), groupList);
-    console.log(tagList, groupList);
+
     jQuery('#calendar').fullCalendar('refetchEvents');
 });
 
