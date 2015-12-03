@@ -25,17 +25,14 @@ jQuery(document).ready(function($) {
             centre: '',
             right: 'today prev,next',
         },
-        eventSources: [
-            {
-                url: domain + '/api1/radicalassembly/list/1/events.fullcalendar',
-                type: 'GET',
-                data: {
+        events: function(start, end, timezone, callback) {
+            var startparam = 'start=' + start.format('YYYY-MM-DD[T]HH:mm:ss');
+            var endparam = 'end=' + end.format('YYYY-MM-DD[T]HH:mm:ss');
+            $.get(domain+'/api1/radicalassembly/list/1/events.fullcalendar?'+startparam+'&'+endparam, {
                     tags: tagList,
                     groups: groupList,
+            }, callback, 'json');
                 },
-                //headers: {'Authorization': 'Basic ' + btoa('ra' + ':' + '**b@by**')}
-            }
-        ],
         eventClick: eventClickCallback,
         loading: function(isLoading, view) {
             eventLoadingCallback($, isLoading, view);
