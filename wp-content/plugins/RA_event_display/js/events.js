@@ -4,8 +4,8 @@ var domain = 'http://oac.dev';
 var layerGrp = L.layerGroup();
 
 var iconParams = {
-    iconUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerEventsIcon.png',
-    shadowUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerShadow.png',
+    iconUrl: '/wp-content/plugins/RA_event_display/img/mapMarkerEventsIcon.png',
+    shadowUrl: '/wp-content/plugins/RA_event_display/img/mapMarkerShadow.png',
     iconSize:     [25, 41], // size of the icon
     shadowSize:   [41, 41], // size of the shadow
     iconAnchor:   [12, 41], // point of the icon which will correspond to marker's location
