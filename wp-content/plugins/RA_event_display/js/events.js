@@ -1,6 +1,6 @@
 var tagList = '';
 var groupList = '';
-var domain = 'http://oac.dev';
+var domain = 'https://oac.radicalassembly.com';
 var layerGrp = L.layerGroup();
 
 var iconParams = {
@@ -29,10 +29,13 @@ jQuery(document).ready(function($) {
         events: function(start, end, timezone, callback) {
             var startparam = 'start=' + start.format('YYYY-MM-DD[T]HH:mm:ss');
             var endparam = 'end=' + end.format('YYYY-MM-DD[T]HH:mm:ss');
-            $.get(domain+'/api1/radicalassembly/list/1/events.fullcalendar?'+startparam+'&'+endparam, {
-                tags: tagList,
-                groups: groupList,
-            }, callback, 'json');
+            sendAjaxGetJSON(
+                $,
+                true,
+                domain+'/api1/radicalassembly/list/1/events.fullcalendar?'+startparam+'&'+endparam,
+                {tags: tagList, groups: groupList},
+                callback
+            );
         },
         eventClick: eventClickCallback,
         loading: function(isLoading, view) {
@@ -73,7 +76,7 @@ jQuery('#filter-form').on('submit', function(e) {
 
 
 function eventClickCallback(ev, jsEvent, view) {
-    jQuery.get(domain + '/api1/event/' + ev.id + '/info.json')
+    sendAjaxGetJSON(jQuery, true, domain + '/api1/event/' + ev.id + '/info.json')
     .then(function(result) {
         result = result.data[0];
         alert(
@@ -108,7 +111,6 @@ function initialiseMap(L) {
 // Assumes global 'map' variable exists
 function refreshVenues(evObj) {
     map.removeLayer(layerGrp);
-    //layerGrp.eachLayer(function(layer) {map.removeLayer(layer);});
     layerGrp.clearLayers();
     var seen = {};
     for (var ii in evObj) {
@@ -127,16 +129,20 @@ function refreshVenues(evObj) {
 }
 
 var onClickMarker = function() {
-    jQuery.get('http://oac.dev/api1/venue/'+this.slug+'/events.json')
+    sendAjaxGetJSON(jQuery, true, domain+'/api1/venue/'+this.slug+'/events.json')
     .then(function(result) {
         result = result.data[0];
-        alert(
-            'First Event here: \n' +
-            result.summaryDisplay + '\n' +
-            'from: ' + result.start.displaylocal + '\n' +
-            'to: ' + result.end.displaylocal + '\n' +
-            'at: ' + result.venue.title + ', ' + result.venue.address + '\n' +
-            ''
-        );
+        if (result) {
+            alert(
+                'First Event here: \n' +
+                result.summaryDisplay + '\n' +
+                'from: ' + result.start.displaylocal + '\n' +
+                'to: ' + result.end.displaylocal + '\n' +
+                'at: ' + result.venue.title + ', ' + result.venue.address + '\n' +
+                ''
+            );
+        } else {
+            alert('No events here');
+        }
     });
 };
