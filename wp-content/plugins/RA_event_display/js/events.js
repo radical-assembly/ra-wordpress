@@ -1,6 +1,7 @@
 var tagList = '';
 var groupList = '';
 var domain = 'http://oac.dev';
+var layerGrp = L.layerGroup();
 
 var iconParams = {
     iconUrl: '/wp-content/plugins/radicalassembly_plugin/img/mapMarkerEventsIcon.png',
@@ -29,10 +30,10 @@ jQuery(document).ready(function($) {
             var startparam = 'start=' + start.format('YYYY-MM-DD[T]HH:mm:ss');
             var endparam = 'end=' + end.format('YYYY-MM-DD[T]HH:mm:ss');
             $.get(domain+'/api1/radicalassembly/list/1/events.fullcalendar?'+startparam+'&'+endparam, {
-                    tags: tagList,
-                    groups: groupList,
+                tags: tagList,
+                groups: groupList,
             }, callback, 'json');
-                },
+        },
         eventClick: eventClickCallback,
         loading: function(isLoading, view) {
             eventLoadingCallback($, isLoading, view);
@@ -87,7 +88,7 @@ function eventClickCallback(ev, jsEvent, view) {
 
 function eventLoadingCallback($, isLoading, view) {
     if (!isLoading) {
-        addEventVenuesToMap($, $('#calendar').fullCalendar('clientEvents'));
+        refreshVenues($('#calendar').fullCalendar('clientEvents'));
     }
 }
 
@@ -105,8 +106,11 @@ function initialiseMap(L) {
 }
 
 // Assumes global 'map' variable exists
-function addEventVenuesToMap($, evObj) {
-    var seen = {}, markers = [];
+function refreshVenues(evObj) {
+    map.removeLayer(layerGrp);
+    //layerGrp.eachLayer(function(layer) {map.removeLayer(layer);});
+    layerGrp.clearLayers();
+    var seen = {};
     for (var ii in evObj) {
         if (evObj[ii].hasOwnProperty('venueid') && !seen.hasOwnProperty(evObj[ii].venueid)) {
             seen[evObj[ii].venueid] = null;
@@ -116,11 +120,10 @@ function addEventVenuesToMap($, evObj) {
             );
             marker.slug = evObj[ii].venueid;
             marker.on('click', onClickMarker);
-            marker.addTo(map);
-            markers.push(marker);
+            layerGrp.addLayer(marker);
         }
     }
-    return markers;
+    layerGrp.addTo(map);
 }
 
 var onClickMarker = function() {
