@@ -16,34 +16,36 @@ var iconParams = {
 jQuery(document).ready(function($) {
 
     $('#calendar').fullCalendar({
-        firstDay: 1,
-        allDayDefault: false,
-        eventStartEditable: false,
-        eventDurationEditable: false,
-        timeFormat: 'H:mm',
-        header: {
-            left: 'title',
-            centre: '',
-            right: 'today prev,next',
-        },
-        events: function(start, end, timezone, callback) {
-            var startparam = 'start=' + start.format('YYYY-MM-DD[T]HH:mm:ss');
-            var endparam = 'end=' + end.format('YYYY-MM-DD[T]HH:mm:ss');
-            sendAjaxGetJSON(
-                $,
-                true,
-                domain+'/api1/radicalassembly/list/1/events.fullcalendar?'+startparam+'&'+endparam,
-                {tags: tagList, groups: groupList},
-                callback
-            );
-        },
-        eventClick: eventClickCallback,
-        loading: function(isLoading, view) {
-            eventLoadingCallback($, isLoading, view);
-        },
-    });
+            firstDay: 1,
+            allDayDefault: false,
+            eventStartEditable: false,
+            eventDurationEditable: false,
+            timeFormat: 'H:mm',
+            header: {
+                left: 'title',
+                centre: '',
+                right: 'today prev,next',
+            },
+            events: function(start, end, timezone, callback) {
+                var startparam = 'start=' + start.format('YYYY-MM-DD[T]HH:mm:ss');
+                var endparam = 'end=' + end.format('YYYY-MM-DD[T]HH:mm:ss');
+                sendAjaxGetJSON(
+                    $,
+                    true,
+                    domain+'/api1/radicalassembly/list/1/events.fullcalendar?'+startparam+'&'+endparam,
+                    {tags: tagList, groups: groupList},
+                    callback
+                );
+            },
+            eventClick: eventClickCallback,
+            loading: function(isLoading, view) {
+                eventLoadingCallback($, isLoading, view);
+            },
+        });
 
-    map = initialiseMap(L);
+    if (jQuery('div#map').size() > 0) {
+        map = initialiseMap(L);
+    }
 });
 
 jQuery('#filter-form').on('submit', function(e) {
