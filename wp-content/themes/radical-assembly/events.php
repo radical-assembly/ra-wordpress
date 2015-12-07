@@ -34,7 +34,7 @@
             <header>
 				<div id="filter-wrap">
                 	<h2>Filter</h2>
-					<form id="filter-form">
+					<form id="event-filter">
 					    <strong>Tags</strong> |
 					    <input type="checkbox" name="tags" value="March"> March |
 					    <input type="checkbox" name="tags" value="Demonstration"> Demo |
@@ -45,6 +45,8 @@
 					    <input type="checkbox" name="groups" value="TestGroup1"> TestGroup1 |
 					    <input type="checkbox" name="groups" value="TestGroup2"> TestGroup2 <br>
 					    <input type="submit" value="Apply Filter">
+					</form>
+					<form id="event-feed">
 						<input type="submit" value="Get iCal feed">
 					</form>
 				</div>
