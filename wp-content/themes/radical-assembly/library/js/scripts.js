@@ -133,16 +133,6 @@ jQuery(document).ready(function($) {
   });
 
 
-// this prevents scroll zooming on the map to allow user to scroll
-var div = L.DomUtil.get('map-wrap');
-if (!L.Browser.touch) {
-    L.DomEvent.disableClickPropagation(div);
-    L.DomEvent.on(div, 'mousewheel', L.DomEvent.stopPropagation);
-} else {
-    L.DomEvent.on(div, 'click', L.DomEvent.stopPropagation);
-}
-
-
 /*
 Based on https://css-tricks.com/float-labels-css/
 */
