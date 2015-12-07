@@ -245,4 +245,31 @@ function bones_fonts() {
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
 
+/*
+*/
+function radicalassembly_deregister_scripts() {
+    if (!is_page('Events')) { // Deregister scripts only required for Events page
+        wp_deregister_script('leaflet_script');
+        wp_deregister_script('moment_script');
+        wp_deregister_script('fullcalendar_script');
+        wp_deregister_script('radicalassembly-map');
+        wp_deregister_script('radicalassembly-events');
+
+        wp_deregister_style('fullcalendar-main-css');
+        wp_deregister_style('fullcalendar-print-css');
+    }
+    if (!is_page('Add Events')) { // Deregister scripts only required for Add Events page
+        wp_deregister_script('jquery-datetimepicker');
+        wp_deregister_script('validate-js');
+        wp_deregister_script('radicalassembly-add-event');
+
+        wp_deregister_style('jquery-datetimepicker-style');
+    }
+    if (!is_page('Authentication')) { // Deregister scripts only required for Authentication page
+        wp_deregister_script('radicalassembly-authenticate');
+    }
+}
+add_action('wp_enqueue_scripts', 'radicalassembly_deregister_scripts');
+
+
 /* DON'T DELETE THIS CLOSING TAG */ ?>
