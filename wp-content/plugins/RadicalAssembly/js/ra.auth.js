@@ -114,14 +114,14 @@ var tokens = {app: "", request: "", authorisation: "", user: ""},
 
                 // Hidden form used to send user to another URL along with POST parameters.
                 var form = $(
-                    '<form\
-                    action="' + urls.redirLogin + '"\
-                    name="hidden-form" method="POST" style="display:none;">\
-                    <input type="text" name="app_token" value="' + tokens.app + '"/>\
-                    <input type="text" name="request_token" value="' + tokens.request + '"/>\
-                    <input type="text" name="callback_url" value="' + urls.origin + '"/>\
-                    <input type="submit" name="auth-redir" value="Redirect"/>\
-                    </form>'
+                    '<form' +
+                    'action="' + urls.redirLogin + '"' +
+                    'name="hidden-form" method="POST" style="display:none;">' +
+                    '<input type="text" name="app_token" value="' + tokens.app + '"/>' +
+                    '<input type="text" name="request_token" value="' + tokens.request + '"/>' +
+                    '<input type="text" name="callback_url" value="' + urls.origin + '"/>' +
+                    '<input type="submit" name="auth-redir" value="Redirect"/>' +
+                    '</form>'
                 );
                 $('body').append(form);
                 form.submit();

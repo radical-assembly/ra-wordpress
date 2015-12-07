@@ -1,13 +1,5 @@
 <?php
-/**
-*
-*/
 
-
-/**
-* Define the form. Temporary: only a couple of fields are actually used in the
-* javascript api_post.js
-*/
 function auth_form() {
     $form = '
     <form id="auth-form">
@@ -30,13 +22,3 @@ function auth_form() {
     return $form;
 }
 add_shortcode('AUTH-FORM', 'auth_form');
-
-
-/**
-* Enqueue the .js script taking care of the POST request to OAC on form submission.
-*/
-function authentication_scripts() {
-    wp_enqueue_script('radicalassembly_lib', plugins_url('../js/ra_lib.js', __FILE__), array(), false, true);
-    wp_enqueue_script('radicalassembly_auth', plugins_url('../js/authentication.js', __FILE__), array('jquery'), false, true);
-}
-add_action('wp_enqueue_scripts', 'authentication_scripts');
