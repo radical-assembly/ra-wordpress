@@ -14,7 +14,4 @@ function ra_event_display_dependencies() {
     wp_enqueue_script('fullcalendar_script', plugins_url('../libs/fullcalendar/fullcalendar.min.js', __FILE__),
     array('jquery', 'jquery-ui-core', 'jquery-ui-position', 'jquery-ui-selectmenu', 'moment_script'), false, true);
 }
-
-//if (is_page(21)) {
-    add_action( 'wp_enqueue_scripts', 'ra_event_display_dependencies');
-//}
+add_action( 'wp_enqueue_scripts', 'ra_event_display_dependencies');
