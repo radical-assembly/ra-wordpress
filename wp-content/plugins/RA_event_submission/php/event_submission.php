@@ -45,8 +45,8 @@ add_shortcode( 'EVENT-FORM', 'event_form');
 * Enqueue the .js script taking care of the POST request to OAC on form submission.
 */
 function radicalassembly_form_datetime_picker() {
-    wp_enqueue_style('jquery-ui-timepicker-addon-styles', plugins_url('../js/jquery.datetimepicker.css', __FILE__));
-    wp_enqueue_script('jquery-ui-timepicker-addon', plugins_url('../js/jquery.datetimepicker.full.min.js', __FILE__), array('jquery'), false, true);
+    wp_enqueue_style('jquery-ui-datetimepicker-styles', plugins_url('../libs/jquery.datetimepicker.css', __FILE__));
+    wp_enqueue_script('jquery-ui-datetimepicker', plugins_url('../libs/jquery.datetimepicker.full.min.js', __FILE__), array('jquery'), false, true);
 }
 add_action('wp_enqueue_scripts', 'radicalassembly_form_datetime_picker');
 
