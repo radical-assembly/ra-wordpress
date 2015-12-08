@@ -4,8 +4,6 @@ var pop;
 
 jQuery(document).ready(function() {
 
-    pop = new EventPopUp(jQuery('#event-popup-wrap'));
-
     jQuery('#calendar').fullCalendar({
             firstDay: 1,
             allDayDefault: false,
@@ -91,14 +89,20 @@ function eventClickCallback(ev, jsEvent, view) {
         open: function() {
             p.then(function(result) {
                 result = result.data[0];
-                pop.setTitle(result.summaryDisplay);
-                pop.setStart(result.start.displaylocal);
-                pop.setEnd(result.end.displaylocal);
-                pop.setVenue(result.venue.title);
-                pop.setDesc(result.venue.description);
+                jQuery('.pop-event-title').html(result.summaryDisplay);
+                jQuery('.pop-event-start').html(result.start.displaylocal);
+                jQuery('.pop-event-end').html(result.end.displaylocal);
+                jQuery('.pop-event-venue-name').html(result.venue.title);
+                jQuery('.pop-event-desc').html(result.description);
             });
         },
-        close: function() {pop.flush();},
+        close: function() {
+            jQuery('.pop-event-title').empty();
+            jQuery('.pop-event-start').empty();
+            jQuery('.pop-event-end').empty();
+            jQuery('.pop-event-venue-name').empty();
+            jQuery('.pop-event-desc').empty();
+        }
     });
 }
 
@@ -106,58 +110,4 @@ function eventLoadingCallback(isLoading, view) {
     if (!isLoading) {
         refreshVenues(jQuery('#calendar').fullCalendar('clientEvents'));
     }
-}
-
-function EventPopUp(jqEv) {
-    var head = jQuery('<div id="popup-head"></div>');
-    var body = jQuery('<div id="popup-body"></div>');
-    var foot = jQuery('<div id="popup-foot"></div>');
-    jqEv.append(head).append(body).append(foot);
-
-    var title = jQuery('<div id="event-title"></div>');
-    var group = jQuery('<div id="event-group"></div>');
-    head.append(title).append(group);
-
-    var start = jQuery('<div id="event-start"></div>');
-    var end = jQuery('<div id="event-end"></div>');
-    var venue = jQuery('<div id="event-venue"></div>');
-    var desc = jQuery('<div id="event-description"></div>');
-    body.append(start).append(end).append(venue).append(desc);
-
-    this.setTitle = function(t) {
-        title.empty().append(t);
-    };
-
-    this.setGroup = function(g) {
-        group.empty().append(g);
-    };
-
-    this.setStart = function(t) {
-        start.empty().append(t);
-    };
-
-    this.setEnd = function(t) {
-        end.empty().append(t);
-    };
-
-    this.setVenue = function(v) {
-        venue.empty().append(v);
-    };
-
-    this.setDesc = function(d) {
-        desc.empty().append(d);
-    };
-
-    this.flush = function() {
-        title.empty();
-        group.empty();
-        start.empty();
-        end.empty();
-        venue.empty();
-        desc.empty();
-    };
-
-    this.destroy = function() {
-        jqEv.empty();
-    };
 }
