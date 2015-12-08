@@ -46,7 +46,71 @@ Template Name: eventpage
 							</div><!-- /. calendar -->
 						</div><!-- /. wrap -->
 
-						<div id="event-popup-wrap">
+						<div id="event-popup-wrap" style="display: none;">
+							<div class="pop-event-head">
+								<div class="pop-event-title">
+
+								</div>
+								<div class="pop-event-group">
+
+								</div>
+							</div>
+							<div class="pop-event-body">
+								<div class="pop-event-time">
+									<div class="pop-event-start">
+
+									</div>
+									<div class="pop-event-end">
+
+									</div>
+								</div>
+								<div class="pop-event-venue">
+									<div class="pop-event-venue-name">
+
+									</div>
+									<div class="pop-event-venue-address">
+
+									</div>
+								</div>
+							</div>
+							<div class="pop-event-foot">
+								<div class="pop-event-desc">
+
+								</div>
+							</div>
+						</div>
+
+						<div id="venue-popup-wrap">
+							<div class="pop-venue-head">
+								<div class="pop-venue-name">
+
+								</div>
+							</div>
+							<div class="pop-venue-body">
+								<div class="pop-venue-address">
+
+								</div>
+								<div class="pop-venue-desc">
+
+								</div>
+							</div>
+							<div class="pop-venue-foot">
+								<div class="pop-venue-events-scheduled">
+
+								</div>
+							</div>
+						</div>
+
+						<div id="feed-popup-wrap">
+							<div class="pop-feed-head">
+
+							</div>
+							<div class="pop-feed-body">
+
+							</div>
+							<div class="pop-feed-foot">
+
+							</div>
 						</div>
 
 						<footer class="article-footer">
