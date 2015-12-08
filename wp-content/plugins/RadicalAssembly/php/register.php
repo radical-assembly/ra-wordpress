@@ -10,11 +10,12 @@ function radicalassembly_register_scripts() {
 
     wp_register_script('leaflet-js', plugins_url('../lib/leaflet.js', __FILE__));
 
-    wp_register_script('jquery-bpopup', plugins_url('../lib/jquery.bpopup.min.js', __FILE__));
-
     wp_register_script('fullcalendar-js', plugins_url('../lib/fullcalendar/fullcalendar.min.js', __FILE__));
     wp_enqueue_style('fullcalendar-main-css', plugins_url('../lib/fullcalendar/fullcalendar.min.css', __FILE__));
     wp_enqueue_style('fullcalendar-print-css', plugins_url('../lib/fullcalendar/fullcalendar.print.css', __FILE__));
+
+    wp_enqueue_style('jquery-ui-dialog-style', plugins_url('../../../../wp-includes/css/jquery-ui-dialog.min.css', __FILE__));
+    wp_enqueue_style('jquery-ui-dialog-rtl-style', plugins_url('../../../../wp-includes/css/jquery-ui-dialog-rtl.min.css', __FILE__));
 
     wp_register_script('radicalassembly-lib', plugins_url('../js/ra.lib.js', __FILE__));
 
