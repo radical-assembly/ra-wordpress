@@ -1,5 +1,4 @@
-var tagList = '';
-var groupList = '';
+var params = {tags: '', groups: ''};
 var domain = 'https://oac.radicalassembly.com';
 
 jQuery(document).ready(function() {
@@ -22,7 +21,7 @@ jQuery(document).ready(function() {
                     jQuery,
                     true,
                     domain+'/api1/radicalassembly/list/1/events.fullcalendar?'+startparam+'&'+endparam,
-                    {tags: tagList, groups: groupList},
+                    params,
                     callback
                 );
             },
@@ -36,45 +35,22 @@ jQuery(document).ready(function() {
 
     jQuery('#event-filter').on('submit', function(e) {
         e.preventDefault();
-        tagList = '';
-        groupList = '';
+        params.tags = '';
+        params.groups = '';
 
-        function buildListFromElements(container) {
+        function buildListFromElements(attr) {
             return function(_, el) {
                 if (el.checked) {
-                    if (container.length > 0) {
-                        container = container.split(',');
-                        container.push(el.value);
-                        container = container.join(',');
+                    if (params[attr].length > 0) {
+                        params[attr] += (',' + el.value);
                     } else {
-                        container = el.value;
+                        params[attr] = el.value;
                     }
                 }
             };
         }
-
-        jQuery('input[name="tags"]').each(function(_, el) {
-            if (el.checked) {
-                if (tagList.length > 0) {
-                    tagList = tagList.split(',');
-                    tagList.push(el.value);
-                    tagList = tagList.join(',');
-                } else {
-                    tagList = el.value;
-                }
-            }
-        });
-        jQuery('input[name="groups"]').each(function(_, el) {
-            if (el.checked) {
-                if (groupList.length > 0) {
-                    groupList = groupList.split(',');
-                    groupList.push(el.value);
-                    groupList = groupList.join(',');
-                } else {
-                    groupList = el.value;
-                }
-            }
-        });
+        jQuery('input[name="tags"]').each(buildListFromElements('tags'));
+        jQuery('input[name="groups"]').each(buildListFromElements('groups'));
         jQuery('#calendar').fullCalendar('refetchEvents');
     });
 });
