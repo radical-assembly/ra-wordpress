@@ -21,7 +21,7 @@ function radicalassembly_register_scripts() {
     wp_register_script('radicalassembly-map', plugins_url('../js/ra.map.js', __FILE__));
 
     wp_enqueue_script('radicalassembly-events', plugins_url('../js/ra.events.js', __FILE__),
-    array('jquery', 'leaflet-js' , 'moment-js', 'fullcalendar-js', 'radicalassembly-lib', 'radicalassembly-map'));
+    array('jquery', 'leaflet-js' , 'moment-js', 'fullcalendar-js', 'jquery-ui-dialog', 'radicalassembly-lib', 'radicalassembly-map'));
 
     wp_enqueue_script('radicalassembly-add-event', plugins_url('../js/ra.addevent.js', __FILE__),
     array('jquery', 'jquery-datetimepicker', 'validate-js', 'radicalassembly-lib'));
