@@ -45,20 +45,34 @@ function refreshVenues(evObj) {
 }
 
 function onClickMarker() {
-    sendAjaxGetJSON(jQuery, true, domain+'/api1/venue/'+this.slug+'/events.json')
-    .then(function(result) {
-        result = result.data[0];
-        if (result) {
-            alert(
-                'First Event here: \n' +
-                result.summaryDisplay + '\n' +
-                'from: ' + result.start.displaylocal + '\n' +
-                'to: ' + result.end.displaylocal + '\n' +
-                'at: ' + result.venue.title + ', ' + result.venue.address + '\n' +
-                ''
-            );
-        } else {
-            alert('No events here');
+    var p = sendAjaxGetJSON(jQuery, true, domain+'/api1/venue/'+this.slug+'/events.json');
+    jQuery('#venue-popup-wrap').dialog({
+        draggable: false,
+        modal: true,
+        resizable: false,
+        show: true,
+        hide: true,
+        open: function() {
+            p.then(function(result) {
+                jQuery('.pop-venue-name').html(result.venue.title);
+                if (result.data.length > 0) {
+                    jQuery('.pop-venue-address').html(result.data[0].venue.address);
+                    jQuery('.pop-venue-desc').html(result.data[0].venue.description);
+                    var markup = '';
+                    result.data.forEach(function(ev) {
+                        markup+='<p>'+ev.summaryDisplay+'</p>';
+                    });
+                    jQuery('.pop-venue-events-scheduled').html(markup);
+                } else {
+                    jQuery('.pop-venue-events-scheduled').html('No events scheduled here');
+                }
+            });
+        },
+        close: function() {
+            jQuery('.pop-venue-name').empty();
+            jQuery('.pop-venue-address').empty();
+            jQuery('.pop-venue-desc').empty();
+            jQuery('.pop-venue-events-scheduled').empty();
         }
     });
 }
