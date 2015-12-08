@@ -56,6 +56,27 @@ jQuery(document).ready(function() {
         jQuery('input[name="groups"]').each(buildListFromElements('groups'));
         jQuery('#calendar').fullCalendar('refetchEvents');
     });
+
+    jQuery('#event-feed').on('submit', function(e) {
+        var query = '?';
+        for (var i in params) {
+            if (params[i]) query += params[i] + '&';
+        }
+        e.preventDefault();
+        jQuery('#feed-popup-wrap').dialog({
+            draggable: false,
+            modal: true,
+            resizable: false,
+            show: true,
+            hide: true,
+            open: function() {
+                jQuery('.pop-feed-body').html('<a href='+domain+'/api1/radicalassembly/list/1/events.ical'+query+'>Click Here</a>');
+            },
+            close: function() {
+                jQuery('.pop-feed-body').empty();
+            }
+        });
+    });
 });
 
 
