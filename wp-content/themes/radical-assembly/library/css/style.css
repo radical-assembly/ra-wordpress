@@ -41,7 +41,8 @@ main,
 nav,
 section,
 summary {
-  display: block; }
+  display: block;
+}
 
 /**
  * Correct `inline-block` display not defined in IE 8/9.
@@ -49,7 +50,8 @@ summary {
 audio,
 canvas,
 video {
-  display: inline-block; }
+  display: inline-block;
+}
 
 /**
  * Prevent modern browsers from displaying `audio` without controls.
@@ -57,7 +59,8 @@ video {
  */
 audio:not([controls]) {
   display: none;
-  height: 0; }
+  height: 0;
+}
 
 /**
  * Address `[hidden]` styling not present in IE 8/9.
@@ -65,7 +68,8 @@ audio:not([controls]) {
  */
 [hidden],
 template {
-  display: none; }
+  display: none;
+}
 
 /* ==========================================================================
    Base
@@ -80,14 +84,16 @@ html {
   /* 1 */
   -ms-text-size-adjust: 100%;
   /* 2 */
-  -webkit-text-size-adjust: 100%
-  /* 2 */ }
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
 
 /**
  * Remove default margin.
  */
 body {
-  margin: 0; }
+  margin: 0;
+}
 
 /* ==========================================================================
    Links
@@ -96,20 +102,23 @@ body {
  * Remove the gray background color from active links in IE 10.
  */
 a {
-  background: transparent; }
+  background: transparent;
+}
 
 /**
  * Address `outline` inconsistency between Chrome and other browsers.
  */
 a:focus {
-  outline: thin dotted; }
+  outline: thin dotted;
+}
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
 a:active,
 a:hover {
-  outline: 0; }
+  outline: 0;
+}
 
 /* ==========================================================================
    Typography
@@ -120,13 +129,15 @@ a:hover {
  */
 h1 {
   font-size: 2em;
-  margin: 0.67em 0; }
+  margin: 0.67em 0;
+}
 
 /**
  * Address styling not present in IE 8/9, Safari 5, and Chrome.
  */
 abbr[title] {
-  border-bottom: 1px dotted; }
+  border-bottom: 1px dotted;
+}
 
 /**
  * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
@@ -134,7 +145,8 @@ abbr[title] {
 b,
 strong,
 .strong {
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 /**
  * Address styling not present in Safari 5 and Chrome.
@@ -142,14 +154,17 @@ strong,
 dfn,
 em,
 .em {
-  font-style: italic; }
+  font-style: italic;
+}
 
 /**
  * Address differences between Firefox and other browsers.
  */
 hr {
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
-  height: 0; }
+  height: 0;
+}
 
 /*
  * proper formatting (http://blog.fontdeck.com/post/9037028497/hyphens)
@@ -158,14 +173,15 @@ p {
   -webkit-hyphens: auto;
   -epub-hyphens: auto;
   -moz-hyphens: auto;
-  -ms-hyphens: auto;
-      hyphens: auto; }
+  hyphens: auto;
+}
 
 /*
  * Addresses margins set differently in IE6/7.
  */
 pre {
-  margin: 0; }
+  margin: 0;
+}
 
 /**
  * Correct font family set oddly in Safari 5 and Chrome.
@@ -175,19 +191,22 @@ kbd,
 pre,
 samp {
   font-family: monospace, serif;
-  font-size: 1em; }
+  font-size: 1em;
+}
 
 /**
  * Improve readability of pre-formatted text in all browsers.
  */
 pre {
-  white-space: pre-wrap; }
+  white-space: pre-wrap;
+}
 
 /**
  * Set consistent quote types.
  */
 q {
-  quotes: "\201C" "\201D" "\2018" "\2019"; }
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
 
 /**
  * Address inconsistent and variable font size in all browsers.
@@ -195,10 +214,12 @@ q {
 q:before,
 q:after {
   content: '';
-  content: none; }
+  content: none;
+}
 
 small, .small {
-  font-size: 75%; }
+  font-size: 75%;
+}
 
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
@@ -208,13 +229,16 @@ sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+}
 
 sup {
-  top: -0.5em; }
+  top: -0.5em;
+}
 
 sub {
-  bottom: -0.25em; }
+  bottom: -0.25em;
+}
 
 /* ==========================================================================
   Lists
@@ -226,21 +250,25 @@ dl,
 menu,
 ol,
 ul {
-  margin: 1em 0; }
+  margin: 1em 0;
+}
 
 dd {
-  margin: 0; }
+  margin: 0;
+}
 
 /*
  * Addresses paddings set differently in IE6/7.
  */
 menu {
-  padding: 0 0 0 40px; }
+  padding: 0 0 0 40px;
+}
 
 ol,
 ul {
   padding: 0;
-  list-style-type: none; }
+  list-style-type: none;
+}
 
 /*
  * Corrects list images handled incorrectly in IE7.
@@ -248,7 +276,8 @@ ul {
 nav ul,
 nav ol {
   list-style: none;
-  list-style-image: none; }
+  list-style-image: none;
+}
 
 /* ==========================================================================
   Embedded content
@@ -257,13 +286,15 @@ nav ol {
  * Remove border when inside `a` element in IE 8/9.
  */
 img {
-  border: 0; }
+  border: 0;
+}
 
 /**
  * Correct overflow displayed oddly in IE 9.
  */
 svg:not(:root) {
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 /* ==========================================================================
    Figures
@@ -272,7 +303,8 @@ svg:not(:root) {
  * Address margin not present in IE 8/9 and Safari 5.
  */
 figure {
-  margin: 0; }
+  margin: 0;
+}
 
 /* ==========================================================================
    Forms
@@ -283,7 +315,8 @@ figure {
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em; }
+  padding: 0.35em 0.625em 0.75em;
+}
 
 /**
  * 1. Correct `color` not being inherited in IE 8/9.
@@ -292,8 +325,9 @@ fieldset {
 legend {
   border: 0;
   /* 1 */
-  padding: 0
-  /* 2 */ }
+  padding: 0;
+  /* 2 */
+}
 
 /**
  * 1. Correct font family not being inherited in all browsers.
@@ -308,8 +342,9 @@ textarea {
   /* 1 */
   font-size: 100%;
   /* 2 */
-  margin: 0
-  /* 3 */ }
+  margin: 0;
+  /* 3 */
+}
 
 /**
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
@@ -317,7 +352,8 @@ textarea {
  */
 button,
 input {
-  line-height: normal; }
+  line-height: normal;
+}
 
 /**
  * Address inconsistent `text-transform` inheritance for `button` and `select`.
@@ -327,7 +363,8 @@ input {
  */
 button,
 select {
-  text-transform: none; }
+  text-transform: none;
+}
 
 /**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
@@ -337,20 +374,21 @@ select {
  *    `input` and others.
  */
 button,
-html input[type="button"],
-input[type="reset"],
+html input[type="button"], input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
-  cursor: pointer
-  /* 3 */ }
+  cursor: pointer;
+  /* 3 */
+}
 
 /**
  * Re-set default cursor for disabled elements.
  */
 button[disabled],
 html input[disabled] {
-  cursor: default; }
+  cursor: default;
+}
 
 /**
  * 1. Address box sizing set to `content-box` in IE 8/9/10.
@@ -360,8 +398,9 @@ input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
   /* 1 */
-  padding: 0
-  /* 2 */ }
+  padding: 0;
+  /* 2 */
+}
 
 /**
  * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
@@ -371,8 +410,11 @@ input[type="radio"] {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   /* 2 */
-  box-sizing: content-box; }
+  box-sizing: content-box;
+}
 
 /**
  * Remove inner padding and search cancel button in Safari 5 and Chrome
@@ -380,7 +422,8 @@ input[type="search"] {
  */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none; }
+  -webkit-appearance: none;
+}
 
 /**
  * Remove inner padding and border in Firefox 4+.
@@ -388,7 +431,8 @@ input[type="search"]::-webkit-search-decoration {
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /**
  * 1. Remove default vertical scrollbar in IE 8/9.
@@ -397,8 +441,9 @@ input::-moz-focus-inner {
 textarea {
   overflow: auto;
   /* 1 */
-  vertical-align: top
-  /* 2 */ }
+  vertical-align: top;
+  /* 2 */
+}
 
 /* ==========================================================================
    Tables
@@ -408,24 +453,34 @@ textarea {
  */
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+}
 
 * {
-  box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 .image-replacement,
 .ir {
   text-indent: 100%;
   white-space: nowrap;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .clearfix, .cf, .comment-respond {
-  zoom: 1; }
-  .clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
-    content: "";
-    display: table; }
-  .clearfix:after, .cf:after, .comment-respond:after {
-    clear: both; }
+  zoom: 1;
+}
+
+.clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after, .cf:after, .comment-respond:after {
+  clear: both;
+}
 
 /*
 use the best ampersand
@@ -433,7 +488,8 @@ http://simplebits.com/notebook/2008/08/14/ampersands-2/
 */
 span.amp {
   font-family: Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif !important;
-  font-style: italic; }
+  font-style: italic;
+}
 
 /******************************************************************
 Site Name:
@@ -496,7 +552,8 @@ FONT FACE (IN YOUR FACE)
 */
 [class*="iconicstroke-"]:before {
   font-family: 'IconicStroke', sans-serif;
-  font-style: normal; }
+  font-style: normal;
+}
 
 /*
 The following is based of Typebase:
@@ -517,15 +574,16 @@ p {
   word-wrap: break-word;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
-  -ms-hyphens: auto;
-      hyphens: auto;
+  hyphens: auto;
   -webkit-hyphenate-before: 2;
   -webkit-hyphenate-after: 3;
   hyphenate-lines: 3;
   -webkit-font-feature-settings: "liga", "dlig";
   -moz-font-feature-settings: "liga=1, dlig=1";
   -ms-font-feature-settings: "liga", "dlig";
-  font-feature-settings: "liga", "dlig"; }
+  -o-font-feature-settings: "liga", "dlig";
+  font-feature-settings: "liga", "dlig";
+}
 
 /******************************************************************
 Site Name:
@@ -635,135 +693,143 @@ Importing Dave Gamache's Excellent Skeleton grid
   max-width: 1170spx;
   margin: 0 auto;
   padding: 0 20px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .column,
 .columns {
   width: 100%;
   float: left;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 /* For devices larger than 400px */
 @media (min-width: 400px) {
   .container {
     width: 85%;
-    padding: 0; } }
+    padding: 0;
+  }
+}
+
 /* For devices larger than 550px */
 @media (min-width: 550px) {
   .container {
-    width: 80%; }
-
+    width: 80%;
+  }
   .column,
   .columns {
-    margin-left: 4%; }
-
+    margin-left: 4%;
+  }
   .column:first-child,
   .columns:first-child {
-    margin-left: 0; }
-
+    margin-left: 0;
+  }
   .one.column,
   .one.columns {
-    width: 4.66666666667%; }
-
+    width: 4.66666666667%;
+  }
   .two.columns {
-    width: 13.3333333333%; }
-
+    width: 13.3333333333%;
+  }
   .three.columns {
-    width: 22%; }
-
+    width: 22%;
+  }
   .four.columns {
-    width: 30.6666666667%; }
-
+    width: 30.6666666667%;
+  }
   .five.columns {
-    width: 39.3333333333%; }
-
+    width: 39.3333333333%;
+  }
   .six.columns {
-    width: 48%; }
-
+    width: 48%;
+  }
   .seven.columns {
-    width: 56.6666666667%; }
-
+    width: 56.6666666667%;
+  }
   .eight.columns {
-    width: 65.3333333333%; }
-
+    width: 65.3333333333%;
+  }
   .nine.columns {
-    width: 74.0%; }
-
+    width: 74.0%;
+  }
   .ten.columns {
-    width: 82.6666666667%; }
-
+    width: 82.6666666667%;
+  }
   .eleven.columns {
-    width: 91.3333333333%; }
-
+    width: 91.3333333333%;
+  }
   .twelve.columns {
     width: 100%;
-    margin-left: 0; }
-
+    margin-left: 0;
+  }
   .one-third.column {
-    width: 30.6666666667%; }
-
+    width: 30.6666666667%;
+  }
   .two-thirds.column {
-    width: 65.3333333333%; }
-
+    width: 65.3333333333%;
+  }
   .one-half.column {
-    width: 48%; }
-
+    width: 48%;
+  }
   /* Offsets */
   .offset-by-one.column,
   .offset-by-one.columns {
-    margin-left: 8.66666666667%; }
-
+    margin-left: 8.66666666667%;
+  }
   .offset-by-two.column,
   .offset-by-two.columns {
-    margin-left: 17.3333333333%; }
-
+    margin-left: 17.3333333333%;
+  }
   .offset-by-three.column,
   .offset-by-three.columns {
-    margin-left: 26%; }
-
+    margin-left: 26%;
+  }
   .offset-by-four.column,
   .offset-by-four.columns {
-    margin-left: 34.6666666667%; }
-
+    margin-left: 34.6666666667%;
+  }
   .offset-by-five.column,
   .offset-by-five.columns {
-    margin-left: 43.3333333333%; }
-
+    margin-left: 43.3333333333%;
+  }
   .offset-by-six.column,
   .offset-by-six.columns {
-    margin-left: 52%; }
-
+    margin-left: 52%;
+  }
   .offset-by-seven.column,
   .offset-by-seven.columns {
-    margin-left: 60.6666666667%; }
-
+    margin-left: 60.6666666667%;
+  }
   .offset-by-eight.column,
   .offset-by-eight.columns {
-    margin-left: 69.3333333333%; }
-
+    margin-left: 69.3333333333%;
+  }
   .offset-by-nine.column,
   .offset-by-nine.columns {
-    margin-left: 78.0%; }
-
+    margin-left: 78.0%;
+  }
   .offset-by-ten.column,
   .offset-by-ten.columns {
-    margin-left: 86.6666666667%; }
-
+    margin-left: 86.6666666667%;
+  }
   .offset-by-eleven.column,
   .offset-by-eleven.columns {
-    margin-left: 95.3333333333%; }
-
+    margin-left: 95.3333333333%;
+  }
   .offset-by-one-third.column,
   .offset-by-one-third.columns {
-    margin-left: 34.6666666667%; }
-
+    margin-left: 34.6666666667%;
+  }
   .offset-by-two-thirds.column,
   .offset-by-two-thirds.columns {
-    margin-left: 69.3333333333%; }
-
+    margin-left: 69.3333333333%;
+  }
   .offset-by-one-half.column,
   .offset-by-one-half.columns {
-    margin-left: 52%; } }
+    margin-left: 52%;
+  }
+}
+
 /*********************
 IMPORTING MODULES
 Modules are reusable blocks or elements we use throughout the project.
@@ -784,23 +850,28 @@ you can just remove this stylesheet.
 .alert-help, .alert-info, .alert-error, .alert-success {
   margin: 10px;
   padding: 5px 18px;
-  border: 1px solid; }
+  border: 1px solid;
+}
 
 .alert-help {
   border-color: #e8dc59;
-  background: #ebe16f; }
+  background: #ebe16f;
+}
 
 .alert-info {
   border-color: #bfe4f4;
-  background: #d5edf8; }
+  background: #d5edf8;
+}
 
 .alert-error {
   border-color: #f8cdce;
-  background: #fbe3e4; }
+  background: #fbe3e4;
+}
 
 .alert-success {
   border-color: #deeaae;
-  background: #e6efc2; }
+  background: #e6efc2;
+}
 
 /******************************************************************
 Site Name:
@@ -841,13 +912,18 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
   border: 0;
   cursor: pointer;
   -webkit-transition: background-color 0.14s ease-in-out;
-  transition: background-color 0.14s ease-in-out; }
-  .blue-btn:hover, .comment-reply-link:hover, #submit:hover, .blue-btn:focus, .comment-reply-link:focus, #submit:focus {
-    color: #fff;
-    text-decoration: none;
-    outline: none; }
-  .blue-btn:active, .comment-reply-link:active, #submit:active {
-    top: 1px; }
+  transition: background-color 0.14s ease-in-out;
+}
+
+.blue-btn:hover, .comment-reply-link:hover, #submit:hover, .blue-btn:focus, .comment-reply-link:focus, #submit:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+
+.blue-btn:active, .comment-reply-link:active, #submit:active {
+  top: 1px;
+}
 
 /*
 An example button.
@@ -855,11 +931,19 @@ You can use this example if you want. Just replace all the variables
 and it will create a button dependant on those variables.
 */
 .blue-btn, .comment-reply-link, #submit {
-  background-color: #2980b9; }
-  .blue-btn:hover, .comment-reply-link:hover, #submit:hover, .blue-btn:focus, .comment-reply-link:focus, #submit:focus {
-    background-color: #2574a8; }
-  .blue-btn:active, .comment-reply-link:active, #submit:active {
-    background-color: #2472a4; }
+  background-color: #2980b9;
+}
+
+.blue-btn:hover,
+.comment-reply-link:hover,
+#submit:hover,
+.blue-btn:focus, .comment-reply-link:focus, #submit:focus {
+  background-color: #2574a8;
+}
+
+.blue-btn:active, .comment-reply-link:active, #submit:active {
+  background-color: #2472a4;
+}
 
 /******************************************************************
 Site Name:
@@ -914,232 +998,252 @@ textarea,
   font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #eaedf2;
   -webkit-transition: background-color 0.24s ease-in-out;
-  transition: background-color 0.24s ease-in-out; }
-  input[type="text"]:focus, input[type="text"]:active,
-  input[type="password"]:focus,
-  input[type="password"]:active,
-  input[type="datetime"]:focus,
-  input[type="datetime"]:active,
-  input[type="datetime-local"]:focus,
-  input[type="datetime-local"]:active,
-  input[type="date"]:focus,
-  input[type="date"]:active,
-  input[type="month"]:focus,
-  input[type="month"]:active,
-  input[type="time"]:focus,
-  input[type="time"]:active,
-  input[type="week"]:focus,
-  input[type="week"]:active,
-  input[type="number"]:focus,
-  input[type="number"]:active,
-  input[type="email"]:focus,
-  input[type="email"]:active,
-  input[type="url"]:focus,
-  input[type="url"]:active,
-  input[type="search"]:focus,
-  input[type="search"]:active,
-  input[type="tel"]:focus,
-  input[type="tel"]:active,
-  input[type="color"]:focus,
-  input[type="color"]:active,
-  select:focus,
-  select:active,
-  textarea:focus,
-  textarea:active,
-  .field:focus,
-  .field:active {
-    background-color: #f7f8fa;
-    outline: none; }
-  input[type="text"].error, input[type="text"].is-invalid,
-  input[type="password"].error,
-  input[type="password"].is-invalid,
-  input[type="datetime"].error,
-  input[type="datetime"].is-invalid,
-  input[type="datetime-local"].error,
-  input[type="datetime-local"].is-invalid,
-  input[type="date"].error,
-  input[type="date"].is-invalid,
-  input[type="month"].error,
-  input[type="month"].is-invalid,
-  input[type="time"].error,
-  input[type="time"].is-invalid,
-  input[type="week"].error,
-  input[type="week"].is-invalid,
-  input[type="number"].error,
-  input[type="number"].is-invalid,
-  input[type="email"].error,
-  input[type="email"].is-invalid,
-  input[type="url"].error,
-  input[type="url"].is-invalid,
-  input[type="search"].error,
-  input[type="search"].is-invalid,
-  input[type="tel"].error,
-  input[type="tel"].is-invalid,
-  input[type="color"].error,
-  input[type="color"].is-invalid,
-  select.error,
-  select.is-invalid,
-  textarea.error,
-  textarea.is-invalid,
-  .field.error,
-  .field.is-invalid {
-    color: #fbe3e4;
-    border-color: #fbe3e4;
-    background-color: #fff;
-    background-position: 99% center;
-    background-repeat: no-repeat;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDREQkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDREQ0YwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQ3ODRGRkE2RjA0QTExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERBRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+U8iT5wAAAedJREFUeNqk1U9I02Ecx/HtV3aIFAc1hcRDUoGXRAq0oNLA2CrsEFmHbikZu0iQYIFGYAiegkCpLipBxPpDEBMUzB0EhSG2LhG7hMR2GviPgUTvB57Bw8P3+U23B16HPX8+e/b8nt93wezZSMCnhXETF3AcB5BDCnH8Dq98ExcGHcFn8Ah3cdDni+fxnPDv9oAnTB7CKu6VCFXtChZy56LxUjt+jfuB8toSOth9wd7xWAWhqrUjYR/FRTwWJm+iIPT/w7bQf5ljiZnBg45dtKFX6H+LU8gIY8OEV6vgTkStwXWE8BPTGDHGPqNPz2mCfSOOYkA99TvCt1bhGPL68zMcwmncMuape10jrI+q4BbHi/FLn31S9z2x5tRhTc+1W506ipM+T3oRD4X+8+qtc4SqFvL0z/Fr14S+Szjis8bz9Lvvaq8cwS/wwGfdlqfPSWqTiFlX77o13u9Ym1PBs8JAytpRoy44X9Ft9E/gvbA+rYKn8NcaaMVc8UHgBw4b9/iqUQZ6hOAJFbyDcUflmsEX4a6+wTtHGfhAIUqa1U29Zc2BytouThD8x6xuN5CtMPi2CrXLZkZf/HyZoRFCP7n+QVR4PV7uI/AjGghN7OU/r1ilnqILtfpNC+o6vIFljBKYlhb/F2AAgaBsWR5wRiIAAAAASUVORK5CYII=);
-    outline-color: #fbe3e4; }
-  input[type="text"].success, input[type="text"].is-valid,
-  input[type="password"].success,
-  input[type="password"].is-valid,
-  input[type="datetime"].success,
-  input[type="datetime"].is-valid,
-  input[type="datetime-local"].success,
-  input[type="datetime-local"].is-valid,
-  input[type="date"].success,
-  input[type="date"].is-valid,
-  input[type="month"].success,
-  input[type="month"].is-valid,
-  input[type="time"].success,
-  input[type="time"].is-valid,
-  input[type="week"].success,
-  input[type="week"].is-valid,
-  input[type="number"].success,
-  input[type="number"].is-valid,
-  input[type="email"].success,
-  input[type="email"].is-valid,
-  input[type="url"].success,
-  input[type="url"].is-valid,
-  input[type="search"].success,
-  input[type="search"].is-valid,
-  input[type="tel"].success,
-  input[type="tel"].is-valid,
-  input[type="color"].success,
-  input[type="color"].is-valid,
-  select.success,
-  select.is-valid,
-  textarea.success,
-  textarea.is-valid,
-  .field.success,
-  .field.is-valid {
-    color: #e6efc2;
-    border-color: #e6efc2;
-    background-color: #fff;
-    background-position: 99% center;
-    background-repeat: no-repeat;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDRERkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDRFMEYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjY0MzQ0NERERjA0QjExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERFRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7olkTQAAAfhJREFUeNqklU9oE0EUhzdroWjw0tBeWlDxkEaIp55TsCU9VKIgCrHBelA8CQ1Kr1WPbZrQ3gqtQqvGqxpQc2jBk6BIIaAGD4qNCKURpDSKiPi98gLDsJt//uBjsztvfnk7895sIPAw6/joGMThFJyAXn2+A+9gA57/TaY/eU0OeBgfhGm4DiGnsb7DAszxBz/NAdcKjMJLuNWCqagHbsscN5+L+hmH4QkMOe1L5jzFfNA2PgT34ajTuY7AGuZB0/hmh5m+gS0r8xv1zRvg+gGCHZiOwnF4DP3iB3sQkYxPd2C6CWfhB9Xwlus5+K1j4jXuaq3a+gM1H9OPcAa+7q9lPidZJqHbiIm7Wg22rsEI7FrPSzAMX/T+ADyAKSsu7Fr1KplehLvwCs5DvfBf65p+MypqRbO1FXK9utH4/QKuaqYTsG3E3INJv00Q46px3+XxanJ/Ute2/vqP4FKDza2KcdljIKdnhS0xXYULTaqmLMZFn8FFSFtvt6x70ExFCS5oUXspq2ssa7oEl1swFa+CGFdgtkHgPDyDKy02zyxNU6lXRUZb1EuHYayNNs+Yh5B0WQo+/8fpJnNTZFuzz2OpjoQ2QruSOQlMy35fEGmEGMxY9e1brxobw7TkWA1h6xfckUPb+JhGoE/Hpfvew7qUld/H9J8AAwDpw3WYrxcZ3QAAAABJRU5ErkJggg==);
-    outline-color: #e6efc2; }
-  input[type="text"][disabled], input[type="text"].is-disabled,
-  input[type="password"][disabled],
-  input[type="password"].is-disabled,
-  input[type="datetime"][disabled],
-  input[type="datetime"].is-disabled,
-  input[type="datetime-local"][disabled],
-  input[type="datetime-local"].is-disabled,
-  input[type="date"][disabled],
-  input[type="date"].is-disabled,
-  input[type="month"][disabled],
-  input[type="month"].is-disabled,
-  input[type="time"][disabled],
-  input[type="time"].is-disabled,
-  input[type="week"][disabled],
-  input[type="week"].is-disabled,
-  input[type="number"][disabled],
-  input[type="number"].is-disabled,
-  input[type="email"][disabled],
-  input[type="email"].is-disabled,
-  input[type="url"][disabled],
-  input[type="url"].is-disabled,
-  input[type="search"][disabled],
-  input[type="search"].is-disabled,
-  input[type="tel"][disabled],
-  input[type="tel"].is-disabled,
-  input[type="color"][disabled],
-  input[type="color"].is-disabled,
-  select[disabled],
-  select.is-disabled,
-  textarea[disabled],
-  textarea.is-disabled,
-  .field[disabled],
-  .field.is-disabled {
-    cursor: not-allowed;
-    border-color: #cfcfcf;
-    opacity: 0.6; }
-    input[type="text"][disabled]:focus, input[type="text"][disabled]:active, input[type="text"].is-disabled:focus, input[type="text"].is-disabled:active,
-    input[type="password"][disabled]:focus,
-    input[type="password"][disabled]:active,
-    input[type="password"].is-disabled:focus,
-    input[type="password"].is-disabled:active,
-    input[type="datetime"][disabled]:focus,
-    input[type="datetime"][disabled]:active,
-    input[type="datetime"].is-disabled:focus,
-    input[type="datetime"].is-disabled:active,
-    input[type="datetime-local"][disabled]:focus,
-    input[type="datetime-local"][disabled]:active,
-    input[type="datetime-local"].is-disabled:focus,
-    input[type="datetime-local"].is-disabled:active,
-    input[type="date"][disabled]:focus,
-    input[type="date"][disabled]:active,
-    input[type="date"].is-disabled:focus,
-    input[type="date"].is-disabled:active,
-    input[type="month"][disabled]:focus,
-    input[type="month"][disabled]:active,
-    input[type="month"].is-disabled:focus,
-    input[type="month"].is-disabled:active,
-    input[type="time"][disabled]:focus,
-    input[type="time"][disabled]:active,
-    input[type="time"].is-disabled:focus,
-    input[type="time"].is-disabled:active,
-    input[type="week"][disabled]:focus,
-    input[type="week"][disabled]:active,
-    input[type="week"].is-disabled:focus,
-    input[type="week"].is-disabled:active,
-    input[type="number"][disabled]:focus,
-    input[type="number"][disabled]:active,
-    input[type="number"].is-disabled:focus,
-    input[type="number"].is-disabled:active,
-    input[type="email"][disabled]:focus,
-    input[type="email"][disabled]:active,
-    input[type="email"].is-disabled:focus,
-    input[type="email"].is-disabled:active,
-    input[type="url"][disabled]:focus,
-    input[type="url"][disabled]:active,
-    input[type="url"].is-disabled:focus,
-    input[type="url"].is-disabled:active,
-    input[type="search"][disabled]:focus,
-    input[type="search"][disabled]:active,
-    input[type="search"].is-disabled:focus,
-    input[type="search"].is-disabled:active,
-    input[type="tel"][disabled]:focus,
-    input[type="tel"][disabled]:active,
-    input[type="tel"].is-disabled:focus,
-    input[type="tel"].is-disabled:active,
-    input[type="color"][disabled]:focus,
-    input[type="color"][disabled]:active,
-    input[type="color"].is-disabled:focus,
-    input[type="color"].is-disabled:active,
-    select[disabled]:focus,
-    select[disabled]:active,
-    select.is-disabled:focus,
-    select.is-disabled:active,
-    textarea[disabled]:focus,
-    textarea[disabled]:active,
-    textarea.is-disabled:focus,
-    textarea.is-disabled:active,
-    .field[disabled]:focus,
-    .field[disabled]:active,
-    .field.is-disabled:focus,
-    .field.is-disabled:active {
-      background-color: #d5edf8; }
+  transition: background-color 0.24s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="text"]:active,
+input[type="password"]:focus,
+input[type="password"]:active,
+input[type="datetime"]:focus,
+input[type="datetime"]:active,
+input[type="datetime-local"]:focus,
+input[type="datetime-local"]:active,
+input[type="date"]:focus,
+input[type="date"]:active,
+input[type="month"]:focus,
+input[type="month"]:active,
+input[type="time"]:focus,
+input[type="time"]:active,
+input[type="week"]:focus,
+input[type="week"]:active,
+input[type="number"]:focus,
+input[type="number"]:active,
+input[type="email"]:focus,
+input[type="email"]:active,
+input[type="url"]:focus,
+input[type="url"]:active,
+input[type="search"]:focus,
+input[type="search"]:active,
+input[type="tel"]:focus,
+input[type="tel"]:active,
+input[type="color"]:focus,
+input[type="color"]:active,
+select:focus,
+select:active,
+textarea:focus,
+textarea:active,
+.field:focus,
+.field:active {
+  background-color: #f7f8fa;
+  outline: none;
+}
+
+input[type="text"].error,
+input[type="text"].is-invalid,
+input[type="password"].error,
+input[type="password"].is-invalid,
+input[type="datetime"].error,
+input[type="datetime"].is-invalid,
+input[type="datetime-local"].error,
+input[type="datetime-local"].is-invalid,
+input[type="date"].error,
+input[type="date"].is-invalid,
+input[type="month"].error,
+input[type="month"].is-invalid,
+input[type="time"].error,
+input[type="time"].is-invalid,
+input[type="week"].error,
+input[type="week"].is-invalid,
+input[type="number"].error,
+input[type="number"].is-invalid,
+input[type="email"].error,
+input[type="email"].is-invalid,
+input[type="url"].error,
+input[type="url"].is-invalid,
+input[type="search"].error,
+input[type="search"].is-invalid,
+input[type="tel"].error,
+input[type="tel"].is-invalid,
+input[type="color"].error,
+input[type="color"].is-invalid,
+select.error,
+select.is-invalid,
+textarea.error,
+textarea.is-invalid,
+.field.error,
+.field.is-invalid {
+  color: #fbe3e4;
+  border-color: #fbe3e4;
+  background-color: #fff;
+  background-position: 99% center;
+  background-repeat: no-repeat;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDREQkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDREQ0YwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQ3ODRGRkE2RjA0QTExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERBRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+U8iT5wAAAedJREFUeNqk1U9I02Ecx/HtV3aIFAc1hcRDUoGXRAq0oNLA2CrsEFmHbikZu0iQYIFGYAiegkCpLipBxPpDEBMUzB0EhSG2LhG7hMR2GviPgUTvB57Bw8P3+U23B16HPX8+e/b8nt93wezZSMCnhXETF3AcB5BDCnH8Dq98ExcGHcFn8Ah3cdDni+fxnPDv9oAnTB7CKu6VCFXtChZy56LxUjt+jfuB8toSOth9wd7xWAWhqrUjYR/FRTwWJm+iIPT/w7bQf5ljiZnBg45dtKFX6H+LU8gIY8OEV6vgTkStwXWE8BPTGDHGPqNPz2mCfSOOYkA99TvCt1bhGPL68zMcwmncMuape10jrI+q4BbHi/FLn31S9z2x5tRhTc+1W506ipM+T3oRD4X+8+qtc4SqFvL0z/Fr14S+Szjis8bz9Lvvaq8cwS/wwGfdlqfPSWqTiFlX77o13u9Ym1PBs8JAytpRoy44X9Ft9E/gvbA+rYKn8NcaaMVc8UHgBw4b9/iqUQZ6hOAJFbyDcUflmsEX4a6+wTtHGfhAIUqa1U29Zc2BytouThD8x6xuN5CtMPi2CrXLZkZf/HyZoRFCP7n+QVR4PV7uI/AjGghN7OU/r1ilnqILtfpNC+o6vIFljBKYlhb/F2AAgaBsWR5wRiIAAAAASUVORK5CYII=);
+  outline-color: #fbe3e4;
+}
+
+input[type="text"].success,
+input[type="text"].is-valid,
+input[type="password"].success,
+input[type="password"].is-valid,
+input[type="datetime"].success,
+input[type="datetime"].is-valid,
+input[type="datetime-local"].success,
+input[type="datetime-local"].is-valid,
+input[type="date"].success,
+input[type="date"].is-valid,
+input[type="month"].success,
+input[type="month"].is-valid,
+input[type="time"].success,
+input[type="time"].is-valid,
+input[type="week"].success,
+input[type="week"].is-valid,
+input[type="number"].success,
+input[type="number"].is-valid,
+input[type="email"].success,
+input[type="email"].is-valid,
+input[type="url"].success,
+input[type="url"].is-valid,
+input[type="search"].success,
+input[type="search"].is-valid,
+input[type="tel"].success,
+input[type="tel"].is-valid,
+input[type="color"].success,
+input[type="color"].is-valid,
+select.success,
+select.is-valid,
+textarea.success,
+textarea.is-valid,
+.field.success,
+.field.is-valid {
+  color: #e6efc2;
+  border-color: #e6efc2;
+  background-color: #fff;
+  background-position: 99% center;
+  background-repeat: no-repeat;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDRERkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDRFMEYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjY0MzQ0NERERjA0QjExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERFRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7olkTQAAAfhJREFUeNqklU9oE0EUhzdroWjw0tBeWlDxkEaIp55TsCU9VKIgCrHBelA8CQ1Kr1WPbZrQ3gqtQqvGqxpQc2jBk6BIIaAGD4qNCKURpDSKiPi98gLDsJt//uBjsztvfnk7895sIPAw6/joGMThFJyAXn2+A+9gA57/TaY/eU0OeBgfhGm4DiGnsb7DAszxBz/NAdcKjMJLuNWCqagHbsscN5+L+hmH4QkMOe1L5jzFfNA2PgT34ajTuY7AGuZB0/hmh5m+gS0r8xv1zRvg+gGCHZiOwnF4DP3iB3sQkYxPd2C6CWfhB9Xwlus5+K1j4jXuaq3a+gM1H9OPcAa+7q9lPidZJqHbiIm7Wg22rsEI7FrPSzAMX/T+ADyAKSsu7Fr1KplehLvwCs5DvfBf65p+MypqRbO1FXK9utH4/QKuaqYTsG3E3INJv00Q46px3+XxanJ/Ute2/vqP4FKDza2KcdljIKdnhS0xXYULTaqmLMZFn8FFSFtvt6x70ExFCS5oUXspq2ssa7oEl1swFa+CGFdgtkHgPDyDKy02zyxNU6lXRUZb1EuHYayNNs+Yh5B0WQo+/8fpJnNTZFuzz2OpjoQ2QruSOQlMy35fEGmEGMxY9e1brxobw7TkWA1h6xfckUPb+JhGoE/Hpfvew7qUld/H9J8AAwDpw3WYrxcZ3QAAAABJRU5ErkJggg==);
+  outline-color: #e6efc2;
+}
+
+input[type="text"][disabled],
+input[type="text"].is-disabled,
+input[type="password"][disabled],
+input[type="password"].is-disabled,
+input[type="datetime"][disabled],
+input[type="datetime"].is-disabled,
+input[type="datetime-local"][disabled],
+input[type="datetime-local"].is-disabled,
+input[type="date"][disabled],
+input[type="date"].is-disabled,
+input[type="month"][disabled],
+input[type="month"].is-disabled,
+input[type="time"][disabled],
+input[type="time"].is-disabled,
+input[type="week"][disabled],
+input[type="week"].is-disabled,
+input[type="number"][disabled],
+input[type="number"].is-disabled,
+input[type="email"][disabled],
+input[type="email"].is-disabled,
+input[type="url"][disabled],
+input[type="url"].is-disabled,
+input[type="search"][disabled],
+input[type="search"].is-disabled,
+input[type="tel"][disabled],
+input[type="tel"].is-disabled,
+input[type="color"][disabled],
+input[type="color"].is-disabled,
+select[disabled],
+select.is-disabled,
+textarea[disabled],
+textarea.is-disabled,
+.field[disabled],
+.field.is-disabled {
+  cursor: not-allowed;
+  border-color: #cfcfcf;
+  opacity: 0.6;
+}
+
+input[type="text"][disabled]:focus,
+input[type="text"][disabled]:active,
+input[type="text"].is-disabled:focus,
+input[type="text"].is-disabled:active,
+input[type="password"][disabled]:focus,
+input[type="password"][disabled]:active,
+input[type="password"].is-disabled:focus,
+input[type="password"].is-disabled:active,
+input[type="datetime"][disabled]:focus,
+input[type="datetime"][disabled]:active,
+input[type="datetime"].is-disabled:focus,
+input[type="datetime"].is-disabled:active,
+input[type="datetime-local"][disabled]:focus,
+input[type="datetime-local"][disabled]:active,
+input[type="datetime-local"].is-disabled:focus,
+input[type="datetime-local"].is-disabled:active,
+input[type="date"][disabled]:focus,
+input[type="date"][disabled]:active,
+input[type="date"].is-disabled:focus,
+input[type="date"].is-disabled:active,
+input[type="month"][disabled]:focus,
+input[type="month"][disabled]:active,
+input[type="month"].is-disabled:focus,
+input[type="month"].is-disabled:active,
+input[type="time"][disabled]:focus,
+input[type="time"][disabled]:active,
+input[type="time"].is-disabled:focus,
+input[type="time"].is-disabled:active,
+input[type="week"][disabled]:focus,
+input[type="week"][disabled]:active,
+input[type="week"].is-disabled:focus,
+input[type="week"].is-disabled:active,
+input[type="number"][disabled]:focus,
+input[type="number"][disabled]:active,
+input[type="number"].is-disabled:focus,
+input[type="number"].is-disabled:active,
+input[type="email"][disabled]:focus,
+input[type="email"][disabled]:active,
+input[type="email"].is-disabled:focus,
+input[type="email"].is-disabled:active,
+input[type="url"][disabled]:focus,
+input[type="url"][disabled]:active,
+input[type="url"].is-disabled:focus,
+input[type="url"].is-disabled:active,
+input[type="search"][disabled]:focus,
+input[type="search"][disabled]:active,
+input[type="search"].is-disabled:focus,
+input[type="search"].is-disabled:active,
+input[type="tel"][disabled]:focus,
+input[type="tel"][disabled]:active,
+input[type="tel"].is-disabled:focus,
+input[type="tel"].is-disabled:active,
+input[type="color"][disabled]:focus,
+input[type="color"][disabled]:active,
+input[type="color"].is-disabled:focus,
+input[type="color"].is-disabled:active,
+select[disabled]:focus,
+select[disabled]:active,
+select.is-disabled:focus,
+select.is-disabled:active,
+textarea[disabled]:focus,
+textarea[disabled]:active,
+textarea.is-disabled:focus,
+textarea.is-disabled:active,
+.field[disabled]:focus,
+.field[disabled]:active,
+.field.is-disabled:focus,
+.field.is-disabled:active {
+  background-color: #d5edf8;
+}
 
 input[type="password"] {
-  letter-spacing: 0.3em; }
+  letter-spacing: 0.3em;
+}
 
 textarea {
   max-width: 100%;
   min-height: 120px;
-  line-height: 1.5em; }
+  line-height: 1.5em;
+}
 
 select {
   -webkit-appearance: none;
@@ -1148,19 +1252,26 @@ select {
   appearance: none;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAHCAYAAADXhRcnAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEOEZCMjYxMEYwNUUxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEOEZCMjYxMUYwNUUxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkQ4RkIyNjBFRjA1RTExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkQ4RkIyNjBGRjA1RTExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Vxkp9gAAAI9JREFUeNpidHFxucHAwKAOxE+AmJmBMPgLxDJAfJMFSKwD4kqoAClgA+P///8ZXF1dPaCGcBKh6QcQB+3evXs7WDMIAA2QB1I7gFgDj0aQFz2BGh+AOEwwUaDAQyBlCMR7cGjcC5KHaQQBuM3IAOiKTiBVhiTUDdRUhq4Oq2aoAelAahIQ5wM1zsCmBiDAADhYMJXVZ9u9AAAAAElFTkSuQmCC);
   background-repeat: no-repeat;
-  background-position: 97.5% center; }
+  background-position: 97.5% center;
+}
 
 #signup .row {
   position: relative;
-  background: #fff; }
+  background: #fff;
+}
+
 #signup .contact_label {
   font-weight: 300;
   margin-top: 5px;
-  pointer-events: none; }
+  pointer-events: none;
+}
+
 #signup input.input_label,
 #signup input.input_label:focus {
   width: 100%;
-  border: none; }
+  border: none;
+}
+
 #signup input[type="submit"] {
   width: 100%;
   background: #ff5800;
@@ -1168,10 +1279,14 @@ select {
   border: none;
   border-radius: none;
   padding: 8px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
+
 #signup textarea.floatLabel {
   resize: none;
-  padding-right: 100px; }
+  padding-right: 100px;
+}
+
 #signup input[type="text"],
 #signup input[type="email"],
 #signup input[type="tel"],
@@ -1185,30 +1300,42 @@ select {
   color: #9a9b9c;
   font-size: 16px;
   font-weight: 300;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   z-index: 2;
-  border: none; }
-  #signup input[type="text"]:focus, #signup input[type="text"]:hover,
-  #signup input[type="email"]:focus,
-  #signup input[type="email"]:hover,
-  #signup input[type="tel"]:focus,
-  #signup input[type="tel"]:hover,
-  #signup textarea:focus,
-  #signup textarea:hover {
-    outline: none; }
-    #signup input[type="text"]:focus label, #signup input[type="text"]:hover label,
-    #signup input[type="email"]:focus label,
-    #signup input[type="email"]:hover label,
-    #signup input[type="tel"]:focus label,
-    #signup input[type="tel"]:hover label,
-    #signup textarea:focus label,
-    #signup textarea:hover label {
-      cursor: text; }
+  border: none;
+}
+
+#signup input[type="text"]:focus,
+#signup input[type="text"]:hover,
+#signup input[type="email"]:focus,
+#signup input[type="email"]:hover,
+#signup input[type="tel"]:focus,
+#signup input[type="tel"]:hover,
+#signup textarea:focus,
+#signup textarea:hover {
+  outline: none;
+}
+
+#signup input[type="text"]:focus label,
+#signup input[type="text"]:hover label,
+#signup input[type="email"]:focus label,
+#signup input[type="email"]:hover label,
+#signup input[type="tel"]:focus label,
+#signup input[type="tel"]:hover label,
+#signup textarea:focus label,
+#signup textarea:hover label {
+  cursor: text;
+}
+
 #signup select {
   -moz-appearance: none;
   -webkit-appearance: none;
-  cursor: pointer; }
+  cursor: pointer;
+}
+
 #signup label {
   position: absolute;
   left: 0;
@@ -1219,13 +1346,17 @@ select {
   padding: 6px;
   font-weight: 400;
   background-color: rgba(255, 255, 255, 0);
+  -moz-transition: color 0.3s, top 0.3s, background-color 0.8s;
+  -o-transition: color 0.3s, top 0.3s, background-color 0.8s;
   -webkit-transition: color 0.3s, top 0.3s, background-color 0.8s;
   transition: color 0.3s, top 0.3s, background-color 0.8s;
   z-index: 0;
   width: 100%;
   box-sizing: border-box;
   height: 40px;
-  text-align: left; }
+  text-align: left;
+}
+
 #signup label.active {
   right: 0;
   left: auto;
@@ -1234,7 +1365,9 @@ select {
   padding: 6px;
   top: -5px;
   width: auto;
-  height: 40px; }
+  height: 40px;
+}
+
 #signup label.has-content {
   right: 0;
   left: auto;
@@ -1242,20 +1375,24 @@ select {
   background: transparent;
   padding: 6px;
   top: -6px;
-  width: auto; }
+  width: auto;
+}
 
 #calendar {
-  width: 100%; }
+  width: 100%;
+}
 
 #calendar a {
   color: #8e352e;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 #calendar ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%; }
+  width: 100%;
+}
 
 #calendar li {
   display: block;
@@ -1265,11 +1402,13 @@ select {
   box-sizing: border-box;
   border: 1px solid #ccc;
   margin-right: -1px;
-  margin-bottom: -1px; }
+  margin-bottom: -1px;
+}
 
 #calendar ul.weekdays {
   height: 40px;
-  background: #323944; }
+  background: #323944;
+}
 
 #calendar ul.weekdays li {
   text-align: center;
@@ -1278,13 +1417,16 @@ select {
   border: none !important;
   padding: 10px 6px;
   color: #fff;
-  font-size: 13px; }
+  font-size: 13px;
+}
 
 #calendar .days li {
-  height: 180px; }
+  height: 180px;
+}
 
 #calendar .days li:hover {
-  background: #d3d3d3; }
+  background: #d3d3d3;
+}
 
 #calendar .date {
   text-align: center;
@@ -1292,7 +1434,8 @@ select {
   padding: 4px;
   background: rgba(50, 57, 68, 0.7);
   color: #fff;
-  float: right; }
+  float: right;
+}
 
 #calendar .event {
   clear: both;
@@ -1306,44 +1449,54 @@ select {
   background: #e4f2f2;
   border: 1px solid #b5dbdc;
   color: #009aaf;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 #calendar .event-desc {
   color: #666;
   margin: 3px 0 7px 0;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 #calendar .other-month {
   background: #f5f5f5;
-  color: #666; }
+  color: #666;
+}
 
 #calendar-wrap header {
   padding: 0;
-  border-bottom: none; }
-  #calendar-wrap header h1 {
-    color: #323944;
-    text-align: center;
-    font-size: 2rem; }
+  border-bottom: none;
+}
+
+#calendar-wrap header h1 {
+  color: #323944;
+  text-align: center;
+  font-size: 2rem;
+}
 
 #map {
-  height: 300px; }
+  height: 300px;
+}
 
 /* ============================
                 Mobile Responsiveness
    ============================*/
 @media (max-width: 768px) {
   #calendar .weekdays, #calendar .other-month {
-    display: none; }
-
+    display: none;
+  }
   #calendar li {
     height: auto !important;
     border: 1px solid #ededed;
     width: 100%;
     padding: 10px;
-    margin-bottom: -1px; }
-
+    margin-bottom: -1px;
+  }
   #calendar .date {
-    float: none; } }
+    float: none;
+  }
+}
+
 /* required styles */
 .leaflet-map-pane,
 .leaflet-tile,
@@ -1361,183 +1514,234 @@ select {
 .leaflet-layer {
   position: absolute;
   left: 0;
-  top: 0; }
+  top: 0;
+}
 
 .leaflet-container {
   overflow: hidden;
   -ms-touch-action: none;
-  touch-action: none; }
+  touch-action: none;
+}
 
 .leaflet-tile,
 .leaflet-marker-icon,
 .leaflet-marker-shadow {
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
-      user-select: none;
-  -webkit-user-drag: none; }
+  user-select: none;
+  -webkit-user-drag: none;
+}
 
 .leaflet-marker-icon,
 .leaflet-marker-shadow {
-  display: block; }
+  display: block;
+}
 
 /* map is broken in FF if you have max-width: 100% on tiles */
 .leaflet-container img {
-  max-width: none !important; }
+  max-width: none !important;
+}
 
 /* stupid Android 2 doesn't understand "max-width: none" properly */
 .leaflet-container img.leaflet-image-layer {
-  max-width: 15000px !important; }
+  max-width: 15000px !important;
+}
 
 .leaflet-tile {
-  -webkit-filter: inherit;
-          filter: inherit;
-  visibility: hidden; }
+  filter: inherit;
+  visibility: hidden;
+}
 
 .leaflet-tile-loaded {
-  visibility: inherit; }
+  visibility: inherit;
+}
 
 .leaflet-zoom-box {
   width: 0;
-  height: 0; }
+  height: 0;
+}
 
 /* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
 .leaflet-overlay-pane svg {
-  -moz-user-select: none; }
+  -moz-user-select: none;
+}
 
 .leaflet-tile-pane {
-  z-index: 2; }
+  z-index: 2;
+}
 
 .leaflet-objects-pane {
-  z-index: 3; }
+  z-index: 3;
+}
 
 .leaflet-overlay-pane {
-  z-index: 4; }
+  z-index: 4;
+}
 
 .leaflet-shadow-pane {
-  z-index: 5; }
+  z-index: 5;
+}
 
 .leaflet-marker-pane {
-  z-index: 6; }
+  z-index: 6;
+}
 
 .leaflet-popup-pane {
-  z-index: 7; }
+  z-index: 7;
+}
 
 .leaflet-vml-shape {
   width: 1px;
-  height: 1px; }
+  height: 1px;
+}
 
 .lvml {
   behavior: url(#default#VML);
   display: inline-block;
-  position: absolute; }
+  position: absolute;
+}
 
 /* control positioning */
 .leaflet-control {
   position: relative;
   z-index: 7;
-  pointer-events: auto; }
+  pointer-events: auto;
+}
 
 .leaflet-top,
 .leaflet-bottom {
   position: absolute;
   z-index: 1000;
-  pointer-events: none; }
+  pointer-events: none;
+}
 
 .leaflet-top {
-  top: 0; }
+  top: 0;
+}
 
 .leaflet-right {
-  right: 0; }
+  right: 0;
+}
 
 .leaflet-bottom {
-  bottom: 0; }
+  bottom: 0;
+}
 
 .leaflet-left {
-  left: 0; }
+  left: 0;
+}
 
 .leaflet-control {
   float: left;
-  clear: both; }
+  clear: both;
+}
 
 .leaflet-right .leaflet-control {
-  float: right; }
+  float: right;
+}
 
 .leaflet-top .leaflet-control {
-  margin-top: 10px; }
+  margin-top: 10px;
+}
 
 .leaflet-bottom .leaflet-control {
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+}
 
 .leaflet-left .leaflet-control {
-  margin-left: 10px; }
+  margin-left: 10px;
+}
 
 .leaflet-right .leaflet-control {
-  margin-right: 10px; }
+  margin-right: 10px;
+}
 
 /* zoom and fade animations */
 .leaflet-fade-anim .leaflet-tile,
 .leaflet-fade-anim .leaflet-popup {
   opacity: 0;
   -webkit-transition: opacity 0.2s linear;
-  transition: opacity 0.2s linear; }
+  -moz-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+}
 
 .leaflet-fade-anim .leaflet-tile-loaded,
 .leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
-  opacity: 1; }
+  opacity: 1;
+}
 
 .leaflet-zoom-anim .leaflet-zoom-animated {
   -webkit-transition: -webkit-transform 0.25s cubic-bezier(0, 0, 0.25, 1);
-  transition: transform 0.25s cubic-bezier(0, 0, 0.25, 1); }
+  -moz-transition: -moz-transform 0.25s cubic-bezier(0, 0, 0.25, 1);
+  -o-transition: -o-transform 0.25s cubic-bezier(0, 0, 0.25, 1);
+  transition: transform 0.25s cubic-bezier(0, 0, 0.25, 1);
+}
 
 .leaflet-zoom-anim .leaflet-tile,
 .leaflet-pan-anim .leaflet-tile,
 .leaflet-touching .leaflet-zoom-animated {
   -webkit-transition: none;
-  transition: none; }
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
 
 .leaflet-zoom-anim .leaflet-zoom-hide {
-  visibility: hidden; }
+  visibility: hidden;
+}
 
 /* cursors */
 .leaflet-clickable {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .leaflet-container {
-  cursor: -webkit-grab; }
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+}
 
 .leaflet-popup-pane,
 .leaflet-control {
-  cursor: auto; }
+  cursor: auto;
+}
 
 .leaflet-dragging .leaflet-container,
 .leaflet-dragging .leaflet-clickable {
   cursor: move;
-  cursor: -webkit-grabbing; }
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+}
 
 /* visual tweaks */
 .leaflet-container {
   background: #ddd;
-  outline: 0; }
+  outline: 0;
+}
 
 .leaflet-container a {
-  color: #0078A8; }
+  color: #0078A8;
+}
 
 .leaflet-container a.leaflet-active {
-  outline: 2px solid orange; }
+  outline: 2px solid orange;
+}
 
 .leaflet-zoom-box {
   border: 2px dotted #38f;
-  background: rgba(255, 255, 255, 0.5); }
+  background: rgba(255, 255, 255, 0.5);
+}
 
 /* general typography */
 .leaflet-container {
-  font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif; }
+  font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
 
 /* general toolbar styles */
 .leaflet-bar {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
-  border-radius: 4px; }
+  border-radius: 4px;
+}
 
 .leaflet-bar a,
 .leaflet-bar a:hover {
@@ -1549,122 +1753,150 @@ select {
   display: block;
   text-align: center;
   text-decoration: none;
-  color: black; }
+  color: black;
+}
 
 .leaflet-bar a,
 .leaflet-control-layers-toggle {
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  display: block; }
+  display: block;
+}
 
 .leaflet-bar a:hover {
-  background-color: #f4f4f4; }
+  background-color: #f4f4f4;
+}
 
 .leaflet-bar a:first-child {
   border-top-left-radius: 4px;
-  border-top-right-radius: 4px; }
+  border-top-right-radius: 4px;
+}
 
 .leaflet-bar a:last-child {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  border-bottom: none; }
+  border-bottom: none;
+}
 
 .leaflet-bar a.leaflet-disabled {
   cursor: default;
   background-color: #f4f4f4;
-  color: #bbb; }
+  color: #bbb;
+}
 
 .leaflet-touch .leaflet-bar a {
   width: 30px;
   height: 30px;
-  line-height: 30px; }
+  line-height: 30px;
+}
 
 /* zoom control */
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
-  font: bold 18px 'Lucida Console', Monaco, monospace;
-  text-indent: 1px; }
+  font: bold 18px "Lucida Console", Monaco, monospace;
+  text-indent: 1px;
+}
 
 .leaflet-control-zoom-out {
-  font-size: 20px; }
+  font-size: 20px;
+}
 
 .leaflet-touch .leaflet-control-zoom-in {
-  font-size: 22px; }
+  font-size: 22px;
+}
 
 .leaflet-touch .leaflet-control-zoom-out {
-  font-size: 24px; }
+  font-size: 24px;
+}
 
 /* layers control */
 .leaflet-control-layers {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
   background: #fff;
-  border-radius: 5px; }
+  border-radius: 5px;
+}
 
 .leaflet-control-layers-toggle {
   background-image: url(images/layers.png);
   width: 36px;
-  height: 36px; }
+  height: 36px;
+}
 
 .leaflet-retina .leaflet-control-layers-toggle {
   background-image: url(images/layers-2x.png);
-  background-size: 26px 26px; }
+  background-size: 26px 26px;
+}
 
 .leaflet-touch .leaflet-control-layers-toggle {
   width: 44px;
-  height: 44px; }
+  height: 44px;
+}
 
 .leaflet-control-layers .leaflet-control-layers-list,
 .leaflet-control-layers-expanded .leaflet-control-layers-toggle {
-  display: none; }
+  display: none;
+}
 
 .leaflet-control-layers-expanded .leaflet-control-layers-list {
   display: block;
-  position: relative; }
+  position: relative;
+}
 
 .leaflet-control-layers-expanded {
   padding: 6px 10px 6px 6px;
   color: #333;
-  background: #fff; }
+  background: #fff;
+}
 
 .leaflet-control-layers-selector {
   margin-top: 2px;
   position: relative;
-  top: 1px; }
+  top: 1px;
+}
 
 .leaflet-control-layers label {
-  display: block; }
+  display: block;
+}
 
 .leaflet-control-layers-separator {
   height: 0;
   border-top: 1px solid #ddd;
-  margin: 5px -10px 5px -6px; }
+  margin: 5px -10px 5px -6px;
+}
 
 /* attribution and scale controls */
 .leaflet-container .leaflet-control-attribution {
   background: #fff;
   background: rgba(255, 255, 255, 0.7);
-  margin: 0; }
+  margin: 0;
+}
 
 .leaflet-control-attribution,
 .leaflet-control-scale-line {
   padding: 0 5px;
-  color: #333; }
+  color: #333;
+}
 
 .leaflet-control-attribution a {
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 .leaflet-control-attribution a:hover {
-  text-decoration: underline; }
+  text-decoration: underline;
+}
 
 .leaflet-container .leaflet-control-attribution,
 .leaflet-container .leaflet-control-scale {
-  font-size: 11px; }
+  font-size: 11px;
+}
 
 .leaflet-left .leaflet-control-scale {
-  margin-left: 5px; }
+  margin-left: 5px;
+}
 
 .leaflet-bottom .leaflet-control-scale {
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+}
 
 .leaflet-control-scale-line {
   border: 2px solid #777;
@@ -1674,51 +1906,62 @@ select {
   font-size: 11px;
   white-space: nowrap;
   overflow: hidden;
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
   background: #fff;
-  background: rgba(255, 255, 255, 0.5); }
+  background: rgba(255, 255, 255, 0.5);
+}
 
 .leaflet-control-scale-line:not(:first-child) {
   border-top: 2px solid #777;
   border-bottom: none;
-  margin-top: -2px; }
+  margin-top: -2px;
+}
 
 .leaflet-control-scale-line:not(:first-child):not(:last-child) {
-  border-bottom: 2px solid #777; }
+  border-bottom: 2px solid #777;
+}
 
 .leaflet-touch .leaflet-control-attribution,
 .leaflet-touch .leaflet-control-layers,
 .leaflet-touch .leaflet-bar {
-  box-shadow: none; }
+  box-shadow: none;
+}
 
 .leaflet-touch .leaflet-control-layers,
 .leaflet-touch .leaflet-bar {
   border: 2px solid rgba(0, 0, 0, 0.2);
-  background-clip: padding-box; }
+  background-clip: padding-box;
+}
 
 /* popup */
 .leaflet-popup {
   position: absolute;
-  text-align: center; }
+  text-align: center;
+}
 
 .leaflet-popup-content-wrapper {
   padding: 1px;
   text-align: left;
-  border-radius: 12px; }
+  border-radius: 12px;
+}
 
 .leaflet-popup-content {
   margin: 13px 19px;
-  line-height: 1.4; }
+  line-height: 1.4;
+}
 
 .leaflet-popup-content p {
-  margin: 18px 0; }
+  margin: 18px 0;
+}
 
 .leaflet-popup-tip-container {
   margin: 0 auto;
   width: 40px;
   height: 20px;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .leaflet-popup-tip {
   width: 17px;
@@ -1726,13 +1969,17 @@ select {
   padding: 1px;
   margin: -10px auto 0;
   -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
-  transform: rotate(45deg); }
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
   background: white;
-  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4); }
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+}
 
 .leaflet-container a.leaflet-popup-close-button {
   position: absolute;
@@ -1746,38 +1993,46 @@ select {
   color: #c3c3c3;
   text-decoration: none;
   font-weight: bold;
-  background: transparent; }
+  background: transparent;
+}
 
 .leaflet-container a.leaflet-popup-close-button:hover {
-  color: #999; }
+  color: #999;
+}
 
 .leaflet-popup-scrolled {
   overflow: auto;
   border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd; }
+  border-top: 1px solid #ddd;
+}
 
 .leaflet-oldie .leaflet-popup-content-wrapper {
-  zoom: 1; }
+  zoom: 1;
+}
 
 .leaflet-oldie .leaflet-popup-tip {
   width: 24px;
   margin: 0 auto;
   -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";
-  filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678); }
+  filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);
+}
 
 .leaflet-oldie .leaflet-popup-tip-container {
-  margin-top: -1px; }
+  margin-top: -1px;
+}
 
 .leaflet-oldie .leaflet-control-zoom,
 .leaflet-oldie .leaflet-control-layers,
 .leaflet-oldie .leaflet-popup-content-wrapper,
 .leaflet-oldie .leaflet-popup-tip {
-  border: 1px solid #999; }
+  border: 1px solid #999;
+}
 
 /* div icon */
 .leaflet-div-icon {
   background: #fff;
-  border: 1px solid #666; }
+  border: 1px solid #666;
+}
 
 /*********************
 BASE (MOBILE) SIZE
@@ -1814,29 +2069,47 @@ body {
   /* Image doesn't repeat */
   background-repeat: no-repeat;
   /* Makes the image fixed in the viewport so that it doesn't move when 
-   the content height is greater than the image height */
+     the content height is greater than the image height */
   background-attachment: fixed;
   /* This is what makes the background image rescale based on its container's size */
   background-size: cover;
   /* Pick a solid background color that will be displayed while the background image is loading */
-  background-color: #464646; }
+  background-color: #464646;
+}
 
 /********************
 WORDPRESS BODY CLASSES
 style a page via class
 ********************/
-/* for sites that are read right to left (i.e. hebrew) */
+/* for sites that are read right to left (i.e. arabic) */
 /* home page */
+.home .wrap {
+  width: 100%;
+}
+
+.trail-modules {
+  padding: 1.5em;
+}
+
+.trail-modules img {
+  max-width: 100%;
+}
+
 .page-template-events #inner-content {
-  margin-top: 1.5em; }
+  margin-top: 1.5em;
+}
+
 .page-template-events #map-wrap {
   padding: 0;
-  position: relative; }
-  .page-template-events #map-wrap .page-title {
-    position: absolute;
-    background: rgba(50, 57, 68, 0.7);
-    padding: 0.25rem 1.25rem 0.25rem 5rem;
-    bottom: 15%; }
+  position: relative;
+}
+
+.page-template-events #map-wrap .page-title {
+  position: absolute;
+  background: rgba(50, 57, 68, 0.7);
+  padding: 0.25rem 1.25rem 0.25rem 5rem;
+  bottom: 15%;
+}
 
 /* blog template page */
 /* archive page */
@@ -1869,9 +2142,12 @@ style a page via class
 /* child page template */
 /* replace the number to the corresponding page number */
 .logged-in #container {
-  position: relative; }
+  position: relative;
+}
+
 .logged-in header.header.fixed {
-  top: 31px; }
+  top: 31px;
+}
 
 /* if user is logged in */
 /* paged items like search results or archives */
@@ -1881,29 +2157,36 @@ LAYOUT & GRID STYLES
 *********************/
 .wrap {
   width: 96%;
-  margin: 0 auto; }
+  margin: 0 auto;
+}
 
 /*********************
 LINK STYLES
 *********************/
 a,
 a:visited {
-  color: #ff5800
+  color: #ff5800;
   /* on hover */
   /* on click */
-  /* mobile tap color */ }
-  a:hover, a:focus,
-  a:visited:hover,
-  a:visited:focus {
-    color: #d14800; }
-  a:link,
-  a:visited:link {
-    /*
-    this highlights links on iPhones/iPads.
-    so it basically works like the :hover selector
-    for mobile devices.
-    */
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3); }
+  /* mobile tap color */
+}
+
+a:hover,
+a:focus,
+a:visited:hover,
+a:visited:focus {
+  color: #d14800;
+}
+
+a:link,
+a:visited:link {
+  /*
+        this highlights links on iPhones/iPads.
+        so it basically works like the :hover selector
+        for mobile devices.
+        */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+}
 
 /******************************************************************
 H1, H2, H3, H4, H5 STYLES
@@ -1919,109 +2202,135 @@ h4,
 h5,
 .h5 {
   text-rendering: optimizelegibility;
-  font-weight: 500
+  font-weight: 500;
   /*
-  if you're going to use webfonts, be sure to check your weights
-  http://css-tricks.com/watch-your-font-weight/
-  */
-  /* removing text decoration from all headline links */ }
-  h1 a,
-  .h1 a,
-  h2 a,
-  .h2 a,
-  h3 a,
-  .h3 a,
-  h4 a,
-  .h4 a,
-  h5 a,
-  .h5 a {
-    text-decoration: none; }
+    if you're going to use webfonts, be sure to check your weights
+    http://css-tricks.com/watch-your-font-weight/
+    */
+  /* removing text decoration from all headline links */
+}
+
+h1 a,
+.h1 a,
+h2 a,
+.h2 a,
+h3 a,
+.h3 a,
+h4 a,
+.h4 a,
+h5 a,
+.h5 a {
+  text-decoration: none;
+}
 
 h1,
 .h1 {
   font-size: 2.9rem;
   line-height: 3.4rem;
-  color: #fff; }
+  color: #fff;
+}
 
 h2,
 .h2 {
   font-size: 1.75em;
   line-height: 1.4em;
-  margin-bottom: 0.375em; }
+  margin-bottom: 0.375em;
+}
 
 h3,
 .h3 {
-  font-size: 1.125em; }
+  font-size: 1.125em;
+}
 
 h4,
 .h4 {
   font-size: 1.1em;
-  font-weight: 700; }
+  font-weight: 700;
+}
 
 h5,
 .h5 {
   font-size: 0.846em;
   line-height: 2.09em;
   text-transform: uppercase;
-  letter-spacing: 2px; }
+  letter-spacing: 2px;
+}
 
 /*********************
 HEADER STYLES
 *********************/
 .header {
-  background: transparent; }
+  background: transparent;
+}
 
 .header.fixed {
-  -webkit-transition: background 0.3 ease;
-          transition: background 0.3 ease;
+  transition: background 0.3 ease;
   background: rgba(50, 57, 68, 0.7);
   height: 50px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 10;
-  margin-bottom: 0; }
-  .header.fixed .left-brand {
-    padding: 0; }
-  .header.fixed .right-brand {
-    right: 1%;
-    top: 23%; }
-  .header.fixed .nav {
-    margin: 1px 0 1.5em; }
+  margin-bottom: 0;
+}
+
+.header.fixed .left-brand {
+  padding: 0;
+}
+
+.header.fixed .right-brand {
+  right: 1%;
+  top: 23%;
+}
+
+.header.fixed .nav {
+  margin: 1px 0 1.5em;
+}
 
 #logo {
-  margin: 0.75em 0; }
-  #logo .logo {
-    display: block;
-    padding-left: 35px;
-    height: 24px;
-    background: url(../images/logo.svg) no-repeat left center;
-    background-size: 24px 24px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #fff; }
+  margin: 0.75em 0;
+}
+
+#logo .logo {
+  display: block;
+  padding-left: 35px;
+  height: 24px;
+  background: url(../images/logo.svg) no-repeat left center;
+  background-size: 24px 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+}
 
 .left-brand {
   display: block;
   width: 205px;
   margin: 0 auto;
-  padding: 1em 0 0.7em; }
+  padding: 1em 0 0.7em;
+}
 
 .right-brand {
   position: absolute;
   top: 5px;
-  right: 5px; }
-  .right-brand .fb,
-  .right-brand .twit {
-    background-size: 26px 26px !important;
-    display: inline-block;
-    height: 26px;
-    margin: 0 0.15rem;
-    width: 26px; }
-  .right-brand .fb {
-    background: transparent url("../images/fb.svg") no-repeat scroll left center; }
-  .right-brand .twit {
-    background: transparent url("../images/twitter.svg") no-repeat scroll left center; }
+  right: 5px;
+}
+
+.right-brand .fb,
+.right-brand .twit {
+  background-size: 26px 26px !important;
+  display: inline-block;
+  height: 26px;
+  margin: 0 0.15rem;
+  width: 26px;
+}
+
+.right-brand .fb {
+  background: transparent url("../images/fb.svg") no-repeat scroll left center;
+}
+
+.right-brand .twit {
+  background: transparent url("../images/twitter.svg") no-repeat scroll left center;
+}
 
 /*********************
 NAVIGATION STYLES
@@ -2036,63 +2345,86 @@ and more scalable.
 .nav {
   border-bottom: 0;
   display: table;
-  background: #fff
+  background: #fff;
+  width: 100%;
   /* end .menu li */
   /* highlight current page */
-  /* end current highlighters */ }
-  .nav li {
-    display: table-cell;
-    text-align: center;
-    border-right: 1px solid #323944
-    /*
-    so you really have to rethink your dropdowns for mobile.
-    you don't want to have it expand too much because the
-    screen is so small. How you manage your menu should
-    depend on the project. Here's some great info on it:
-    http://www.alistapart.com/articles/organizing-mobile/
-    */ }
-    .nav li a {
-      display: block;
-      color: #323944;
-      text-decoration: none;
-      padding: 0.75em
-      /*
-      remember this is for mobile ONLY, so there's no need
-      to even declare hover styles here, you can do it in
-      the style.scss file where it's relevant. We want to
-      keep this file as small as possible!
-      */ }
-    .nav li:last-child {
-      border-right: 0; }
-    .nav li ul.sub-menu li a,
-    .nav li ul.children li a {
-      padding-left: 30px; }
+  /* end current highlighters */
+}
+
+.nav li {
+  display: table-cell;
+  text-align: center;
+  border-right: 1px solid #323944;
+  /*
+        so you really have to rethink your dropdowns for mobile.
+        you don't want to have it expand too much because the
+        screen is so small. How you manage your menu should
+        depend on the project. Here's some great info on it:
+        http://www.alistapart.com/articles/organizing-mobile/
+        */
+}
+
+.nav li a {
+  display: block;
+  color: #323944;
+  text-decoration: none;
+  padding: 0.75em;
+  /*
+            remember this is for mobile ONLY, so there's no need
+            to even declare hover styles here, you can do it in
+            the style.scss file where it's relevant. We want to
+            keep this file as small as possible!
+            */
+}
+
+.nav li:last-child {
+  border-right: 0;
+}
+
+.nav li ul.sub-menu li a,
+.nav li ul.children li a {
+  padding-left: 30px;
+}
+
+ul.sub-menu {
+  display: none;
+}
 
 /* end .nav */
 /*********************
 POSTS & CONTENT STYLES
 *********************/
 #content {
-  margin-bottom: 1.5em; }
+  margin-bottom: 1.5em;
+}
 
 .hentry {
   background-color: #fff;
   margin-bottom: 1.5em;
-  border: 1px solid #ccc; }
-  .hentry header {
-    border-bottom: 1px solid #f8f9fa;
-    padding: 1.5em; }
-  .hentry footer {
-    padding: 1.5em;
-    border-top: 1px solid #f8f9fa; }
-    .hentry footer p {
-      margin: 0; }
+  border: 1px solid #ccc;
+}
+
+.hentry header {
+  border-bottom: 1px solid #f8f9fa;
+  padding: 1.5em;
+}
+
+.hentry footer {
+  padding: 1.5em;
+  border-top: 1px solid #f8f9fa;
+}
+
+.hentry footer p {
+  margin: 0;
+}
 
 /* end .hentry */
 .single-title,
 .page-title,
 .entry-title {
-  margin: 0; }
+  margin: 0;
+}
 
 /* want to style individual post classes? Booya! */
 /* post by id (i.e. post-3) */
@@ -2100,7 +2432,8 @@ POSTS & CONTENT STYLES
 /* general article on a page style */
 .banner {
   max-width: 100%;
-  height: auto; }
+  height: auto;
+}
 
 /* general style on an attatchment */
 /* sticky post style */
@@ -2111,149 +2444,204 @@ POSTS & CONTENT STYLES
 .byline {
   color: #9fa6b4;
   font-style: italic;
-  margin: 0; }
+  margin: 0;
+}
 
 /* entry content */
 .entry-content {
-  padding: 1.5em 1.5em 0
+  padding: 1.5em 1.5em 0;
   /*
-          image alignment on a screen this size may be
-          a bit difficult. It's set to start aligning
-          and floating images at the next breakpoint,
-          but it's up to you. Feel free to change it up.
-          */ }
-  .entry-content p {
-    margin: 0 0 1.5em; }
-  .entry-content table {
-    width: 100%;
-    border: 1px solid #eaedf2;
-    margin-bottom: 1.5em; }
-    .entry-content table caption {
-      margin: 0 0 7px;
-      font-size: 0.75em;
-      color: #9fa6b4;
-      text-transform: uppercase;
-      letter-spacing: 1px; }
-  .entry-content tr {
-    border-bottom: 1px solid #eaedf2; }
-    .entry-content tr:nth-child(even) {
-      background-color: #f8f9fa; }
-  .entry-content td {
-    padding: 7px;
-    border-right: 1px solid #eaedf2; }
-    .entry-content td:last-child {
-      border-right: 0; }
-  .entry-content th {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #eaedf2;
-    border-right: 1px solid #eaedf2; }
-    .entry-content th:last-child {
-      border-right: 0; }
-  .entry-content blockquote {
-    margin: 0 0 1.5em 0.75em;
-    padding: 0 0 0 0.75em;
-    border-left: 3px solid #2980b9;
-    font-style: italic;
-    color: #9fa6b4; }
-  .entry-content dd {
-    margin-left: 0;
-    font-size: 0.9em;
-    color: #787878;
-    margin-bottom: 1.5em; }
-  .entry-content img {
-    margin: 0 0 1.5em 0;
-    max-width: 100%;
-    height: auto; }
-  .entry-content .size-auto,
-  .entry-content .size-full,
-  .entry-content .size-large,
-  .entry-content .size-medium,
-  .entry-content .size-thumbnail {
-    max-width: 100%;
-    height: auto; }
-  .entry-content pre {
-    background: #323944;
-    color: #f8f9fa;
-    font-size: 0.9em;
-    padding: 1.5em;
-    margin: 0 0 1.5em;
-    border-radius: 3px; }
+            image alignment on a screen this size may be
+            a bit difficult. It's set to start aligning
+            and floating images at the next breakpoint,
+            but it's up to you. Feel free to change it up.
+            */
+}
+
+.entry-content p {
+  margin: 0 0 1.5em;
+}
+
+.entry-content table {
+  width: 100%;
+  border: 1px solid #eaedf2;
+  margin-bottom: 1.5em;
+}
+
+.entry-content table caption {
+  margin: 0 0 7px;
+  font-size: 0.75em;
+  color: #9fa6b4;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.entry-content tr {
+  border-bottom: 1px solid #eaedf2;
+}
+
+.entry-content tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.entry-content td {
+  padding: 7px;
+  border-right: 1px solid #eaedf2;
+}
+
+.entry-content td:last-child {
+  border-right: 0;
+}
+
+.entry-content th {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #eaedf2;
+  border-right: 1px solid #eaedf2;
+}
+
+.entry-content th:last-child {
+  border-right: 0;
+}
+
+.entry-content blockquote {
+  margin: 0 0 1.5em 0.75em;
+  padding: 0 0 0 0.75em;
+  border-left: 3px solid #2980b9;
+  font-style: italic;
+  color: #9fa6b4;
+}
+
+.entry-content dd {
+  margin-left: 0;
+  font-size: 0.9em;
+  color: #787878;
+  margin-bottom: 1.5em;
+}
+
+.entry-content img {
+  margin: 0 0 1.5em 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.entry-content .size-auto,
+.entry-content .size-full,
+.entry-content .size-large,
+.entry-content .size-medium,
+.entry-content .size-thumbnail {
+  max-width: 100%;
+  height: auto;
+}
+
+.entry-content pre {
+  background: #323944;
+  color: #f8f9fa;
+  font-size: 0.9em;
+  padding: 1.5em;
+  margin: 0 0 1.5em;
+  border-radius: 3px;
+}
 
 /* end .entry-content */
 .wp-caption {
   max-width: 100%;
   background: #eee;
-  padding: 5px
-  /* images inside wp-caption */ }
-  .wp-caption img {
-    max-width: 100%;
-    margin-bottom: 0;
-    width: 100%; }
-  .wp-caption p.wp-caption-text {
-    font-size: 0.85em;
-    margin: 4px 0 7px;
-    text-align: center; }
+  padding: 5px;
+  /* images inside wp-caption */
+}
+
+.wp-caption img {
+  max-width: 100%;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.wp-caption p.wp-caption-text {
+  font-size: 0.85em;
+  margin: 4px 0 7px;
+  text-align: center;
+}
 
 /* end .wp-caption */
 /* image gallery styles */
 /* end .gallery */
 /* gallery caption styles */
 .tags {
-  margin: 0; }
+  margin: 0;
+}
 
 /******************************************************************
 PAGE NAVI STYLES
 ******************************************************************/
 .pagination,
 .wp-prev-next {
-  margin: 1.5em 0; }
+  margin: 1.5em 0;
+}
 
 .pagination {
-  text-align: center; }
-  .pagination ul {
-    display: inline-block;
-    background-color: #fff;
-    white-space: nowrap;
-    padding: 0;
-    clear: both;
-    border-radius: 3px; }
-  .pagination li {
-    padding: 0;
-    margin: 0;
-    float: left;
-    display: inline;
-    overflow: hidden;
-    border-right: 1px solid #eaedf2; }
-  .pagination a,
-  .pagination span {
-    margin: 0;
-    text-decoration: none;
-    padding: 0;
-    line-height: 1em;
-    font-size: 1em;
-    font-weight: normal;
-    padding: 0.75em;
-    min-width: 1em;
-    display: block;
-    color: #2980b9; }
-    .pagination a:hover, .pagination a:focus,
-    .pagination span:hover,
-    .pagination span:focus {
-      background-color: #2980b9;
-      color: #fff; }
-  .pagination .current {
-    cursor: default;
-    color: #5c6b80; }
-    .pagination .current:hover, .pagination .current:focus {
-      background-color: #fff;
-      color: #5c6b80; }
+  text-align: center;
+}
+
+.pagination ul {
+  display: inline-block;
+  background-color: #fff;
+  white-space: nowrap;
+  padding: 0;
+  clear: both;
+  border-radius: 3px;
+}
+
+.pagination li {
+  padding: 0;
+  margin: 0;
+  float: left;
+  display: inline;
+  overflow: hidden;
+  border-right: 1px solid #eaedf2;
+}
+
+.pagination a,
+.pagination span {
+  margin: 0;
+  text-decoration: none;
+  padding: 0;
+  line-height: 1em;
+  font-size: 1em;
+  font-weight: normal;
+  padding: 0.75em;
+  min-width: 1em;
+  display: block;
+  color: #2980b9;
+}
+
+.pagination a:hover,
+.pagination a:focus,
+.pagination span:hover,
+.pagination span:focus {
+  background-color: #2980b9;
+  color: #fff;
+}
+
+.pagination .current {
+  cursor: default;
+  color: #5c6b80;
+}
+
+.pagination .current:hover,
+.pagination .current:focus {
+  background-color: #fff;
+  color: #5c6b80;
+}
 
 /* end .bones_page_navi */
 /* fallback previous & next links */
 .wp-prev-next .prev-link {
-  float: left; }
+  float: left;
+}
+
 .wp-prev-next .next-link {
-  float: right; }
+  float: right;
+}
 
 /* end .wp-prev-next */
 /******************************************************************
@@ -2263,76 +2651,109 @@ COMMENT STYLES
 #comments-title {
   padding: 0.75em;
   margin: 0;
-  border-top: 1px solid #f8f9fa
-  /* number of comments span */ }
+  border-top: 1px solid #f8f9fa;
+  /* number of comments span */
+}
 
 .commentlist {
   margin: 0;
-  list-style-type: none; }
+  list-style-type: none;
+}
 
 .comment {
   position: relative;
   clear: both;
   overflow: hidden;
   padding: 1.5em;
-  border-bottom: 1px solid #f8f9fa
+  border-bottom: 1px solid #f8f9fa;
   /* vcard */
   /* end .commentlist .vcard */
   /* end children */
-  /* general comment classes */ }
-  .comment .comment-author {
-    padding: 7px;
-    border: 0; }
-  .comment .vcard {
-    margin-left: 50px; }
-    .comment .vcard cite.fn {
-      font-weight: 700;
-      font-style: normal; }
-    .comment .vcard time {
-      display: block;
-      font-size: 0.9em;
-      font-style: italic; }
-      .comment .vcard time a {
-        color: #9fa6b4;
-        text-decoration: none; }
-        .comment .vcard time a:hover {
-          text-decoration: underline; }
-    .comment .vcard .avatar {
-      position: absolute;
-      left: 16px;
-      border-radius: 50%; }
-  .comment:last-child {
-    margin-bottom: 0; }
-  .comment .children {
-    margin: 0
-    /* variations */
-    /* change number for different depth */ }
-  .comment[class*=depth-] {
-    margin-top: 1.1em; }
-  .comment.depth-1 {
-    margin-left: 0;
-    margin-top: 0; }
-  .comment:not(.depth-1) {
-    margin-top: 0;
-    margin-left: 7px;
-    padding: 7px; }
-  .comment.odd {
-    background-color: #fff; }
-  .comment.even {
-    background: #f8f9fa; }
+  /* general comment classes */
+}
+
+.comment .comment-author {
+  padding: 7px;
+  border: 0;
+}
+
+.comment .vcard {
+  margin-left: 50px;
+}
+
+.comment .vcard cite.fn {
+  font-weight: 700;
+  font-style: normal;
+}
+
+.comment .vcard time {
+  display: block;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.comment .vcard time a {
+  color: #9fa6b4;
+  text-decoration: none;
+}
+
+.comment .vcard time a:hover {
+  text-decoration: underline;
+}
+
+.comment .vcard .avatar {
+  position: absolute;
+  left: 16px;
+  border-radius: 50%;
+}
+
+.comment:last-child {
+  margin-bottom: 0;
+}
+
+.comment .children {
+  margin: 0;
+  /* variations */
+  /* change number for different depth */
+}
+
+.comment[class*=depth-] {
+  margin-top: 1.1em;
+}
+
+.comment.depth-1 {
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.comment:not(.depth-1) {
+  margin-top: 0;
+  margin-left: 7px;
+  padding: 7px;
+}
+
+.comment.odd {
+  background-color: #fff;
+}
+
+.comment.even {
+  background: #f8f9fa;
+}
 
 /* comment meta */
 /* comment content */
 .comment_content p {
   margin: 0.7335em 0 1.5em;
   font-size: 1em;
-  line-height: 1.5em; }
+  line-height: 1.5em;
+}
 
 /* end .commentlist .comment_content */
 /* comment reply link */
 .comment-reply-link {
   font-size: 0.9em;
-  float: right; }
+  float: right;
+}
 
 /* end .commentlist .comment-reply-link */
 /* edit comment link */
@@ -2340,60 +2761,74 @@ COMMENT STYLES
   font-style: italic;
   margin: 0 7px;
   text-decoration: none;
-  font-size: 0.9em; }
+  font-size: 0.9em;
+}
 
 /******************************************************************
 COMMENT FORM STYLES
 ******************************************************************/
 .comment-respond {
   padding: 1.5em;
-  border-top: 1px solid #f8f9fa; }
+  border-top: 1px solid #f8f9fa;
+}
 
 #reply-title {
-  margin: 0; }
+  margin: 0;
+}
 
 .logged-in-as {
   color: #9fa6b4;
   font-style: italic;
-  margin: 0; }
-  .logged-in-as a {
-    color: #5c6b80; }
+  margin: 0;
+}
+
+.logged-in-as a {
+  color: #5c6b80;
+}
 
 .comment-form-comment {
-  margin: 1.5em 0 0.75em; }
+  margin: 1.5em 0 0.75em;
+}
 
 .form-allowed-tags {
   padding: 1.5em;
   background-color: #f8f9fa;
-  font-size: 0.9em; }
+  font-size: 0.9em;
+}
 
 /* comment submit button */
 #submit {
   float: right;
-  font-size: 1em; }
+  font-size: 1em;
+}
 
 /* comment form title */
 #comment-form-title {
-  margin: 0 0 1.1em; }
+  margin: 0 0 1.1em;
+}
 
 /* cancel comment reply link */
 /* logged in comments */
 /* allowed tags */
 #allowed_tags {
-  margin: 1.5em 10px 0.7335em 0; }
+  margin: 1.5em 10px 0.7335em 0;
+}
 
 /* no comments */
 .nocomments {
-  margin: 0 20px 1.1em; }
+  margin: 0 20px 1.1em;
+}
 
 /*********************
 SIDEBARS & ASIDES
 *********************/
 .sidebar {
-  background: #fff; }
+  background: #fff;
+}
 
 .widget ul li {
-  /* deep nesting */ }
+  /* deep nesting */
+}
 
 .no-widgets {
   background-color: #fff;
@@ -2401,10 +2836,12 @@ SIDEBARS & ASIDES
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 2px;
-  margin-bottom: 1.5em; }
+  margin-bottom: 1.5em;
+}
 
 .searchform input#s {
-  width: 75%; }
+  width: 75%;
+}
 
 /*********************
 FOOTER STYLES
@@ -2412,7 +2849,8 @@ FOOTER STYLES
 .footer {
   clear: both;
   background-color: #323944;
-  color: #f8f9fa; }
+  color: #f8f9fa;
+}
 
 /*
     if you checked out the link above:
@@ -2429,15 +2867,33 @@ MASTHEAD STYLES
 *********************/
 #masthead-form {
   color: #fff;
-  text-align: center; }
-  #masthead-form .wrapper {
-    margin: 0 5%; }
+  text-align: center;
+}
+
+#masthead-form .wrapper {
+  margin: 0 5%;
+}
 
 /*********************
 GENERAL STYLES
 *********************/
 #inner-content.container {
-  background: #fff; }
+  background: #fff;
+}
+
+.block-link {
+  position: relative;
+  display: block;
+  background: #eceee5;
+  height: 175px;
+  padding: 1em;
+}
+
+.block-link .btm-left {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
 
 /*********************
 LARGER MOBILE DEVICES
@@ -2447,94 +2903,105 @@ tweeners.
 *********************/
 @media only screen and (min-width: 481px) {
   /******************************************************************
-  Site Name:
-  Author:
-  
-  Stylesheet: 481px and Up Stylesheet
-  
-  This stylesheet is loaded for larger devices. It's set to
-  481px because at 480px it would load on a landscaped iPhone.
-  This isn't ideal because then you would be loading all those
-  extra styles on that same mobile connection.
-  
-  A word of warning. This size COULD be a larger mobile device,
-  so you still want to keep it pretty light and simply expand
-  upon your base.scss styles.
-  
-  ******************************************************************/
-  /*
-  IMPORTANT NOTE ABOUT SASS 3.3 & UP
-  You can't use @extend within media queries
-  anymore, so just be aware that if you drop
-  them in here, they won't work.
-  */
-  /*********************
-  NAVIGATION STYLES
-  *********************/
-  .nav {
-    background: none; }
-    .nav li {
-      border-color: #fff; }
-      .nav li a {
-        color: #fff; }
+Site Name:
+Author:
 
+Stylesheet: 481px and Up Stylesheet
+
+This stylesheet is loaded for larger devices. It's set to
+481px because at 480px it would load on a landscaped iPhone.
+This isn't ideal because then you would be loading all those
+extra styles on that same mobile connection.
+
+A word of warning. This size COULD be a larger mobile device,
+so you still want to keep it pretty light and simply expand
+upon your base.scss styles.
+
+******************************************************************/
+  /*
+IMPORTANT NOTE ABOUT SASS 3.3 & UP
+You can't use @extend within media queries
+anymore, so just be aware that if you drop
+them in here, they won't work.
+*/
+  /*********************
+NAVIGATION STYLES
+*********************/
+  .nav {
+    background: none;
+  }
+  .nav li {
+    border-color: #fff;
+  }
+  .nav li a {
+    color: #fff;
+  }
   /* .menu is clearfixed inside mixins.scss */
   .menu {
-    /* end .menu ul */ }
-    .menu ul {
-      /* end .menu ul li */
-      /* highlight current page */
-      /* end current highlighters */ }
-      .menu ul li {
-            /*
+    /* end .menu ul */
+  }
+  .menu ul {
+    /* end .menu ul li */
+    /* highlight current page */
+    /* end current highlighters */
+  }
+  .menu ul li {
+    /*
 				plan your menus and drop-downs wisely.
-				*/ }
-        .menu ul li a {
-                /*
+				*/
+  }
+  .menu ul li a {
+    /*
 					you can use hover styles here even though this size
 					has the possibility of being a mobile device.
-					*/ }
-
+					*/
+  }
   /* end .menu */
   /*********************
-  POSTS & CONTENT STYLES
-  *********************/
+POSTS & CONTENT STYLES
+*********************/
   /* entry content */
   .entry-content {
-    /* at this larger size, we can start to align images */ }
-    .entry-content .alignleft,
-    .entry-content img.alignleft {
-      margin-right: 1.5em;
-      display: inline;
-      float: left; }
-    .entry-content .alignright,
-    .entry-content img.alignright {
-      margin-left: 1.5em;
-      display: inline;
-      float: right; }
-    .entry-content .aligncenter,
-    .entry-content img.aligncenter {
-      margin-right: auto;
-      margin-left: auto;
-      display: block;
-      clear: both; }
-
+    /* at this larger size, we can start to align images */
+  }
+  .entry-content .alignleft,
+  .entry-content img.alignleft {
+    margin-right: 1.5em;
+    display: inline;
+    float: left;
+  }
+  .entry-content .alignright,
+  .entry-content img.alignright {
+    margin-left: 1.5em;
+    display: inline;
+    float: right;
+  }
+  .entry-content .aligncenter,
+  .entry-content img.aligncenter {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    clear: both;
+  }
   /* end .entry-content */
   /*********************
-  FOOTER STYLES
-  *********************/
+FOOTER STYLES
+*********************/
   /*
-  check your menus here. do they look good?
-  do they need tweaking?
-  */
+check your menus here. do they look good?
+do they need tweaking?
+*/
   /* end .footer-links */
   /*********************
-  MASTHEAD STYLES
-  *********************/
+MASTHEAD STYLES
+*********************/
   #masthead-form h1 {
     font-size: 4rem;
     font-weight: 700;
-    margin: 0.67em 0 0.3em; } }
+    margin: 0.67em 0 0.3em;
+  }
+}
+
 /*********************
 TABLET & SMALLER LAPTOPS
 This is the average viewing window. So Desktops, Laptops, and
@@ -2543,123 +3010,135 @@ you can add resource intensive styles.
 *********************/
 @media only screen and (min-width: 768px) {
   /******************************************************************
-  Site Name:
-  Author:
-  
-  Stylesheet: Tablet & Small Desktop Stylesheet
-  
-  Here's where you can start getting into the good stuff.
-  This size will work on iPads, other tablets, and desktops.
-  So you can start working with more styles, background images,
-  and other resources. You'll also notice the grid starts to
-  come into play. Have fun!
-  
-  ******************************************************************/
-  /*********************
-  GENERAL STYLES
-  *********************/
-  /*********************
-  LAYOUT & GRID STYLES
-  *********************/
-  .wrap {
-    width: 760px; }
+Site Name:
+Author:
 
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+Here's where you can start getting into the good stuff.
+This size will work on iPads, other tablets, and desktops.
+So you can start working with more styles, background images,
+and other resources. You'll also notice the grid starts to
+come into play. Have fun!
+
+******************************************************************/
   /*********************
-  HEADER STYLES
-  *********************/
+GENERAL STYLES
+*********************/
+  /*********************
+LAYOUT & GRID STYLES
+*********************/
+  .wrap {
+    width: 760px;
+  }
+  /*********************
+HEADER STYLES
+*********************/
   .left-brand {
     position: absolute;
     top: 1%;
     left: 1%;
-    -webkit-transform: scaleX(1.0042);
-        -ms-transform: scaleX(1.0042);
-            transform: scaleX(1.0042); }
-
+    transform: scaleX(1.0042);
+  }
   .right-brand {
     right: 1%;
-    top: 1%; }
-
+    top: 1%;
+  }
   /*********************
-  NAVIGATION STYLES
-  *********************/
+NAVIGATION STYLES
+*********************/
   .nav {
     border: 0;
     margin: 5em 0 0;
-    float: right
+    float: right;
+    width: auto;
     /* end .menu ul li */
     /* highlight current page */
-    /* end current highlighters */ }
-    .nav ul {
-      background: #323944;
-      margin-top: 0; }
-    .nav li {
-      float: left;
-      position: relative
-        /*
+    /* end current highlighters */
+  }
+  .nav ul {
+    background: #323944;
+    margin-top: 0;
+  }
+  .nav li {
+    float: left;
+    position: relative;
+    /*
 		plan your menus and drop-downs wisely.
 		*/
-      /* showing sub-menus */ }
-      .nav li a {
-        border-bottom: 0
-            /*
+    /* showing sub-menus */
+  }
+  .nav li a {
+    border-bottom: 0;
+    /*
 			you can use hover styles here even though this size
 			has the possibility of being a mobile device.
-			*/ }
-        .nav li a:hover, .nav li a:focus {
-          color: #fff;
-          text-decoration: underline; }
-      .nav li ul.sub-menu,
-      .nav li ul.children {
-        margin-top: 0;
-        border: 1px solid #ccc;
-        border-top: 0;
-        position: absolute;
-        visibility: hidden;
-        z-index: 8999
-        /* highlight sub-menu current page */ }
-        .nav li ul.sub-menu li,
-        .nav li ul.children li {
-                /*
+			*/
+  }
+  .nav li a:hover,
+  .nav li a:focus {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .nav li ul.sub-menu,
+  .nav li ul.children {
+    margin-top: 0;
+    border: 1px solid #ccc;
+    border-top: 0;
+    position: absolute;
+    visibility: hidden;
+    z-index: 8999;
+    /* highlight sub-menu current page */
+  }
+  .nav li ul.sub-menu li,
+  .nav li ul.children li {
+    /*
 				if you need to go deeper, go nuts
 				just remember deeper menus suck
 				for usability. k, bai.
-				*/ }
-          .nav li ul.sub-menu li a,
-          .nav li ul.children li a {
-            padding-left: 10px;
-            border-right: 0;
-            display: block;
-            width: 180px;
-            border-bottom: 1px solid #ccc; }
-          .nav li ul.sub-menu li:last-child a,
-          .nav li ul.children li:last-child a {
-            border-bottom: 0; }
-          .nav li ul.sub-menu li ul,
-          .nav li ul.children li ul {
-            top: 0;
-            left: 100%; }
-      .nav li:hover > ul {
-        top: auto;
-        visibility: visible; }
-
+				*/
+  }
+  .nav li ul.sub-menu li a,
+  .nav li ul.children li a {
+    padding-left: 10px;
+    border-right: 0;
+    display: block;
+    width: 180px;
+    border-bottom: 1px solid #ccc;
+  }
+  .nav li ul.sub-menu li:last-child a,
+  .nav li ul.children li:last-child a {
+    border-bottom: 0;
+  }
+  .nav li ul.sub-menu li ul,
+  .nav li ul.children li ul {
+    top: 0;
+    left: 100%;
+  }
+  .nav li:hover > ul {
+    top: auto;
+    visibility: visible;
+  }
   /* end .nav */
   /*********************
-  SIDEBARS & ASIDES
-  *********************/
+SIDEBARS & ASIDES
+*********************/
   .widgettitle {
     border-bottom: 2px solid #444;
-    margin-bottom: 0.75em; }
-
+    margin-bottom: 0.75em;
+  }
   .widget {
     padding: 0 10px;
-    margin: 2.2em 0; }
-    .widget ul li {
-      margin-bottom: 0.75em
-      /* deep nesting */ }
-      .widget ul li ul {
-        margin-top: 0.75em;
-        padding-left: 1em; }
-
+    margin: 2.2em 0;
+  }
+  .widget ul li {
+    margin-bottom: 0.75em;
+    /* deep nesting */
+  }
+  .widget ul li ul {
+    margin-top: 0.75em;
+    padding-left: 1em;
+  }
   /* links widget */
   /* meta widget */
   /* pages widget */
@@ -2672,21 +3151,23 @@ you can add resource intensive styles.
   /* search widget */
   /* text widget */
   /*********************
-  FOOTER STYLES
-  *********************/
+FOOTER STYLES
+*********************/
   /*
-  you'll probably need to do quite a bit
-  of overriding here if you styled them for
-  mobile. Make sure to double check these!
-  */
+you'll probably need to do quite a bit
+of overriding here if you styled them for
+mobile. Make sure to double check these!
+*/
   .footer-links ul li {
-            /*
+    /*
 			be careful with the depth of your menus.
 			it's very rare to have multi-depth menus in
 			the footer.
-			*/ }
+			*/
+  }
+  /* end .footer-links */
+}
 
-  /* end .footer-links */ }
 /*********************
 DESKTOP
 This is the average viewing window. So Desktops, Laptops, and
@@ -2695,79 +3176,30 @@ you can add resource intensive styles.
 *********************/
 @media only screen and (min-width: 1030px) {
   /******************************************************************
-  Site Name:
-  Author:
-  
-  Stylesheet: Desktop Stylsheet
-  
-  This is the desktop size. It's larger than an iPad so it will only
-  be seen on the Desktop.
-  
-  ******************************************************************/
+Site Name:
+Author:
+
+Stylesheet: Desktop Stylsheet
+
+This is the desktop size. It's larger than an iPad so it will only
+be seen on the Desktop.
+
+******************************************************************/
   .wrap {
-    width: 1040px; } }
+    width: 1040px;
+  }
+}
+
 /*********************
 LARGE VIEWING SIZE
 This is for the larger monitors and possibly full screen viewers.
 *********************/
-@media only screen and (min-width: 1240px) {
-  /******************************************************************
-  Site Name: 
-  Author: 
-  
-  Stylesheet: Super Large Monitor Stylesheet
-  
-  You can add some advanced styles here if you like. This kicks in
-  on larger screens.
-  
-  ******************************************************************/ }
 /*********************
 RETINA (2x RESOLUTION DEVICES)
 This applies to the retina iPhone (4s) and iPad (2,3) along with
 other displays with a 2x resolution. You can also create a media
 query for retina AND a certain size if you want. Go Nuts.
 *********************/
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  /******************************************************************
-  Site Name: 
-  Author: 
-  
-  Stylesheet: Retina Screens & Devices Stylesheet
-  
-  When handling retina screens you need to make adjustments, especially
-  if you're not using font icons. Here you can add them in one neat
-  place.
-  
-  ******************************************************************/
-  /* 
-  
-  EXAMPLE 
-  Let's say you have an image and you need to make sure it looks ok
-  on retina screens. Let's say we have an icon which dimension are
-  24px x 24px. In your regular stylesheets, it would look something
-  like this:
-  
-  .icon {
-  	width: 24px;
-  	height: 24px;
-  	background: url(img/test.png) no-repeat;
-  }
-  
-  For retina screens, we have to make some adjustments, so that image
-  doesn't look blurry. So, taking into account the image above and the
-  dimensions, this is what we would put in our retina stylesheet:
-  
-  .icon {
-  	background: url(img/test@2x.png) no-repeat;
-  	background-size: 24px 24px;
-  }
-  
-  So, you would create the same icon, but at double the resolution, meaning 
-  it would be 48px x 48px. You'd name it the same, but with a @2x at the end
-  (this is pretty standard practice). Set the background image so it matches
-  the original dimensions and you are good to go. 
-  
-  */ }
 /*********************
 PRINT STYLESHEET
 Feel free to customize this. Remember to add things that won't make
@@ -2776,65 +3208,67 @@ be set to display none.
 *********************/
 @media print {
   /******************************************************************
-  Site Name:
-  Author:
-  
-  Stylesheet: Print Stylesheet
-  
-  This is the print stylesheet. There's probably not a lot
-  of reasons to edit this stylesheet. If you want to
-  though, go for it.
-  
-  ******************************************************************/
+Site Name:
+Author:
+
+Stylesheet: Print Stylesheet
+
+This is the print stylesheet. There's probably not a lot
+of reasons to edit this stylesheet. If you want to
+though, go for it.
+
+******************************************************************/
   * {
     background: transparent !important;
     color: black !important;
     text-shadow: none !important;
-    -webkit-filter: none !important;
-            filter: none !important;
-    -ms-filter: none !important; }
-
+    filter: none !important;
+    -ms-filter: none !important;
+  }
   a, a:visited {
     color: #444 !important;
-    text-decoration: underline; }
-    a:after, a:visited:after {
-      content: " (" attr(href) ")"; }
-    a abbr[title]:after, a:visited abbr[title]:after {
-      content: " (" attr(title) ")"; }
-
+    text-decoration: underline;
+  }
+  a:after, a:visited:after {
+    content: " (" attr(href) ")";
+  }
+  a abbr[title]:after, a:visited abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
-    content: ""; }
-
+    content: "";
+  }
   pre, blockquote {
     border: 1px solid #999;
-    page-break-inside: avoid; }
-
+    page-break-inside: avoid;
+  }
   thead {
-    display: table-header-group; }
-
+    display: table-header-group;
+  }
   tr, img {
-    page-break-inside: avoid; }
-
+    page-break-inside: avoid;
+  }
   img {
-    max-width: 100% !important; }
-
+    max-width: 100% !important;
+  }
   @page {
-    margin: 0.5cm; }
+    margin: 0.5cm;
+  }
   p, h2, h3 {
     orphans: 3;
-    widows: 3; }
-
+    widows: 3;
+  }
   h2,
   h3 {
-    page-break-after: avoid; }
-
+    page-break-after: avoid;
+  }
   .sidebar,
   .page-navigation,
   .wp-prev-next,
   .respond-form,
   nav {
-    display: none; } }
-
-/*# sourceMappingURL=style.css.map */
+    display: none;
+  }
+}

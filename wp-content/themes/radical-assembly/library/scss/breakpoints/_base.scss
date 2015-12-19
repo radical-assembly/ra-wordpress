@@ -44,15 +44,25 @@ body {
 WORDPRESS BODY CLASSES
 style a page via class
 ********************/
-
+/* for sites that are read right to left (i.e. arabic) */
 .rtl {}
 
 
-/* for sites that are read right to left (i.e. hebrew) */
+
 
 /* home page */
-.home {}
+.home {
+    .wrap {
+        width: 100%;
+    }
+}
+.trail-modules {
+    padding: 1.5em;
+    img {
+        max-width: 100%;
+    }
 
+}
 // events page
 .page-template-events {
     #inner-content {
@@ -434,6 +444,7 @@ and more scalable.
     border-bottom: 0;
     display: table;
     background: $white;
+    width: 100%;
     li {
         display: table-cell;
         text-align: center;
@@ -487,7 +498,9 @@ and more scalable.
     /* end current highlighters */
 }
 
-
+ ul.sub-menu {
+    display: none;
+ }
 /* end .nav */
 
 
@@ -1163,4 +1176,17 @@ GENERAL STYLES
 
 #inner-content.container {
     background: $white;
+}
+
+.block-link {
+    position: relative;
+    display: block;
+    background: $tan;
+    height: 175px;
+    padding: 1em;
+    .btm-left {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
 }

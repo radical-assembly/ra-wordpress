@@ -1,2 +1,3 @@
 wp-content/themes/radical-assembly/library/prepros.cfg
 .gitignore
+wp-config.php
