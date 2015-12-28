@@ -1496,6 +1496,19 @@ select {
   }
 }
 
+.filter-menu {
+  display: table;
+}
+
+.filter-menu li {
+  display: table-cell;
+}
+
+.filter-menu .title {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
 /* required styles */
 .leaflet-map-pane,
 .leaflet-tile,

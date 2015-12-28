@@ -128,8 +128,15 @@
 
 // style for calendar filter and controls
 .filter-menu {
+    display: table;
+    li {
+        display: table-cell;
+    }
+
     .title {
-        
+        font-size: 1.3em;
+        font-weight: bold
+
     }
 }
 
