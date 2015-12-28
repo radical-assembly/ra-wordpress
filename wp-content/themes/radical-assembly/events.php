@@ -11,6 +11,9 @@ Template Name: eventpage
 	<div id="map-wrap">
 		<!-- This is the container for the leaflet js map -->
 		<div id="map"></div>
+		<div class="fullscreen-map">
+			<span class="iconic iconic-md" data-glyph="fullscreen-enter" title="fullscreen enter" aria-hidden="true"></span>
+		</div>
 		<h1 class="page-title"><?php the_title(); ?></h1>
 	</div> <!-- //map-wrap -->
 	<div class="row">
