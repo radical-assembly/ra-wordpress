@@ -36,8 +36,8 @@ Template Name: eventpage
 									
 											<ul class="filter-menu">
 											<li class="title">Groups</li>
-										 	<li><div class="slideTwo"><input type="checkbox" class="groups" name="testgroup1" value="TestGroup1"> <label for="testgroup1">TestGroup1</label></div></li>
-										 	<li> <div class="slideTwo"><input type="checkbox" class="groups" value="testgroup2"> <label for="testgroup2">TestGroup2</label> </div></li>
+										 	<li><div class="slideTwo"><input type="checkbox" class="groups" name="testgroup1" id="testgroup1" value="TestGroup1"> <label for="testgroup1"></label></div></li>
+										 	<li> <div class="slideTwo"><input type="checkbox" class="groups" value="testgroup2" id="testgroup2"> <label for="testgroup2"></label> </div></li>
 										 	
 										 </ul> 
 										<strong>Groups</strong> |
