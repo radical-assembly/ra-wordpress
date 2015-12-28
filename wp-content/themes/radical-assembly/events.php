@@ -26,6 +26,8 @@ Template Name: eventpage
 								<div id="filter-wrap">
 									<h2>Filter</h2>
 									<form id="event-filter">
+
+									<!-- ~Must have a limit of 10 element to stop layout from breakcing -->
 										<ul class="filter-menu">
 											<li class="title">Tags</li>
 										 	<li><div class="slideTwo"><input type="checkbox" id="march" name="tags" value="March"><label for="march"></label></div><span class="dsp-lbl">March</span></li>
