@@ -1504,6 +1504,11 @@ select {
   font-weight: bold;
 }
 
+.dsp-lbl {
+  display: block;
+  text-align: center;
+}
+
 .slideTwo {
   width: 80px;
   height: 30px;
