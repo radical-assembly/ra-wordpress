@@ -1495,6 +1495,7 @@ select {
 .filter-menu {
   display: table;
   width: 100%;
+  background: #2980b9;
 }
 .filter-menu li {
   display: table-cell;
@@ -1502,6 +1503,7 @@ select {
 .filter-menu .title {
   font-size: 1.3em;
   font-weight: bold;
+  vertical-align: middle;
 }
 
 .dsp-lbl {

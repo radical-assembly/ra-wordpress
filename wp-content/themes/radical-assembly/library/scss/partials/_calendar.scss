@@ -130,14 +130,15 @@
 .filter-menu {
     display: table;
     width: 100%;
+    background: $blue;
     li {
         display: table-cell;
     }
 
     .title {
         font-size: 1.3em;
-        font-weight: bold
-
+        font-weight: bold;
+        vertical-align: middle;
     }
 }
 
