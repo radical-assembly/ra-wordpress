@@ -83,16 +83,30 @@
 
 
 								
-                                <section class="trail-modules">
+                                <section class="trail-modules cf">
+                                <div class="row">
                                     <div class="four columns">
-                                        <div class="trail"><img src="http://placekitten.com/200/300" alt=""></div>
+                                        <div class="trail">
+                                            <a href="#" class="block-link events">
+                                              <span class="btm-left"> Events</span> 
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="four columns">
-                                        <div class="trail"><img src="http://placekitten.com/200/300" alt=""></div>
+                                        <div class="trail">
+                                            <a href="#" class="block-link resources">
+                                                <span class="btm-left">Resources</span> 
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="four columns">
-                                        <div class="trail"><img src="http://placekitten.com/200/300" alt=""></div>
+                                        <div class="trail">
+                                            <a href="#" class="block-link blog">
+                                                 <span class="btm-left">Blog</span>
+                                            </a>
+                                        </div>
                                     </div>
+                                    </div> <!-- row -->
                                 </section>
                                 <section class="entry-content cf" itemprop="articleBody">
                                     <?php

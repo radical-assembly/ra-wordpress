@@ -43,6 +43,79 @@ http://sachagreif.com/sass-color-variables/
 Site Name:
 Author:
 
+Stylesheet: Typography
+
+Need to import a font or set of icons for your site? Drop them in
+here or just use this to establish your typographical grid. Or not.
+Do whatever you want to...GOSH!
+
+Helpful Articles:
+http://trentwalton.com/2012/06/19/fluid-type/
+http://ia.net/blog/responsive-typography-the-basics/
+http://alistapart.com/column/responsive-typography-is-a-physical-discipline
+
+******************************************************************/
+/*********************
+FONT FACE (IN YOUR FACE)
+*********************/
+/*  To embed your own fonts, use this syntax
+  and place your fonts inside the
+  library/fonts folder. For more information
+  on embedding fonts, go to:
+  http://www.fontsquirrel.com/
+  Be sure to remove the comment brackets.
+*/
+/*  @font-face {
+      font-family: 'Font Name';
+      src: url('library/fonts/font-name.eot');
+      src: url('library/fonts/font-name.eot?#iefix') format('embedded-opentype'),
+             url('library/fonts/font-name.woff') format('woff'),
+             url('library/fonts/font-name.ttf') format('truetype'),
+             url('library/fonts/font-name.svg#font-name') format('svg');
+      font-weight: normal;
+      font-style: normal;
+  }
+*/
+@import url(http://weloveiconfonts.com/api/?family=iconicstroke);
+[class*="iconicstroke-"]:before {
+  font-family: 'IconicStroke', sans-serif;
+  font-style: normal;
+}
+
+/*
+The following is based of Typebase:
+https://github.com/devinhunt/typebase.css
+I've edited it a bit, but it's a nice starting point.
+*/
+/*
+ i imported this one in the functions file so bones would look sweet.
+ don't forget to remove it for your site.
+*/
+/*
+some nice typographical defaults
+more here: http://www.newnet-soft.com/blog/csstypography
+*/
+p {
+  -ms-word-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  -webkit-hyphenate-before: 2;
+  -webkit-hyphenate-after: 3;
+  hyphenate-lines: 3;
+  -webkit-font-feature-settings: "liga", "dlig";
+  -moz-font-feature-settings: "liga=1, dlig=1";
+  -ms-font-feature-settings: "liga", "dlig";
+  -o-font-feature-settings: "liga", "dlig";
+  font-feature-settings: "liga", "dlig";
+}
+
+/******************************************************************
+Site Name:
+Author:
+
 Stylesheet: Mixins Stylesheet
 
 This is where you can take advantage of Sass' great features: Mixins.
@@ -120,22 +193,41 @@ them in here, they won't work.
 /*********************
 NAVIGATION STYLES
 *********************/
+.nav {
+  background: none;
+}
+
+.nav li {
+  border-color: #fff;
+}
+
+.nav li a {
+  color: #fff;
+}
+
 /* .menu is clearfixed inside mixins.scss */
 .menu {
-  /* end .menu ul */ }
-  .menu ul {
-    /* end .menu ul li */
-    /* highlight current page */
-    /* end current highlighters */ }
-    .menu ul li {
-      /*
-      plan your menus and drop-downs wisely.
-      */ }
-      .menu ul li a {
-        /*
-        you can use hover styles here even though this size
-        has the possibility of being a mobile device.
-        */ }
+  /* end .menu ul */
+}
+
+.menu ul {
+  /* end .menu ul li */
+  /* highlight current page */
+  /* end current highlighters */
+}
+
+.menu ul li {
+  /*
+				plan your menus and drop-downs wisely.
+				*/
+}
+
+.menu ul li a {
+  /*
+					you can use hover styles here even though this size
+					has the possibility of being a mobile device.
+					*/
+}
 
 /* end .menu */
 /*********************
@@ -143,20 +235,30 @@ POSTS & CONTENT STYLES
 *********************/
 /* entry content */
 .entry-content {
-  /* at this larger size, we can start to align images */ }
-  .entry-content .alignleft, .entry-content img.alignleft {
-    margin-right: 1.5em;
-    display: inline;
-    float: left; }
-  .entry-content .alignright, .entry-content img.alignright {
-    margin-left: 1.5em;
-    display: inline;
-    float: right; }
-  .entry-content .aligncenter, .entry-content img.aligncenter {
-    margin-right: auto;
-    margin-left: auto;
-    display: block;
-    clear: both; }
+  /* at this larger size, we can start to align images */
+}
+
+.entry-content .alignleft,
+.entry-content img.alignleft {
+  margin-right: 1.5em;
+  display: inline;
+  float: left;
+}
+
+.entry-content .alignright,
+.entry-content img.alignright {
+  margin-left: 1.5em;
+  display: inline;
+  float: right;
+}
+
+.entry-content .aligncenter,
+.entry-content img.aligncenter {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  clear: both;
+}
 
 /* end .entry-content */
 /*********************
@@ -167,6 +269,15 @@ check your menus here. do they look good?
 do they need tweaking?
 */
 /* end .footer-links */
+/*********************
+MASTHEAD STYLES
+*********************/
+#masthead-form h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 0.67em 0 0.3em;
+}
+
 /******************************************************************
 Site Name:
 Author:
@@ -187,89 +298,133 @@ GENERAL STYLES
 LAYOUT & GRID STYLES
 *********************/
 .wrap {
-  width: 760px; }
+  width: 760px;
+}
 
 /*********************
 HEADER STYLES
 *********************/
+.left-brand {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  transform: scaleX(1.0042);
+}
+
+.right-brand {
+  right: 1%;
+  top: 1%;
+}
+
 /*********************
 NAVIGATION STYLES
 *********************/
 .nav {
   border: 0;
+  margin: 5em 0 0;
+  float: right;
+  width: auto;
   /* end .menu ul li */
   /* highlight current page */
-  /* end current highlighters */ }
-  .nav ul {
-    margin-top: 0; }
-  .nav li {
-    float: left;
-    position: relative;
-    /*
-    plan your menus and drop-downs wisely.
-    */
-    /* showing sub-menus */ }
-    .nav li a {
-      border-bottom: 0;
-      /*
-      you can use hover styles here even though this size
-      has the possibility of being a mobile device.
-      */ }
-      .nav li a:hover, .nav li a:focus {
-        color: white;
-        text-decoration: underline; }
-    .nav li ul.sub-menu,
-    .nav li ul.children {
-      margin-top: 0;
-      border: 1px solid #ccc;
-      border-top: 0;
-      position: absolute;
-      overflow: hidden;
-      visibility: hidden;
-      z-index: 8999;
-      /* highlight sub-menu current page */ }
-      .nav li ul.sub-menu li,
-      .nav li ul.children li {
-        /*
-        if you need to go deeper, go nuts
-        just remember deeper menus suck
-        for usability. k, bai.
-        */ }
-        .nav li ul.sub-menu li a,
-        .nav li ul.children li a {
-          padding-left: 10px;
-          border-right: 0;
-          display: block;
-          width: 180px;
-          border-bottom: 1px solid #ccc; }
-        .nav li ul.sub-menu li:last-child a,
-        .nav li ul.children li:last-child a {
-          border-bottom: 0; }
-    .nav li:hover ul {
-      top: auto;
-      overflow: visible;
-      visibility: visible; }
+  /* end current highlighters */
+}
+
+.nav ul {
+  background: #323944;
+  margin-top: 0;
+}
+
+.nav li {
+  float: left;
+  position: relative;
+  /*
+		plan your menus and drop-downs wisely.
+		*/
+  /* showing sub-menus */
+}
+
+.nav li a {
+  border-bottom: 0;
+  /*
+			you can use hover styles here even though this size
+			has the possibility of being a mobile device.
+			*/
+}
+
+.nav li a:hover,
+.nav li a:focus {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.nav li ul.sub-menu,
+.nav li ul.children {
+  margin-top: 0;
+  border: 1px solid #ccc;
+  border-top: 0;
+  position: absolute;
+  visibility: hidden;
+  z-index: 8999;
+  /* highlight sub-menu current page */
+}
+
+.nav li ul.sub-menu li,
+.nav li ul.children li {
+  /*
+				if you need to go deeper, go nuts
+				just remember deeper menus suck
+				for usability. k, bai.
+				*/
+}
+
+.nav li ul.sub-menu li a,
+.nav li ul.children li a {
+  padding-left: 10px;
+  border-right: 0;
+  display: block;
+  width: 180px;
+  border-bottom: 1px solid #ccc;
+}
+
+.nav li ul.sub-menu li:last-child a,
+.nav li ul.children li:last-child a {
+  border-bottom: 0;
+}
+
+.nav li ul.sub-menu li ul,
+.nav li ul.children li ul {
+  top: 0;
+  left: 100%;
+}
+
+.nav li:hover > ul {
+  top: auto;
+  visibility: visible;
+}
 
 /* end .nav */
 /*********************
 SIDEBARS & ASIDES
 *********************/
-.sidebar {
-  margin-top: 2.2em; }
-
 .widgettitle {
   border-bottom: 2px solid #444;
-  margin-bottom: 0.75em; }
+  margin-bottom: 0.75em;
+}
 
 .widget {
   padding: 0 10px;
-  margin: 2.2em 0; }
-  .widget ul li {
-    margin-bottom: 0.75em;
-    /* deep nesting */ }
-    .widget ul li ul {
-      margin-top: 0.75em;
-      padding-left: 1em; }
+  margin: 2.2em 0;
+}
+
+.widget ul li {
+  margin-bottom: 0.75em;
+  /* deep nesting */
+}
+
+.widget ul li ul {
+  margin-top: 0.75em;
+  padding-left: 1em;
+}
 
 /* links widget */
 /* meta widget */
@@ -292,10 +447,11 @@ mobile. Make sure to double check these!
 */
 .footer-links ul li {
   /*
-  be careful with the depth of your menus.
-  it's very rare to have multi-depth menus in
-  the footer.
-  */ }
+			be careful with the depth of your menus.
+			it's very rare to have multi-depth menus in
+			the footer.
+			*/
+}
 
 /* end .footer-links */
 /******************************************************************
@@ -309,7 +465,8 @@ be seen on the Desktop.
 
 ******************************************************************/
 .wrap {
-  width: 1040px; }
+  width: 1040px;
+}
 
 /*
 you can call the larger styles if you want, but there's really no need
