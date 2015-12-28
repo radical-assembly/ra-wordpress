@@ -1495,7 +1495,7 @@ select {
 .filter-menu {
   display: table;
   width: 100%;
-  background: #2980b9;
+  background: rgba(50, 57, 68, 0.7);
 }
 .filter-menu li {
   display: table-cell;
