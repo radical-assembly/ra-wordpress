@@ -28,16 +28,16 @@ Template Name: eventpage
 									<form id="event-filter">
 										<ul class="filter-menu">
 											<li class="title">Tags</li>
-										 	<li><label><input type="checkbox" name="tags" value="March"> March</label></li>
-										 	<li> <label><input type="checkbox" name="tags" value="Demonstration"> Demo</label> </li>
+										 	<li><div class="slideTwo"><label><input type="checkbox" name="tags" value="March"> March</label></div></li>
+										 	<li><div class="slideTwo"> <label><input type="checkbox" name="tags" value="Demonstration"> Demo</label> </div></li>
 										 	<li> <label><input type="checkbox" name="tags" value="Discussion"> Discussion</label> </li>
-										 	<li><label><input type="checkbox" name="tags" value="Debate"> Debate </label></li>
+										 	<li><div class="slideTwo"><label><input type="checkbox" name="tags" value="Debate"> Debate </label></div></li>
 										 </ul> 
 									
 											<ul class="filter-menu">
 											<li class="title">Groups</li>
-										 	<li><label>	<input type="checkbox" name="groups" value="TestGroup1"> TestGroup1</label></li>
-										 	<li> <label><input type="checkbox" name="groups" value="TestGroup2"> TestGroup2</label> </li>
+										 	<li><div class="slideTwo"><label>	<input type="checkbox" name="groups" value="TestGroup1"> TestGroup1</label></div></li>
+										 	<li> <div class="slideTwo"><label><input type="checkbox" name="groups" value="TestGroup2"> TestGroup2</label> </div></li>
 										 	
 										 </ul> 
 										<strong>Groups</strong> |
