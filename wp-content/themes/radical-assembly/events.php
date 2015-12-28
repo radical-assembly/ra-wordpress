@@ -28,16 +28,16 @@ Template Name: eventpage
 									<form id="event-filter">
 										<ul class="filter-menu">
 											<li class="title">Tags</li>
-										 	<li><div class="slideTwo"><input type="checkbox" id="march" name="tags" value="March"><label for="march"></label></div></li>
-										 	<li><div class="slideTwo"> <input type="checkbox" id="demo" name="tags" value="Demonstration"><label for="demo"></label> </div></li>
-										 	<li><div class="slideTwo"> <input type="checkbox" id="discussion" name="tags" value="discussion"><label for="discussion"></label></div> </li>
-										 	<li><div class="slideTwo"><input type="checkbox" id="debate" name="tags"  value="Debate"><label for="debate"></label></div></li>
+										 	<li><div class="slideTwo"><input type="checkbox" id="march" name="tags" value="March"><label for="march"></label></div><span class="dsp-lbl">March</span></li>
+										 	<li><div class="slideTwo"> <input type="checkbox" id="demo" name="tags" value="Demonstration"><label for="demo"></label> </div><span class="dsp-lbl">Demo</span></li>
+										 	<li><div class="slideTwo"> <input type="checkbox" id="discussion" name="tags" value="discussion"><label for="discussion"></label></div> <span class="dsp-lbl">Discussion</span></li>
+										 	<li><div class="slideTwo"><input type="checkbox" id="debate" name="tags"  value="Debate"><label for="debate"></label></div><span class="dsp-lbl">Debate</span></li>
 										 </ul> 
 									
 											<ul class="filter-menu">
 											<li class="title">Groups</li>
-										 	<li><div class="slideTwo"><input type="checkbox" name="groups" id="testgroup1" value="TestGroup1"> <label for="testgroup1"></label></div></li>
-										 	<li> <div class="slideTwo"><input type="checkbox" name="groups" id="testgroup2"> <label for="testgroup2"></label> </div></li>
+										 	<li><div class="slideTwo"><input type="checkbox" name="groups" id="testgroup1" value="TestGroup1"> <label for="testgroup1"></label></div> <span class="dsp-lbl">TestGroup 1</span></li>
+										 	<li> <div class="slideTwo"><input type="checkbox" name="groups" id="testgroup2"> <label for="testgroup2"></label> </div> <span class="dsp-lbl">TestGroup 2</span></li>
 										 	
 										 </ul> 
 										<strong>Groups</strong> |
