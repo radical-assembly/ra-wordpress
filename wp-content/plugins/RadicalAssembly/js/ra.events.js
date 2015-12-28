@@ -50,8 +50,8 @@ jQuery(document).ready(function() {
                 }
             };
         }
-        jQuery('input.tags').each(buildListFromElements('tags'));
-        jQuery('input.groups').each(buildListFromElements('groups'));
+        jQuery('input[name="tags"]').each(buildListFromElements('tags'));
+        jQuery('input[name="groups"]').each(buildListFromElements('groups'));
         jQuery('#calendar').fullCalendar('refetchEvents');
     });
 

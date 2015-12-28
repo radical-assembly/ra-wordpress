@@ -28,16 +28,16 @@ Template Name: eventpage
 									<form id="event-filter">
 										<ul class="filter-menu">
 											<li class="title">Tags</li>
-										 	<li><div class="slideTwo"><input type="checkbox" id="march" class="tags" name="march" value="March"><label for="march"></label></div></li>
-										 	<li><div class="slideTwo"> <input type="checkbox" id="demo" class="tags" name="demo" value="Demonstration"><label for="demo"></label> </div></li>
-										 	<li><div class="slideTwo"> <input type="checkbox" id="discussion" name="discussion" class="tags" value="discussion"><label for="discussion"></label></div> </li>
-										 	<li><div class="slideTwo"><input type="checkbox" id="debate" class="tags" name="debate" value="Debate"><label for="debate"></label></div></li>
+										 	<li><div class="slideTwo"><input type="checkbox" id="march" name="tags" value="March"><label for="march"></label></div></li>
+										 	<li><div class="slideTwo"> <input type="checkbox" id="demo" name="tags" value="Demonstration"><label for="demo"></label> </div></li>
+										 	<li><div class="slideTwo"> <input type="checkbox" id="discussion" name="tags" value="discussion"><label for="discussion"></label></div> </li>
+										 	<li><div class="slideTwo"><input type="checkbox" id="debate" name="tags"  value="Debate"><label for="debate"></label></div></li>
 										 </ul> 
 									
 											<ul class="filter-menu">
 											<li class="title">Groups</li>
-										 	<li><div class="slideTwo"><input type="checkbox" class="groups" name="testgroup1" id="testgroup1" value="TestGroup1"> <label for="testgroup1"></label></div></li>
-										 	<li> <div class="slideTwo"><input type="checkbox" class="groups" value="testgroup2" id="testgroup2"> <label for="testgroup2"></label> </div></li>
+										 	<li><div class="slideTwo"><input type="checkbox" name="groups" id="testgroup1" value="TestGroup1"> <label for="testgroup1"></label></div></li>
+										 	<li> <div class="slideTwo"><input type="checkbox" name="groups" id="testgroup2"> <label for="testgroup2"></label> </div></li>
 										 	
 										 </ul> 
 										<strong>Groups</strong> |
